@@ -1,0 +1,71 @@
+---
+title: Consume an API, Web Service with Retrofit on Android
+summary: Tutorial to create a Pokédex app from scratch.
+tags: [android, retrofit, java, glide]
+video.youTube: xQn8u4Htib4
+image: banners/consumir-api-retrofit-pokedex.png
+date: 2017-09-01 08:00
+---
+
+Tutorial to create a Pokédex app from scratch. The app uses Retrofit library to consume an API on Android. In addition to using Glide to download images.
+
+__What you'll learn__
+
+* Consume an API or Web Service with Retrofit
+* Use a `RecyclerView` component in grid mode
+* Handle `RecyclerView` events
+
+__What you'll need__
+
+* [Know how to obtain images with _Glide_](/videos/android/descargar-imagenes-glide/)
+
+## Introduction
+
+__API (0:22)__
+
+* [pokeapi.co](https://pokeapi.co/)
+
+__Google Chrome Extension (1:10)__
+
+* [JSON Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)
+
+### Images (1:47)
+
+URL to obtain the images of the pokemon by their number.
+
+```html
+~~https://pokeapi.co/media/sprites/pokemon/25.png~~
+```
+
+__Update:__ The previous URL stopped working but you can get the image directly from the repository like this:
+
+```html
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png
+```
+
+Pikachu is the pokemon number 25.
+
+![Pikachu](https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png)
+
+## Retrofit
+
+2:02: Dependency to use *Retrofit* in the module `build.gradle`
+
+```groovy
+~~compile 'com.squareup.retrofit2:retrofit:2.1.0'~~
+```
+
+__Update:__ `compile` is _deprecated_ and there are new versions.
+
+```groovy
+implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+```
+
+Release numbers, more information and _Retrofit_ documentation:
+
+* [Website](http://square.github.io/retrofit/)
+* [Releases](https://github.com/square/retrofit/releases)
+
+<GitHub repo="Pokedex"/>
+
+> The __master branch__ was updated with the migration of AndroidX and the update of gradle tools. If you want to see exactly the same version of the video, it is in the __video branch__.

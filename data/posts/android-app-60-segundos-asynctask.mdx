@@ -1,0 +1,145 @@
+---
+title: "Creación la aplicación Android: 60 segundos"
+summary: ¿Conoces el juego de los 60 segundos? en este tutorial realizarás una aplicación de cuenta regresiva de los 60 segundos.
+tags: [android, java]
+date: 2017-09-01 08:00
+language: es
+---
+
+¿Conoces el juego de los 60 segundos? en este tutorial realizarás una aplicación de cuenta regresiva de los 60 segundos.
+
+![*](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fandroid-60-segundos%2Fdevice-2017-08-30-145522.png?alt=media&token=3162b987-dbed-42a6-b7ae-c0a29f973749)
+
+> Esta guía es del curso básico de desarrollo de aplicaciones Android el 2017. Algunas cosas pueden haber cambiado y/o desarrolladas de la forma más sencilla posible, aún así, es buena referencia para quienes que inician en Android y/o programación.
+
+__Aprenderás__
+
+* Conocer como funciona la clase `AsyncTask` de Android
+
+## Descargar proyecto base
+
+Para descargar el proyecto base:
+
+* [github.com/alvareztech/CNA-60segundos](https://github.com/alvareztech/CNA-60segundos)
+
+Descomprimirlo y abrirlo con _Android Studio_.
+
+![*](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fandroid-60-segundos%2FPasted_Image_8_30_17__16_52.jpg?alt=media&token=1179ccb0-bdd4-41bc-93dd-a0278789ed8a)
+
+## Explorando el proyecto
+
+Luego de abrir el proyecto, podrás notar que el diseño es sencillo, es solo una activity que tiene dos *views*, un botón flotante (`FloatingActionButton`) y un `TextView`.
+
+El proceso es sencillo, cuando se presiona el botón tiene que empezar la cuenta regresiva.
+
+Las *views* ya están referenciadas en la Activity y también en `MainActivity` ya esta la estructura de un AsyncTask.
+
+¿Qué es un AsyncTask? lo respondemos a continuación.
+
+## AsyncTask
+
+En palabras sencillas, un `AsyncTask` es la clase de Android que nos permitirá ejecutar procesos que demoran un tiempo en llevarse a cabo.
+
+Ejemplos:
+
+* Obtener información de Internet
+* Descargar una imagen de Internet
+* Realizar una consulta grande en la base de datos interna
+
+En este caso, para esta aplicación necesitamos algo que controle nuestro contador. Si bien no se recomienda utilizar `AsyncTask` para realizar aplicaciones de cronómetros y animaciones periódicas, este nos servirá para entender como funciona.
+
+## Paso 1
+
+Si te fijas en la parte de abajo de `MainActivity` verás la clase `ContadorTask` (si se puede tener una clase dentro de otra clase). En lo posterior explicaremos el detalle de todo pero por ahora nos enfocaremos en los métodos que tiene.
+
+### Método `onPreExecute()`
+
+Aquí se pone lo que quieres hacer antes de iniciar el proceso (el proceso que toma tiempo). En nuestro caso el proceso es iniciar la cuenta regresiva. Para que el usuario no inicie el cronómetro hasta terminar haremos que al iniciar la cuenta se deshabilite el botón, eso se hace de la siguiente manera:
+
+
+```java
+iniciarButton.setEnabled(false);
+```
+
+Pon la anterior línea donde dice *paso 1* en el código.
+
+## Paso 2
+
+### Método `doInBackground()`
+
+Aquí se pone lo que tarda tiempo (el proceso). En nuestro caso queremos que cada segundo cambie el número y se decremente (si es 49 que sea 48 y así) esperando un segundo.
+
+La primera línea del siguiente código obtiene un parámetro de entrada, tu `AsyncTask` puede recibir uno o más parámetros de entrada que pueden ser de cualquier tipo. En este caso es un número entero `int`. Lo que pasa es que nos llega en un array, por lo tanto tenemos que sacar la primera posición, por que es el primer parámetro.
+
+```java
+int tope = integers[0];
+
+publishProgress(tope);
+
+try {
+    do {
+        tope--;
+        Thread.sleep(500);
+        publishProgress(tope);
+    } while (tope > 0);
+} catch (InterruptedException e) {
+    e.printStackTrace();
+}
+```
+
+Algo muy importante es que aquí, dentro de este método no se puede cambiar la interfaz de usuario, pero si se puede usar el método `publishProgress` (la segunda línea de código), es decir le puedes mandar algún dato para derivarlo a otro método que se encargue de actualizar la UI.
+
+El código de abajo es simplemente para detener el tiempo por milisegundos, para que no tarde tanto el contador pusimos 500 milisegundos (medio segundo) y luego pase eso otra vez lo derivamos a `publishProgress`, hacemos eso hasta que se termine de restar el contador.
+
+Esto puede dar un error, por eso ves ahí el tradicional try y catch.
+
+No olvides copiar todo este código en el *paso 2* de tu proyecto.
+
+## Paso 3
+
+### Método `onProgressUpdate()`
+
+Este es el famoso método que se encarga de actualizar la pantalla, los componentes, los views. ¿Recuerdas que le enviamos un parámetro del anterior método?, eso llega aquí.
+
+Sacamos el primer valor, lo convertimos a `String` y lo solocamos en nuestro `TextView`.
+
+
+```java
+String numero = values[0].toString();
+
+contadorTextView.setText(numero);
+```
+
+Coloca lo anterior en el *paso 3* de tu proyecto.
+
+## Paso 4
+
+### Método `onPostExecute()`
+
+Aquí se pone lo que quieres hacer cuando termine el proceso. En nuestro caso cuando termine el conteo, lo natural es que se vuelva a habilitar el botón de play para volver a iniciar.
+
+```java
+iniciarButton.setEnabled(true);
+```
+
+Coloca esta línea en el *paso 4* de tu proyecto.
+
+## Paso 5
+
+
+Eso es todo, ahora su clase `AsyncTask` esta completa y solo te queda iniciarla.
+
+Para eso, crea uno de esa clase y usa el método execute, no olvides mandar el parámetro de los 60 segundos.
+
+```java
+ContadorTask contadorTask = new ContadorTask();
+contadorTask.execute(60);
+```
+
+Coloca lo anterior en el *paso 5* de tu proyecto.
+
+## Ejecución
+
+Ejecuta tu app, y presiona el botón. Ya tienen un contador de una cuenta regresiva y aprendimos lo básico de como funciona la clase `AsyncTask`.
+
+![*](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fandroid-60-segundos%2Fdevice-2017-08-30-145421.png?alt=media&token=be1fc4a9-cc30-4a79-ba69-de8ff7a30074)

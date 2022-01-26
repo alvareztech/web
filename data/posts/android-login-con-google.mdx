@@ -1,0 +1,98 @@
+---
+title: Login Google en Android
+summary: Autenticación con Google en una aplicación Android, además de la obtención de información del usuario como nombres, correo electrónico, id y fotografía de perfil.
+tags: [android, google]
+date: 2019-10-23 12:00
+video.youTube: O3aemJ9eAAA
+language: es
+---
+
+Tutorial para realizar Log In, autenticación con Google en una aplicación Android, además de la obtención de información del usuario como nombres, correo electrónico, id y fotografía de perfil.
+
+__Aprenderás__
+
+* Obtener información del usuario
+* Personalizar el botón de autenticación de Google
+
+__Requisitos__
+
+* Cuenta Google
+* Obtener una imagen desde Internet con _Glide_ (para la foto del perfil)
+
+## 1. Configuración
+
+### Consola de Firebase (1:21)
+
+* [console.firebase.google.com](https://console.firebase.google.com/)
+
+### Dependencia para la autenticación (3:10)
+
+```groovy
+compile 'com.google.android.gms:play-services-auth:9.8.0'
+```
+
+### Página Releases (3:25)
+
+* [developers.google.com/android/guides/releases](https://developers.google.com/android/guides/releases)
+
+## Implementación
+
+### Implementación (4:54)
+
+### GoogleApiClient (5:07)
+
+```java
+GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+    .requestEmail()
+    .build();
+
+googleApiClient = new GoogleApiClient.Builder(this)
+    .enableAutoManage(this, this)
+    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+    .build();
+```
+
+### SignInButton (6.23)
+
+```xml
+<com.google.android.gms.common.SignInButton
+    android:id="@+id/signInButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true" />
+```
+
+### Obtención de la información del usuario (11:00)
+
+```java
+GoogleSignInAccount account = result.getSignInAccount();
+
+nameTextView.setText(account.getDisplayName());
+emailTextView.setText(account.getEmail());
+idTextView.setText(account.getId());
+
+Glide.with(this).load(account.getPhotoUrl()).into(photoImageView);
+```
+
+> Si el usuario no tiene foto de perfil, `account.getPhotoUrl()` será `null`, sin embargo Glide no causará problemas, simplemente no se cargará ninguna imagen.De la misma forma si no se usó `requestEmail()` al armar el `GoogleSignInOptions`, `account.getEmail()` será `null`.
+
+## Personalización
+
+Tamaño del `SignInButton` (13:36)
+
+```java
+signInButton.setSize(SignInButton.SIZE_WIDE);
+```
+
+```java
+signInButton.setSize(SignInButton.SIZE_ICON_ONLY);
+```
+
+### Color Scheme del SignInButton (13:52)
+
+```java
+signInButton.setColorScheme(SignInButton.COLOR_DARK);
+```
+
+<GitHub repo="GoogleSignInAndroid"/>

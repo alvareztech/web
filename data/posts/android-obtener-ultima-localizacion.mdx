@@ -1,0 +1,287 @@
+---
+title: Obtener última localización en Android
+summary: En este tutorial verás como gestionar los permisos para las versiones Android 6.0 o superior.
+tags: [android, java]
+date: 2017-06-14 08:00
+language: es
+---
+
+Crearás tu primera aplicación en _Android Studio_ que obtenga la última localización conocida del usuario y lo muestre por pantalla.
+
+![App](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fobtener-ultima-localizacion-android%2Fapp.png?alt=media&token=3b8fd272-403a-4fa4-b8f4-09ee54ec8994)
+
+**Aprenderás**
+
+* A crear tu primera aplicación en _Android Studio_
+* Adicionar permiso de localización
+* Usar el `GoogleApiClient`
+* Obtener la última localización conocida y colocarla en pantalla
+
+**Requisitos**
+
+* [Google Play Services SDK instalado](/basics/android/instalar-google-play-services-sdk/)
+* [Conocer una versión de Google Play Services a usar](/tips/android/ver-versiones-google-play-services/)
+
+## Crear el proyecto
+
+Crea un nuevo proyecto en _Android Studio_ con el nombre "Mi punto en el mundo".
+
+![Android Studio 1](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fobtener-ultima-localizacion-android%2FScreen%20Shot%202017-04-19%20at%2015.30.17.png?alt=media&token=312f1b70-f21b-46d9-8b6c-b15048876de8)
+
+Uso el SDK mínimo recomendado:
+
+![Android Studio 2](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fobtener-ultima-localizacion-android%2FScreen%20Shot%202017-04-19%20at%2015.30.25.png?alt=media&token=2f4f0c8b-dd08-4e45-a846-83f63a5f601f)
+
+Créala desde una activity vacía:
+
+![Android Studio 3](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fobtener-ultima-localizacion-android%2FScreen%20Shot%202017-04-19%20at%2015.30.31.png?alt=media&token=bde2d2b9-efff-42b1-b354-112853042385)
+
+Y con los valores por defecto en los nombres de la activity principal:
+
+![Android Studio 4](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fobtener-ultima-localizacion-android%2FScreen%20Shot%202017-04-19%20at%2015.30.35.png?alt=media&token=cae3ef8a-439d-4514-ad4d-800e8ab7df32)
+
+Con base a este proyecto en blanco sigue los siguientes pasos.
+
+## Interfaz de usuario
+
+Crea una interfaz sencilla que tenga 4 textos (`TextView` en Android) y las colocaremos una debajo de otra gracias a un `LinearLayout` con orientación vertical.
+
+Ve a tu `activity_main.xml` en tu proyecto y cambia el elemento raíz a `LinearLayout`, Android Studio te ayudará a cambiarlo con las sugerencias que aparezcan.
+
+Dentro del `LinearLayout` borra lo que tenga, crea un `TextView` con ancho y alto de acuerdo a su contenido, es decir `wrap_content`.
+
+Puedes centrar todo el contenido del `LinearLayout` colocando `android:gravity="center"` como atributo del mismo.
+
+El código resultante en `activity_main.xml` es:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="tech.alvarez.mipuntoenelmundo.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/latitud" />
+
+    <TextView
+        android:id="@+id/latitudTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        tools:text="Aquí viene la latitud" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/longitud" />
+
+    <TextView
+        android:id="@+id/longitudTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        tools:text="Aquí viene la longitud" />
+
+</LinearLayout>
+```
+
+Toma en cuenta que colocamos `tools:text` por que son `TextView` que cambiarán de texto cuando se ejecute la aplicación.
+
+### Referencias en Java
+
+Si queremos modificar los valores de los `TextView` desde código tenemos que referenciarlos en tu `MainActivity.java`.
+
+Para ello, ve a tu `MainActivity.java` y declara las siguientes variables en la parte superior:
+
+```java
+private TextView latitudTextView;
+private TextView longitudTextView;
+```
+
+Si aparece un error, puedes presionar `Alt-Enter` en el error y hacer caso a la sugerencia para que importe la clase `TextView` automáticamente.
+
+Luego en el método `onCreate()` coloca lo siguiente:
+
+```java
+latitudTextView = (TextView) findViewById(R.id.latitudTextView);
+longitudTextView = (TextView) findViewById(R.id.longitudTextView);
+```
+
+Es decir obtenemos los `TextView` por su identificador (id) desde tu diseño en XML.
+
+Nuestra activity hasta el momento va quedando así:
+
+![TextViews *](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fobtener-ultima-localizacion-android%2Ftextview.png?alt=media&token=3b44c5a2-f612-4108-8fb4-83399cde89af)
+
+## Adicionar dependencia
+
+Para que empieces a acceder a los servicios de localización debes colocar la siguiente dependencia con la versión deseada en el `build.gradle` del módulo.
+
+```java
+compile 'com.google.android.gms:play-services-location:8.4.0'
+```
+
+Una vez que lo coloques aparecerá una advertencia en la parte superior, en esa advertencia presiona _Sync now_.
+
+Espera a que termine de configurarse, en la barra de estado sabrás cuando terminó.
+
+El `build.gradle` del módulo queda así:
+
+![build.gradle *](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fobtener-ultima-localizacion-android%2Fgradle.png?alt=media&token=22204e05-fb7e-4381-bd05-a23697306127)
+
+## Permisos
+
+Ahora harás que tu aplicación tenga permiso para acceder a la ubicación del usuario. Para eso, es necesario colocar el permiso en `AndroidManifest.xml`.
+
+Los permisos que existen para obtener la localización son los siguientes:
+
+* Poca precisión pero bajo consumo de batería.
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+```
+
+* Precisión alta con un consumo mayor de batería.
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+```
+
+Usa la segunda opción para tener una mayor precisión que luego se podrás configurar con diferentes características. El `AndroidManifest.xml` queda así:
+
+![AndroidManifest.xml](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fobtener-ultima-localizacion-android%2Fmanifest.png?alt=media&token=6ec75c82-9f14-43cb-b637-96db3d97f925)
+
+## GoogleApiClient
+
+El `GoogleApiClient` es el intermediario entre los servicios de Google y tu aplicación. Es el que se encarga de conectarse con el servicio deseado, es este caso el servicio de localización.
+
+### Variable global
+
+En nuestra `MainActivity.java` colocaremos un `GoogleApiClient` con el mismo nombre como variable global para que sea accedido desde cualquier parte de tu clase.
+
+```java
+private GoogleApiClient googleApiClient;
+```
+
+### Construcción
+
+En el método `onCreate()` coloca lo siguiente:
+
+```java
+googleApiClient = new GoogleApiClient.Builder(this)
+        .addConnectionCallbacks(this)
+        .addOnConnectionFailedListener(this)
+        .addApi(LocationServices.API)
+        .build();
+```
+
+Con ese código estas creando un `GoogleApiClient` que pueda usar los servicios de localización y que los métodos que gestionan su funcionamiento están en la misma clase, así como el método que se ejecuta si hay error.
+
+Esto te dará errores, con ayuda de Android Studio vamos a solucionarlos, haz que tu cursos este en el error y presiona el atajo de teclado `Alt-Enter` verás sugerencias de solución:
+
+![Sugerencias](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fobtener-ultima-localizacion-android%2Faltenter.png?alt=media&token=ae3b1db1-b91a-4513-8ea4-a88a571774db)
+
+Selecciona la segunda opción, implementará lo que necesitas, además de que generará los métodos que necesitas y usaremos en el siguiente paso.
+
+Volverá a aparecer un nuevo error, acércate al error y haz el mismo proceso.
+
+## Ciclo de vida
+
+Hay que gestionar el ciclo de vida de nuestro `GooogleApiClient`, es decir que se conecte a los servicios de Google cuando tengamos la pantalla de nuestra aplicación en frente y que se desconecte cuando ya no lo estemos.
+
+Debajo del método `onCreate()` coloca los siguiente métodos que hacen exactamente lo que dijimos.
+
+#### Método `onStart()`
+
+```java
+@Override
+protected void onStart() {
+    super.onStart();
+    googleApiClient.connect();
+}
+```
+
+#### Método `onStop()`
+
+```java
+@Override
+protected void onStop() {
+    super.onStop();
+    if (googleApiClient.isConnected()) {
+        googleApiClient.disconnect();
+    }
+}
+```
+
+Con esto ya tienes tu `GoogleApiClient` totalmente listo para empezar a pedirle la última ubicación conocida.
+
+## Localización
+
+Lo primero que necesitamos es crear una variable que guarde la localización (el punto).
+
+Cualquier ubicación en el planeta se puede representar en dos números, esos son la latitud y la longitud.
+
+Android tiene una clase llamada `Location` que representa justamente esos dos números y tiene sus métodos `getLatitude()` y `getLongitude()` para acceder a esos dos números respectivamente.
+
+### Variable global
+
+Crea un variable global de tipo `Location` de la siguiente manera:
+
+```java
+private Location ultimaUbicacion;
+```
+
+Esa variable `ultimaUbicacion` tendrá justamente como su nombre lo dice, la última ubicación.
+
+### Obtener ubicación
+
+En el anterior paso se generó automáticamente el método `onConnected`, como su nombre lo dice ahí ya estamos seguros de que todo esta bien, es decir podemos obtener la ubicación con el siguiente código:
+
+```java
+ultimaUbicacion = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+if (ultimaUbicacion != null) {
+  latitudTextView.setText(String.valueOf(ultimaUbicacion.getLatitude()));
+  longitudTextView.setText(String.valueOf(ultimaUbicacion.getLongitude()));
+}
+```
+
+El que hace el trabajo de obtener la última ubicación es el método `getLastLocation`, si no existiera esta retorna `null` es por eso que hacemos una pregunta para validarlo.
+
+`String.valueOf( )` solo sirve para convertir el `double` a `String` ya que el método `setText` no acepta `double`.
+
+> Notarás que parece un error en la línea que obtiene la localización pero que no impide la ejecución de la aplicación. Lo que pasa es que a partir de Android 6.0 (API 23) hay que gestionar los permisos de diferente manera. Si no hacemos nada funcionará incluso para Android 6.0 o superior pero tendremos que darle permisos manualmente caso contrario tendrás un "crash".
+
+## Ejecutar
+
+Ya puedes ejecutar tu aplicación en tu emulador o dispositivo físico.
+
+El emulador debe tener Google Play Services, una forma rápida de darse cuenta si tiene o no es verificar si el emulador tiene **Google Maps**.
+
+### Problemas
+
+* Si no aparece ningún número de tu ubicación en la aplicación, puedes probar acceder a una aplicación que obtiene la localización constantemente, por ejemplo **GoogleMaps** y luego vuelve a entrar a la aplicación, preferentemente luego de cerrarla.
+
+* Si la aplicación se "crashea" es por que tienes Android 6.0 o superior, en ese caso debemos gestionar los permisos de una forma diferente, no lo haremos aún en este tutorial, por lo pronto daremos permiso de forma manual a la aplicación en el siguiente paso.
+
+## Permiso manual
+
+Para otorgar permisos manualmente debes ir a la aplicación de ajustes (configuraciones) de tu dispositivo o emulador, luego la sección de aplicaciones instaladas, buscar tu aplicación, luego a permisos y ahí cambiar el switch a habilitado para la localización:
+
+![Permiso](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fobtener-ultima-localizacion-android%2Fdevice2.png?alt=media&token=a4314a9b-8204-4b24-a74a-f25905b4f6b9)
+
+Ahora puedes volver a la aplicación y esta ya no se cerrará. Para hacer que reconozca un último punto de ubicación puedes ir a _Google Maps_ y volver a la aplicación, preferentemente luego de haberla cerrado.
+
+## Conclusiones
+
+Felicidades, terminaste tu primera aplicación que obtiene la última ubicación conocida.
+
+Los siguientes pasos a dar son:
+
+* [Gestionar los permisos para Android 6.0 o superior](/gestionar-permisos-android6-api23/)
+* Obtener actualización de la ubicación cada cierto tiempo

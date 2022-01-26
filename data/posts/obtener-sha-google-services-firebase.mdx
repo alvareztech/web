@@ -1,0 +1,36 @@
+---
+title: Obtener el hash SHA de tu aplicación Android
+summary: Algunos servicios de Firebase o Google Play Services requiren el SHA certificate fingerprint de tu aplicación. Hay dos maneras de obtener esto, un reporte Gradle y con el Keytool.
+tags: [android, gradle, keytool]
+date: 2020-07-01 08:00
+language: es
+---
+Algunos servicios de Firebase o Google Play Services requiren el _SHA certificate fingerprint_ de tu aplicación a manera de autenticación y saber donde estan funcionando estos. Puedes obtener esta información de dos maneras, con un reporte Gradle o con el Keytool.
+
+## Usando Gradle
+
+La forma mas sencilla. Desde Android Studio puedes ir a tu sección de tareas Gradle en la categoria _android_ doble click en `signingReport`.
+
+![Gradle Signing Report](/images/gradle-signing-report.png)
+
+Obtendrás un reporte de todas las variantes con el MD5, SHA1 y SHA-256.
+
+![Gradle Signing Report Result](/images/gradle-signing-report-result.png)
+
+Alternativamente puedes hacer esto por línea de comandos:
+
+```
+./gradlew signingReport
+```
+
+## Usando el Keytool
+
+Puedes obtener esta información con la siguiente guía, teniendo en cuenta que en el modo _debug_ el keystore es `debug.keystore`, el alias `AndroidDebugKey` y la contraseña `android`.
+
+[Ver información de un Keystore](/ver-info-keystore/)
+
+---
+
+## Referencias
+
+[Google APIs for Android](https://developers.google.com/android/guides/client-auth)

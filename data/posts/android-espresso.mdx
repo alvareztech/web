@@ -1,0 +1,83 @@
+---
+title: Android UI testing with Espresso
+lang: en
+draft: true
+tags: [android, espresso]
+date: 2017-09-01 08:00
+---
+
+## Lists
+
+```java
+onData(withItemContent("item: 60"))
+    .onChildView(withId(R.id.item_size))
+    .perform(click());
+```
+
+```kotlin
+onData(withItemContent("item: 60"))
+    .onChildView(withId(R.id.item_size))
+    .perform(click())
+```
+
+### Click
+
+#### ListView
+
+```java
+onData(anything()).inAdapterView(withId(android.R.id.list)).atPosition(0)
+    .perform(click());
+```
+
+#### RecyclerView
+
+```java
+onView(ViewMatchers.withId(R.id.recyclerView))
+    .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+```
+
+
+## Camera
+
+Espresso is only able to interact with the single app under test. This means that if your app launches another app, your Espresso test code won't be able to interact with the other app at all. Launch the camera (i.e. another app) to take a photo and then return the resulting image to the original app, this becomes problematic.
+
+### Dependency
+
+```groovy
+androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
+```
+
+```java
+@Rule
+public GrantPermissionRule externalStoragePermissionRule = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+@Rule
+public GrantPermissionRule cameraPermissionRule = GrantPermissionRule.grant(Manifest.permission.CAMERA);
+
+@Rule
+public IntentsTestRule<StopActivity> intentsRule = new IntentsTestRule<>(StopActivity.class);
+```
+
+```java
+Bitmap icon = BitmapFactory.decodeResource(InstrumentationRegistry.getTargetContext().getResources(), R.mipmap.ic_launcher);
+
+Intent resultData = new Intent();
+resultData.putExtra("data", icon);
+Instrumentation.ActivityResult result = new Instrumentation.ActivityResult(Activity.RESULT_OK, resultData);
+
+intending(toPackage("com.android.gallery")).respondWith(result);
+```
+
+#### Sources
+
+* [Main guide](https://github.com/codepath/android_guides/wiki/UI-Testing-with-Espresso)
+* [Official Documentation](https://developer.android.com/training/testing/espresso/intents)
+* [Extra](https://cate.blog/2016/04/28/testing-intents-on-android-like-stabbing-yourself-in-the-eye-with-a-blunt-implement/)
+
+## Documentation
+
+[developer.android.com/training/testing/espresso](https://developer.android.com/training/testing/espresso)
+
+## Downloads
+
+[espresso-cheat-sheet-2.1.0.pdf](https://android.github.io/android-test/downloads/espresso-cheat-sheet-2.1.0.pdf)

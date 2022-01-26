@@ -1,0 +1,186 @@
+---
+title: "Creación de la aplicación Android: Calculadora"
+summary: Creación de una aplicación Android sencilla de calculadora aritmética, con suma, resta, multiplicación y división.
+tags:
+- android
+- java
+date: 2016-06-11 08:00
+language: es
+video.youTube: ZsQyiP2qo0k
+---
+
+Creación de una aplicación Android sencilla de calculadora aritmética, con suma, resta, multiplicación y división.
+
+> Este video fue grabado en vivo del curso básico de desarrollo de aplicaciones Android el 2016. Algunas cosas pueden haber cambiado y/o desarrolladas de la forma más sencilla posible, aún así, es buena referencia para quienes que inician en Android y/o programación.
+
+__Aprenderás__
+
+* Usar `TextView`, `EditText`, `Button`
+
+## Diseño
+
+__activity_main.xml__
+
+```xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.danielalvarez.calculadora.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <EditText
+            android:id="@+id/numero1EditText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/numero1"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/numero2EditText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/numero2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="sumar"
+            android:text="+"
+            android:textSize="50sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="restar"
+            android:text="-"
+            android:textSize="50sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="multiplicar"
+            android:text="*"
+            android:textSize="50sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="dividir"
+            android:text="/"
+            android:textSize="50sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/resultadoTextView"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="48dp"
+        android:text="@string/resultado"
+        android:textSize="30sp" />
+
+</LinearLayout>
+```
+
+## Activity
+
+__MainActivity.java__
+
+```java
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText numero1EditText;
+    EditText numero2EditText;
+    TextView resultadoTextView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        numero1EditText = (EditText) findViewById(R.id.numero1EditText);
+        numero2EditText = (EditText) findViewById(R.id.numero2EditText);
+        resultadoTextView = (TextView) findViewById(R.id.resultadoTextView);
+    }
+
+    public void sumar(View view) {
+
+        int numero1 = Integer.parseInt(numero1EditText.getText().toString());
+        int numero2 = Integer.parseInt(numero2EditText.getText().toString());
+
+        int resultado = numero1 + numero2;
+
+        resultadoTextView.setText(resultado + "");
+    }
+
+    public void restar(View view) {
+
+        int numero1 = Integer.parseInt(numero1EditText.getText().toString());
+        int numero2 = Integer.parseInt(numero2EditText.getText().toString());
+
+        int resultado = numero1 - numero2;
+
+        resultadoTextView.setText(resultado + "");
+    }
+
+    public void multiplicar(View view) {
+        int numero1 = Integer.parseInt(numero1EditText.getText().toString());
+        int numero2 = Integer.parseInt(numero2EditText.getText().toString());
+
+        int resultado = numero1 * numero2;
+
+        resultadoTextView.setText(resultado + "");
+    }
+
+    public void dividir(View view) {
+        int numero1 = Integer.parseInt(numero1EditText.getText().toString());
+        int numero2 = Integer.parseInt(numero2EditText.getText().toString());
+
+        int resultado = numero1 / numero2;
+
+        resultadoTextView.setText(resultado + "");
+
+    }
+}
+```
+
+## Código
+
+Código completo de la aplicación:
+
+* [Gist en GitHub](https://gist.github.com/alvareztech/c4a669bf05a57ea2fe05183b57cf87f4)

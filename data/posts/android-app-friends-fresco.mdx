@@ -1,0 +1,92 @@
+---
+title: "Creación de la aplicación Android: Friends"
+summary: Creación de una aplicación sencilla de contactos usando Fresco, la librería de Facebook.
+tags: [android, java, fresco]
+date: 2017-06-08 08:00
+language: es
+---
+
+Creación de una aplicación Android sencilla de contactos usando _Fresco_, la librería de _Facebook_ y también usarás algunas propiedades y características que tiene.
+
+![*](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fandroid-app-friends%2Fdevice-2017-09-01-195144.png?alt=media&token=55238b24-3a6d-4210-990d-69d8b3a8d34c)
+
+> Esta guía es del curso básico de desarrollo de aplicaciones Android el 2017. Algunas cosas pueden haber cambiado y/o desarrolladas de la forma más sencilla posible, aun así, es buena referencia para quienes que inician en Android y/o programación.
+
+__Aprenderás__
+
+* Configurar y usar la librería _Fresco_ de Facebook para descargar imágenes
+
+## Proyecto
+
+El proyecto lo puedes descargar desde:
+
+<GitHub repo="CNA-Friends"/>
+
+Es una aplicación ya funcional que usa _Fresco_ para descargar las imágenes.
+
+En este tutorial veremos que hicimos y como lo configuramos.
+
+## La dependencia
+
+Para utilizar Fresco, el primer paso es colocar la dependencia en el `build.gradle` del módulo:
+
+```
+compile 'com.facebook.fresco:fresco:1.5.0'
+```
+
+Si ves el proyecto que descargaste ya lo tenemos.
+
+## Inicialización
+
+Muchas librerías requieren inicialización para toda la aplicación, Fresco es una de ellas.
+
+La mejor forma de hacerlo es crear una nueva clase Java que herede de `Application` y luego se diga que esa será la clase de la aplicación.
+
+No te preocupes esa clase ya esta en el proyecto y con la inicialización de Fresco.
+
+```
+Fresco.initialize(this);
+```
+
+Puedes verla en el archivo `FriendsApp.java` del proyecto.
+
+## El View
+
+Lo que sucede es que Fresco tiene su propia versión de `ImageView` esa se llama `SimpleDraweeView` y esa es la que tiene todas las opciones.
+
+Si quieres usar Fresco una opción es usar ese `View` en tus diseños y luego referenciarlas en Java como si fuera un `ImageView` pero como una clase `SimpleDraweeView`.
+
+```
+<com.facebook.drawee.view.SimpleDraweeView
+    android:id="@+id/fotoSimpleDraweeView"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:layout_gravity="center"
+    app:backgroundImage="@color/colorAccent"
+    app:roundAsCircle="true"
+    app:roundingBorderColor="@color/colorPrimary"
+    app:roundingBorderWidth="4dp" />
+```
+
+Verás el anterior código en `item_amigo.xml` en la carpeta de recursos de tu aplicación.
+
+Nota que ahí es donde le puedes decir, si quieres que la imagen sea circular, que color quieres la línea circular y que grosor, entre otras opciones.
+
+## Cargar la imagen
+
+Como te lo imaginas, la que carga la imagen es el adaptador, ese es el archivo `AmigosAdapter` (línea 42).
+
+```
+Uri uri = Uri.parse(a.getFotoURL());
+holder.fotoSimpleDraweeView.setImageURI(uri);
+```
+
+Fresco requiere que tu URL este como un objeto `Uri`, por eso hacemos esa línea adicional.
+
+## Ejecución
+
+Eso es todo, muy similar, sencillo y con otras opciones. _Fresco_ es mucho más, pero ahora ya tienes una experiencia con el mismo, ya volviste una imagen circular sin depender de otras librerías.
+
+![*](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fandroid-app-friends%2Fdevice-2017-09-01-195144.png?alt=media&token=55238b24-3a6d-4210-990d-69d8b3a8d34c)
+
+Prueba tu app y experimenta.

@@ -1,0 +1,40 @@
+---
+title: Serie de Números Primos con un solo ciclo
+summary: La serie de los números primos es 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,…
+tags: [algorithm, java]
+date: 2010-10-02 08:00
+language: es
+---
+Existen varias formas de hallar números primos. Uno de los ejercicios clásicos de programación es generar la serie de los números primos, esto es 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,…
+
+Ahora que tal si nos piden generar los `n` primeros términos de la serie de los primos, pero que tal si nos lo piden hacerlo con un solo ciclo repetitivo (`while`, `for` u otro), interesante y un poco complejo.
+
+Este algoritmo lo resuelve óptimamente con un solo ciclo repetitivo y además sencillo, su diagrama de flujo es el siguiente:
+
+![Diagrama de Flujo Serie Números Primos](/images/basics/algoritmo-serie-primos.png)
+
+El código en _Java_ es el siguiente:
+
+```java
+Scanner e = new Scanner(System.in);
+int n = e.nextInt();
+int c = 1;
+int p = 2;
+int divisor = 2;
+while (c <= n) {
+    if (p % divisor == 0) {
+        if (p == divisor) {
+            System.out.print(p + ", ");
+            c++;
+        }
+        divisor = 2;
+        p++;
+    } else {
+        divisor++;
+    }
+}
+```
+
+Donde `p` es el posible número primo que se va incrementando hasta que es igual al divisor, y es donde se confirma que es primo.
+
+[Código](https://gist.github.com/alvareztech/f2dd70b6bb73ff7df64ef89ce5b06585)

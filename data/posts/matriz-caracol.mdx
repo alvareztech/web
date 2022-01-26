@@ -1,0 +1,68 @@
+---
+title: Generar Matriz Caracol
+summary: Generar una matriz caracol es un problema clásico en programación, especialmente cuando estamos iniciando a utilizar Arrays y una matriz es simplemente un array bidimensional.
+tags: [algorithm, java]
+date: 2017-06-11 08:00
+language: es
+---
+
+Generar una matriz caracol es un problema clásico en programación, especialmente cuando estamos iniciando a utilizar Arrays y una matriz es simplemente un array bidimensional. Mostraremos como solucionarlo y un ejemplo en el lenguaje de programación _Java_.
+
+__Aprenderás__
+
+* Generar una matriz caracol de la forma sencilla.
+
+__Requisitos__
+
+* Conocimientos básicos en arrays, unidimensionales y bidimensionales.
+
+## Matriz Caracol
+
+Una matriz caracol tiene la forma de su nombre, por ejemplo una matriz cuadrada de tamaño 5 sería la siguiente:
+
+![](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fprog-matriz-caracol%2Fmatriz-caracol.png?alt=media&token=f4a6cfad-820e-414e-a948-b0fce6d7f9a9)
+
+La forma más sencilla de resolverlo es tener cuatro ciclos repetitivos que recorran los lados y uno extra para que repita esa operación en el caso de una dimensión 5 deberá repetirlo 2 veces y colocar un numero mas en el centro, en el caso de dimensión par entonces repetimos dimensión dividido entre 2 veces.
+
+![](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fprog-matriz-caracol%2Fmatriz-caracol-2.png?alt=media&token=20629042-8a39-4a8b-8c58-c3abfad95b59)
+
+En el diagrama de flujo, `n` es la dimensión de la matriz cuadrada y `x` es un número con cual empezara a generar la matriz caracol. A continuación la solución en _Java_.
+
+## Código
+
+Método que genera la matriz caracol donde `n` es la dimensión de la matriz (matriz cuadrada) y `x` es el número por el cual empezará, por ejemplo puedes enviarle `1`.
+
+```java
+public static int[][] generarMatrizCaracol(int n, int x) {
+    int[][] M = new int[n + 1][n + 1];
+    for (int a = 1; a <= n / 2; a++) {
+        for (int i = a; i <= n - a; i++) {
+            M[a][i] = x;
+            x++;
+        }
+        for (int i = a; i <= n - a; i++) {
+            M[i][n - a + 1] = x;
+            x++;
+        }
+        for (int i = n - a + 1; i >= a + 1; i--) {
+            M[n - a + 1][i] = x;
+            x++;
+        }
+        for (int i = n - a + 1; i >= a + 1; i--) {
+            M[i][a] = x;
+            x++;
+        }
+    }
+    if (n % 2 == 1) {
+        M[n / 2 + 1][n / 2 + 1] = x;
+    }
+    return M;
+}
+```
+
+Código completo en:
+
+* [Gist en GitHub](https://gist.github.com/alvareztech/babcfb962eaf8a394a20)
+
+> Tomar en cuenta que se genero matriz a partir de la posición (1, 1) sin embargo para la primera posición en Java es (0, 0), podemos cambiar ello de manera sencilla.
+

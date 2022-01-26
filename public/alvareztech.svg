@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1700px" height="350px" viewBox="0 0 1700 350" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>alvareztech</title>
+    <g id="alvareztech" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#000000" opacity="0.803325835" cx="1066" cy="195" r="44"></circle>
+        <text id="tech" opacity="0.698351179" font-family="JetBrainsMono-ExtraBoldItalic, JetBrains Mono" font-size="270" font-style="italic" font-weight="700" line-spacing="168" letter-spacing="-20" fill="#000000">
+            <tspan x="1074.5" y="374">tech</tspan>
+        </text>
+        <text id="alvarez" opacity="0.89751616" font-family="JetBrainsMono-ExtraBold, JetBrains Mono" font-size="270" font-weight="700" line-spacing="168" letter-spacing="-20" fill="#000000">
+            <tspan x="-31.5" y="274">alvarez</tspan>
+        </text>
+    </g>
+</svg>

@@ -1,0 +1,44 @@
+---
+title: UI Declarative for Mobile Development
+summary: SwiftUI for iOS, Jetpack Compose for Android
+tags: [ios, android]
+date: 2019-10-12 08:00
+highlight: true
+---
+
+Many tasks of a mobile developer are to create a user interface and this changed a lot. Nowadays, they are not just buttons and simple forms, now the user interface is somewhat more complex, now the user interface includes a lot of information that is shown in different ways, actions that can be touches, gestures, and very sophisticated animations.
+
+Let’s see how the UI creation on Android and iOS is currently.
+
+On the __Android side__, we have UI created from XML files, over time there were many Layouts and views that were used, some deprecated and many new ones, one last, _ConstraintLayout_, which looks a lot like the way they work the constraints on iOS.
+
+On the __iOS side__, we have the storyboards, auto layout that are not more than XML files inside, but unlike Android, the developer does not usually interact with it, instead it is limited to using a graphical interface to design the UI, use constraints, drag and drop components and even with storyboards define navigation between screens. 
+
+## What’s wrong with this?
+
+The first problem for Android is that, this changed a lot over time. For those outdated developers, they may still be using Layout or outdated components or not using a new better option and that is a clash for new developers. The problem happens in a work team.
+
+The second problem is versioning. It is not easy to distinguish the changes between two XML files, when these files are self-generated, complex, and with many parameters.
+
+## What is the solution?
+
+Something innovative that React done and was the first one on implement was declarative programming for the UI. That allows you to modularize the parts of a screen and that is also a strong point and main attraction of Flutter as well.
+
+iOS and Android soon took inspiration from this and saw that declarative programming for the UI is the present and future. In the last conferences for developers, Google I/O 2019 for Android and WWDC for iOS, both presented a great novelty. 
+
+### Swift UI
+
+_Swift UI_ is the declarative way to create UI, with few lines of Swift code you can create really complex views, the strong point perhaps is the animations that are really easy to place. Being able to make UI really modern in a short time. This was the news that most caught the attention of Apple developers. Since this same technology can be used for the entire Apple ecosystem, macOS, iOS, tvOS, watchOS.
+
+Apple created beautiful tutorials (similar to Google Codelabs) to start with this.
+
+[Swift UI tutorials](https://developer.apple.com/tutorials/swiftui/)
+
+### Jetpack Compose
+
+_Jetpack Compose_ is a declarative toolkit for building UI. We can write in declarative Kotlin UI. Jetpack Compose is currently in an early-exploration, pre-alpha stage. Its API surfaces are not finalized yet and it should not be used for production. But before we know it, it will replace much of what we know. 
+
+[Jetpack Compose website](https://developer.android.com/jetpack/compose)
+
+With Kotlin and Swift used to create UI, a beautiful future awaits us.
+

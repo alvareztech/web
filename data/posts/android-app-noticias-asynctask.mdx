@@ -1,0 +1,400 @@
+---
+title: "Creación de la aplicación Android: Noticias, consumir XML, usar AsyncTask"
+summary: Creación de una aplicación Android que sea capaz de leer el feed RSS de un periódico para mostrar las noticias en un RecyclerView con fotos
+tags:
+- android
+- java
+- realm
+date: 2016-07-17 08:00
+language: es
+video.youTube: 4Tnx6DPqeNU
+---
+
+Creación de una aplicación Android que sea capaz de leer el feed RSS de un periódico (archivo XML) para mostrar las noticias en un `RecyclerView` con fotos. Que al presionar un Item (Noticia) nos muestre un diálogo para seleccionar una de las dos opciones: Abrir y Guardar.
+
+* Al seleccionar **abrir** que abra la página web de la noticia mediante *Chrome Custom Tabs*
+* Al seleccionar **guardar** que guarde en una base de datos *Realm* la noticia.
+
+Para mostrar las noticias guardadas crear una nueva `Activity` con un `RecyclerView` para mostrar solo las noticias guardadas leídas de la base de datos `Realm`. Para ir a esta activity puede usar una acción del menú de la activity principal.
+
+> Este video fue grabado en vivo del curso de desarrollo de aplicaciones Android el 2016. Algunas cosas pueden haber cambiado y/o desarrolladas de la forma más sencilla posible, aún así, es buena referencia para quienes que inician en Android y/o programación.
+
+__Aprenderás__
+
+* Usar un `AsyncTask`
+
+## Datos
+
+Para esta aplicación utilizaremos las noticias del periódico **La Razón**.
+
+__RSS disponibles__
+
+* [www.la-razon.com/rss.html](https://www.la-razon.com/rss.html)
+
+__El que se usará en el video__
+
+Acceso directo al XML (ver código de la página)
+
+* [https://www.la-razon.com/rss/nacional/](https://www.la-razon.com/rss/nacional/)
+
+```
+http://www.la-razon.com/rss/nacional/
+```
+
+## Material Design
+
+__build.gradle del módulo__
+
+```java
+compile 'com.android.support:appcompat-v7:24.0.0'
+compile 'com.android.support:design:24.0.0'
+compile 'com.android.support:cardview-v7:24.0.0'
+compile 'com.android.support:recyclerview-v7:24.0.0'
+```
+
+__colors.xml__
+
+```java
+<color name="colorPrimaryText">#DE000000</color>
+<color name="colorSecondaryText">#8A000000</color>
+<color name="colorDisabledText">#61000000</color>
+
+<color name="colorPrimaryDarkText">#FFFFFF</color>
+<color name="colorSecondaryDarkText">#B3FFFFFF</color>
+<color name="colorDisabledDarkText">#80FFFFFF</color>
+```
+
+## Diseño item Noticia
+
+_Minuto 1:00_
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="0dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="8dp"
+    android:orientation="horizontal"
+    android:paddingBottom="16dp"
+    card_view:cardCornerRadius="2dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/fotoImageView"
+            android:layout_width="match_parent"
+            android:layout_height="168dp"
+            android:background="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/tituloTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="24dp"
+            android:text="@string/app_name"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/descripcionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="4dp"
+            android:text="@string/app_name"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+```
+
+## Parse XML
+
+_Minuto 1:43_
+
+```java
+package tech.alvarez.noticias.utils;
+
+import android.sax.Element;
+import android.sax.EndElementListener;
+import android.sax.EndTextElementListener;
+import android.sax.RootElement;
+import android.sax.StartElementListener;
+import android.util.Xml;
+
+import org.xml.sax.Attributes;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+
+import tech.alvarez.noticias.models.Noticia;
+
+public class LaRazonParserXML {
+    private URL url;
+    private Noticia noticiaActual;
+
+    public LaRazonParserXML(String url) {
+        try {
+            this.url = new URL(url);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<Noticia> parse() {
+
+        final ArrayList<Noticia> noticias = new ArrayList<Noticia>();
+
+        RootElement root = new RootElement("rss");
+        Element channel = root.getChild("channel");
+        Element item = channel.getChild("item");
+
+        item.setStartElementListener(new StartElementListener() {
+            @Override
+            public void start(Attributes attributes) {
+                noticiaActual = new Noticia();
+            }
+        });
+
+
+        item.getChild("title").setEndTextElementListener(new EndTextElementListener() {
+            @Override
+            public void end(String s) {
+                noticiaActual.setTitulo(s);
+            }
+        });
+
+        item.getChild("description").setEndTextElementListener(new EndTextElementListener() {
+            @Override
+            public void end(String s) {
+                noticiaActual.setDescripcion(s);
+            }
+        });
+
+        item.getChild("link").setEndTextElementListener(new EndTextElementListener() {
+            @Override
+            public void end(String s) {
+                noticiaActual.setUrlNoticia(s);
+            }
+        });
+
+        item.getChild("enclosure").setStartElementListener(new StartElementListener() {
+            @Override
+            public void start(Attributes attributes) {
+                String urlFoto = attributes.getValue("url");
+                noticiaActual.setUrlFoto(urlFoto);
+            }
+        });
+
+
+        item.setEndElementListener(new EndElementListener() {
+            @Override
+            public void end() {
+                noticias.add(noticiaActual);
+            }
+        });
+
+        try {
+            Xml.parse(getInputStream(), Xml.Encoding.UTF_8, root.getContentHandler());
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+
+        return noticias;
+    }
+
+
+    private InputStream getInputStream() {
+        try {
+            return url.openConnection().getInputStream();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+}
+```
+
+__Clase Noticia__
+
+```java
+public class Noticia {
+
+    private String titulo;
+    private String descripcion;
+    private String urlFoto;
+    private String urlNoticia;
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getUrlFoto() {
+        return urlFoto;
+    }
+
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
+    }
+
+    public String getUrlNoticia() {
+        return urlNoticia;
+    }
+
+    public void setUrlNoticia(String urlNoticia) {
+        this.urlNoticia = urlNoticia;
+    }
+}
+```
+
+## AsyncTask
+
+_Minuto 4:53_
+
+```java
+public class ObtenerLaRazonXML extends AsyncTask<String, Void, Boolean> {
+
+    @Override
+    protected Boolean doInBackground(String... strings) {
+
+        String url = strings[0];
+
+        LaRazonParserXML parserXML = new LaRazonParserXML(url);
+        noticias = parserXML.parse();
+
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Boolean aBoolean) {
+        super.onPostExecute(aBoolean);
+
+        for (int i = 0; i < noticias.size(); i++) {
+            Noticia n = noticias.get(i);
+
+            noticiasAdapter.adicionar(n);
+
+            Log.i("MIAPP", n.getTitulo());
+            Log.i("MIAPP", n.getDescripcion());
+            Log.i("MIAPP", n.getUrlFoto());
+            Log.i("MIAPP", n.getUrlNoticia());
+        }
+    }
+}
+```
+
+## Adapter
+
+_Minuto 6:24_
+
+```java
+public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHolder> {
+
+    private ArrayList<Noticia> dataset;
+    private Context context;
+
+    public NoticiasAdapter(Context context) {
+        this.dataset = new ArrayList<>();
+        this.context = context;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_noticia, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        Noticia n = dataset.get(position);
+        holder.tituloTextView.setText(n.getTitulo());
+        holder.descripcionTextView.setText(n.getDescripcion());
+
+        Glide.with(context).load(n.getUrlFoto())
+                .centerCrop()
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.fotoImageView);
+    }
+
+    @Override
+    public int getItemCount() {
+        return dataset.size();
+    }
+
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView tituloTextView;
+        private TextView descripcionTextView;
+        private ImageView fotoImageView;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+
+            tituloTextView = (TextView) itemView.findViewById(R.id.tituloTextView);
+            descripcionTextView = (TextView) itemView.findViewById(R.id.descripcionTextView);
+            fotoImageView = (ImageView) itemView.findViewById(R.id.fotoImageView);
+        }
+    }
+
+    public void adicionar(Noticia n) {
+        dataset.add(n);
+        notifyDataSetChanged();
+    }
+}
+```
+
+## Descargar imágenes
+
+_Minuto 8:10_
+
+__build.gradle del módulo__
+
+En `dependencies`:
+
+```java
+compile 'com.github.bumptech.glide:glide:3.7.0'
+```
+
+__Ejemplo de uso__
+
+```java
+Glide.with(context).load("http://www.ejemplo.com/foto.jpg")
+                .centerCrop()
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(fotoImageView);
+```
+
+<GitHub repo="android-app-noticias"/>

@@ -1,0 +1,29 @@
+---
+title: "Creación de la aplicación Android: Mis Libros, uso de dase de datos Realm"
+summary: Una aplicación que guarda tu lista de libros en una base de datos Realm.
+tags:
+- android
+- java
+- realm
+date: 2016-06-15 08:00
+language: es
+video.youTube: 3xA0mDM-rDU
+---
+
+Una aplicación que guarda tu lista de libros en una base de datos *Realm*. Se usa un `RecyclerView` para mostrar la lista. 
+
+> Este video fue grabado en vivo del curso básico de desarrollo de aplicaciones Android el 2016. Algunas cosas pueden haber cambiado y/o desarrolladas de la forma más sencilla posible, aún así, es buena referencia para quienes que inician en Android y/o programación.
+
+__Aprenderás__
+
+* Usar la base de datos _Realm_ para altas y queries.
+* Uso básico del `RecyclerView`
+
+## Realm
+
+* [Website](https://realm.io/)
+* [Java documentation](https://realm.io/docs/java/6.0.2/)
+
+## Código
+
+* [Gist en GitHub](https://gist.github.com/alvareztech/70f908d3aebd6488bb84d5ccb497e0dc)

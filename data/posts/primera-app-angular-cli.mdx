@@ -1,0 +1,152 @@
+---
+title: Crear tu primera aplicación web con Angular CLI
+summary: Como crear tu primera aplicación web con Angular con un par de líneas de comandos.
+tags: [angular, web]
+language: es
+date: 2017-05-26 08:00
+---
+
+Como crear tu primera aplicación web con _Angular 9_ con un par de líneas de comandos.
+
+__Aprenderás__
+
+* Usar _Angular CLI_ y los comandos más usados
+
+## Angular CLI
+
+_Angular CLI_ es la forma más cómoda para empezar a desarrollar aplicaciones web, móvil con Angular, es una herramienta de linea de comandos que facilita la creación, generación, ejecución, testing, deploy. Lo genial es que es parte de los proyectos oficiales de la gente que hace _Angular_.
+
+Llegado un momento el desarrollo web, específicamente el frontend se volvió algo complejo, conocimiento de muchas herramientas, frameworks, librerías, para el desarrollo, testing, deploy, etc. _Angular CLI_ ayuda a armar la base de todo, estructura del proyecto, herramientas necesarias, etc. Con un par de lineas de comandos tendremos un proyecto ejecutándose. Además tenemos comandos para generar automáticamente componentes, servicios, directivas entre otras cosas propias de _Angular_.
+
+La página oficial del proyecto es [angular.io](https://angular.io) y específicamente de _Angular CLI_ es [cli.angular.io](https://cli.angular.io/).
+
+## Instalación
+
+### Requisitos
+
+Lo único que necesitamos es tener _Node.js_ y _NPM_, si aun no lo tienes puedes obtener ambos aquí:
+
+[nodejs.org](https://nodejs.org/es/download/)
+
+### Instalando desde línea de comandos
+
+Desde la consola o terminal basta con ejecutar lo siguiente (en MacOS posiblemente sea necesario anteponer sudo)
+
+```shell
+npm install -g @angular/cli
+```
+
+Y listo ya tenemos instalado el comando `ng` de manera global.
+
+Para comprobar que todo este bien podemos ejecutar el siguiente comando y conocer la versión actual.
+
+```shell
+ng version
+```
+
+## Crear proyecto
+
+Desde linea de comandos o la terminal, nos dirigirnos a la carpeta donde ubicaremos nuestro proyecto y ejecutamos lo siguiente con un nombre de proyecto.
+
+```shell
+ng new my-first-app
+```
+
+Luego se te hará un par de preguntas para la creación:
+
+1. Would you like to add Angular routing? Yes (recomendado)
+2. Which stylesheet format would you like to use? Sass
+
+Tambien puedes saltarte las preguntas colocando un par de parámetros.
+
+```shell
+ng new my-first-app --routing --style=sass
+```
+
+Esperas que se genere e instale lo necesario. Luego simplemente los siguientes comandos los ejecutamos dentro de la carpeta del proyecto, para ello ingresamos a la carpeta:
+
+```shell
+cd my-first-app
+```
+
+> Si no quieres usar NPM y quieres usar Yarn es su lugar, es tan fácil como `ng set --global packageManager=yarn`
+
+## Ejecutar
+
+Si queremos ejecutarlo, en la carpeta del proyecto creado y a continuación:
+
+```shell
+ng serve
+```
+
+Por defecto lo veremos en `http://localhost:4200/`, y muestra algo parecido a una pantalla de recursos para los siguientes pasos, obviamente debemos de borrar todo esto para nuestro proyecto, eso esta en `app.component.html`.
+
+![Angular First App Screenshot](/images/basics/angular/angular-first-app.png)
+
+Si lo dejamos así, cualquier cambio en el código se detecta, se compila y automáticamente se actualiza en el navegador, muy cómodo.
+
+## Generación
+
+Cuando estemos desarrollando necesitaremos crear varias cosas propias de _Angular_, estos son archivos que tienen que tener un nombre específico y estar en una ubicación recomendada, los comandos de generación nos ayudarán en eso.
+
+__Component__
+
+```shell
+ng g component my-component  
+```
+
+__Service__
+
+```shell
+ng g service my-service
+```
+
+__Class__
+
+```shell
+ng g class my-class  
+```
+
+__Directive__
+
+```shell
+ng g directive my-directive
+```
+
+Entre otras cosas que podemos generar. Podemos ver la documentación de los comandos disponibles en la página oficial.
+
+[CLI Overview and Command Reference](https://angular.io/cli)
+
+## Deploy 
+
+El siguiente comando generará la carpeta dist con lo que tiene que estar en nuestro servidor (hosting) para publicar nuestra aplicación.
+
+```shell
+ng build
+```
+
+Realmente muy cómodo, en otra guía (si les gusta esta publicación) usaremos simplemente un comando más para publicarlo en el servicio gratuito de *Firebase Hosting*.
+
+### Deploy en Github Pages
+
+Si ya tienes un repositorio en Github donde esta tu proyecto puedes publicarlo rápidamente en _Github Pages_ con el siguiente comando.
+
+```shell
+ng github-pages:deploy --message "My commit"
+```
+
+## Actualizar
+
+Para actualizar a una nueva versión de Angular CLI, ya que posiblemente vayan mejorándolo mucho con el tiempo (seguimos en una versión beta), podemos hacer lo siguiente:
+
+```shell
+npm uninstall -g @angular/cli
+npm cache clean
+npm install -g @angular/cli@latest
+```
+
+## Más información
+
+__Repositorio oficial__
+
+* [github.com/angular/angular-cli](https://github.com/angular/angular-cli)
