@@ -2,16 +2,18 @@ import Layout from '../components/layout'
 import {getPost, getPostSlugs} from '../lib/posts'
 import Head from 'next/head'
 import GitHub from "../components/github";
-import {MDXRemote} from "next-mdx-remote"
+import {getMDXComponent} from "mdx-bundler/client";
+import React from "react";
 
 const components = {GitHub}
 const editUrl = (slug) => `https://github.com/alvareztech/website/edit/main/data/posts/${slug}.md`;
 
 
 export default function Post({post}) {
+  const Component = React.useMemo(() => getMDXComponent(post.code), post.code);
   return (<Layout>
     <Head>
-      <title>{post.title}</title>
+      <title>{post.frontmatter.title}</title>
     </Head>
 
     <div className="relative py-16 bg-white overflow-hidden">
@@ -95,20 +97,20 @@ export default function Post({post}) {
           <h1>
             <span
               className="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
-              {post.tags[0]}
+              {/*{post.tags[0]}*/}
             </span>
             <span
               className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {post.title}
+              {post.frontmatter.title}
             </span>
           </h1>
           <p className="mt-8 text-xl text-gray-500 leading-8">
-            {post.summary}
+            {post.frontmatter.summary}
           </p>
 
           {/*<div dangerouslySetInnerHTML={{__html: postData.contentHtml}}/>*/}
           <div className="content">
-            <MDXRemote {...post.content} components={components}/>
+            <Component components={{GitHub}}/>
           </div>
           <div className="flex items-start justify-center mt-14 w-full">
             <div className="space-x-2 flex-1 -mt-0.5">
