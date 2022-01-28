@@ -2,15 +2,16 @@ import Layout from '../components/layout'
 import {getPost, getPostSlugs} from '../lib/posts'
 import Head from 'next/head'
 import GitHub from "../components/github";
+import MDXComponent from "../components/mdxComponents";
 import {getMDXComponent} from "mdx-bundler/client";
-import React from "react";
+import {useMemo} from "react";
 
-const components = {GitHub}
+const components = {GitHub, ...MDXComponent}
 const editUrl = (slug) => `https://github.com/alvareztech/website/edit/main/data/posts/${slug}.md`;
 
 
 export default function Post({post}) {
-  const Component = React.useMemo(() => getMDXComponent(post.code), post.code);
+  const Component = useMemo(() => getMDXComponent(post.code), post.code);
   return (<Layout>
     <Head>
       <title>{post.frontmatter.title}</title>
@@ -110,7 +111,7 @@ export default function Post({post}) {
 
           {/*<div dangerouslySetInnerHTML={{__html: postData.contentHtml}}/>*/}
           <div className="content">
-            <Component components={{GitHub}}/>
+            <Component components={components}/>
           </div>
           <div className="flex items-start justify-center mt-14 w-full">
             <div className="space-x-2 flex-1 -mt-0.5">
