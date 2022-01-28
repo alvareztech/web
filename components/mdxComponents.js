@@ -8,7 +8,9 @@ const CustomLink = (props) => {
   if (isInternalLink) {
     return (
       <Link href={href}>
-        <a {...props}>{props.children}</a>
+        <a {...props}
+          className="font-medium text-sky-500 underline decoration-2 decoration-sky-500 hover:no-underline"
+        >{props.children}</a>
       </Link>
     );
   }
@@ -67,7 +69,7 @@ const Subtitle4 = (props) => {
 const MyCode = (props) => {
   return (
     <pre {...props}
-         className="p-3 text-base block whitespace-pre overflow-x-scroll bg-amber-200 rounded-md">
+      className="p-3 text-base block whitespace-pre overflow-x-scroll bg-amber-200 rounded-md">
       {props.children}
     </pre>
   )
