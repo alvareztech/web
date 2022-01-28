@@ -11,7 +11,7 @@ export default function Tag({tags}) {
         className="text-3xl font-bold text-gray-900 sm:text-4xl py-4">{tags.length} tags</h2>
       <div className="space-x-2">
         {tags.map(tag => (
-          <Link href={"/tag/" + tag}>
+          <Link key={tag} href={"/tag/" + tag}>
             <a>
           <span
             key={tag}
