@@ -100,6 +100,7 @@ export default function Layout({children, home}) {
             <a
               href="https://twitter.com/alvarez_tech"
               target="_blank"
+              rel="noreferrer"
               className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
             >
               Follow me
@@ -120,6 +121,7 @@ export default function Layout({children, home}) {
           {navigation2.map((item) =>
             <a key={item.name} href={item.href}
                className="text-gray-400 hover:text-gray-500"
+               rel="noreferrer"
                target="_blank">
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true"/>

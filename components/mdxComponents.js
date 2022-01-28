@@ -14,7 +14,7 @@ const CustomLink = (props) => {
   }
   return <a
     className="font-medium text-sky-500 underline decoration-2 decoration-sky-500 hover:no-underline"
-    target="_blank" rel="noopener noreferrer" {...props} />;
+    target="_blank" rel="noreferrer" {...props} />;
 };
 
 const BlogImg = (props) => {

@@ -126,7 +126,7 @@ export default function Post({post}) {
               <a
                 href={editUrl(post.slug)}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
                 {'Edit on Github'}
               </a>
