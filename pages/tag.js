@@ -1,6 +1,7 @@
 import Layout from "../components/layout";
 import { getTags } from "../lib/posts";
 import Link from "next/link";
+import { classNames } from "../lib/util";
 
 export default function Tag({ tags }) {
   return (<Layout>
