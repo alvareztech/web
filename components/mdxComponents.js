@@ -64,6 +64,15 @@ const Subtitle4 = (props) => {
   )
 }
 
+const MyCode = (props) => {
+  return (
+    <pre {...props}
+         className="p-3 text-base block whitespace-pre overflow-x-scroll bg-amber-200 rounded-md">
+      {props.children}
+    </pre>
+  )
+}
+
 
 const MDXComponent = {
   Image,
@@ -73,7 +82,8 @@ const MDXComponent = {
   h1: Subtitle,
   h2: Subtitle2,
   h3: Subtitle3,
-  h4: Subtitle4
+  h4: Subtitle4,
+  pre: MyCode
 };
 
 export default MDXComponent;
