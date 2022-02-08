@@ -1,7 +1,4 @@
 import Head from 'next/head'
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 
 const name = 'ALVAREZ.tech'
@@ -77,12 +74,7 @@ export default function Layout({ children, home }) {
           <div className="flex items-center">
             <Link href="/">
               <a>
-                <span className="sr-only">Workflow</span>
-                <img
-                  className="h-10 w-auto"
-                  src="/alvareztech.png"
-                  alt=""
-                />
+                <span className="text-blue-700 text-2xl font-bold font-mono tracking-tighter">ALVAREZ.tech</span>
               </a>
             </Link>
             <div className="hidden ml-10 space-x-8 lg:block">
