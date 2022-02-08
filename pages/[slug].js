@@ -7,7 +7,7 @@ import { getMDXComponent } from "mdx-bundler/client";
 import { useMemo } from "react";
 
 const components = { GitHub, ...MDXComponent }
-const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.md`;
+const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.mdx`;
 
 export default function Post({ post }) {
   const Component = useMemo(() => getMDXComponent(post.code), post.code);

@@ -1,6 +1,5 @@
 import Layout from '../../components/layout';
 import { getPostSlugs, getPost } from '../../lib/posts';
-import { classNames } from '../../lib/util';
 import { getMDXComponent } from "mdx-bundler/client";
 import MDXComponent from '../../components/mdxComponents';
 import GitHub from '../../components/github';
