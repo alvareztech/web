@@ -5,6 +5,7 @@ import MDXComponent from '../../components/mdxComponents';
 import GitHub from '../../components/github';
 import { useMemo } from "react";
 import Image from 'next/image';
+import Head from 'next/head';
 
 const components = { GitHub, ...MDXComponent }
 
@@ -12,7 +13,9 @@ export default function Project({ project }) {
   const Component = useMemo(() => getMDXComponent(project.code), project.code);
   return (
     <Layout>
-
+      <Head>
+        <title>{project.frontmatter.title}</title>
+      </Head>
       <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
         <div className="max-w-max lg:max-w-7xl mx-auto">
           <div className="relative z-10 mb-8 md:mb-2 md:px-6">
