@@ -46,7 +46,6 @@ const navigation2 = [
 ]
 
 const navigation = [
-  { name: 'Product', href: '' },
   { name: 'Courses', href: '/courses' },
   { name: 'Contact', href: '/contact' },
   { name: 'About', href: '/about' },
@@ -90,6 +89,7 @@ export default function Layout({ children, home }) {
           <div className="ml-10 space-x-4">
             <a
               href="https://twitter.com/alvarez_tech"
+              target="_blank"
               className="inline-block bg-white py-2 px-4 border border-transparent rounded-md text-base font-medium text-blue-600 hover:bg-blue-50"
             >
               Follow Me

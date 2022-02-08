@@ -1,5 +1,5 @@
 import Layout from "../components/layout";
-import { getAllCourses } from "../lib/posts";
+import { getAllPosts } from "../lib/posts";
 import Link from "next/link";
 import { classNames } from "../lib/util";
 import {
@@ -87,8 +87,7 @@ export default function Courses({ courses }) {
 }
 
 export async function getStaticProps() {
-  const courses = getAllCourses()
-  console.log("COURSESSSS", courses)
+  const courses = getAllPosts('courses')
   return {
     props: {
       courses

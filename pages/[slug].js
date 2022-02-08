@@ -140,14 +140,14 @@ export default function Post({ post }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getPostSlugs()
+  const paths = getPostSlugs('posts')
   return {
     paths, fallback: false
   }
 }
 
 export async function getStaticProps({ params }) {
-  const post = await getPost(params.slug)
+  const post = await getPost(params.slug, 'posts')
   return {
     props: {
       post

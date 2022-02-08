@@ -1,5 +1,5 @@
 import Layout from '../../components/layout';
-import { getCourseSlugs, getCourse } from '../../lib/posts';
+import { getPostSlugs, getPost } from '../../lib/posts';
 import { classNames } from '../../lib/util';
 import { getMDXComponent } from "mdx-bundler/client";
 import MDXComponent from '../../components/mdxComponents';
@@ -33,14 +33,14 @@ export default function Course({ course }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getCourseSlugs()
+  const paths = getPostSlugs('courses')
   return {
     paths, fallback: false
   }
 }
 
 export async function getStaticProps({ params }) {
-  const course = await getCourse(params.slug)
+  const course = await getPost(params.slug, 'courses')
   return {
     props: {
       course
