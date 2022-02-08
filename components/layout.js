@@ -79,8 +79,8 @@ export default function Layout({ children, home }) {
             </Link>
             <div className="hidden ml-10 space-x-8 lg:block">
               {navigation.map((link) => (
-                <Link href={link.href}>
-                  <a key={link.name} className="text-base font-medium text-white hover:text-indigo-50">
+                <Link href={link.href} key={link.name}>
+                  <a className="text-base font-medium text-white hover:text-indigo-50">
                     {link.name}
                   </a>
                 </Link>
