@@ -14,7 +14,7 @@ export default function Tag({ tag, posts }) {
           className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
           <div>
             <h2
-              className={classNames("uppercase", tag, 'inline-flex items-center px-2 rounded text-xl font-bold')}>{tag}</h2>
+              className={classNames("uppercase", "bg-blue-100 text-blue-800", 'inline-flex items-center px-2 rounded text-xl font-bold')}>{tag}</h2>
           </div>
 
           <div
@@ -25,7 +25,7 @@ export default function Tag({ tag, posts }) {
                   <Link href={"/tag/" + tags?.[0]}>
                     <a className="inline-block">
                       <span
-                        className={classNames("uppercase", tagColor(tags?.[0]), 'inline-flex items-center px-2 rounded text-sm font-bold')}
+                        className={classNames("uppercase", 'bg-blue-100 text-blue-800', 'inline-flex items-center px-2 rounded text-sm font-bold')}
                       >
                         {tags?.[0]}
                       </span>

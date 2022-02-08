@@ -18,7 +18,7 @@ export default function Home({ posts }) {
             className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
             <span className="block">Hi! I am Daniel </span>
             <span
-              className="block text-indigo-600">Here I share everything I do. Tutorials, code and more.</span>
+              className="block text-blue-600">Here I share everything I do. Tutorials, code and more.</span>
           </h2>
         </div>
       </section>
@@ -41,7 +41,7 @@ export default function Home({ posts }) {
                   <Link href={"/tag/" + tags?.[0]}>
                     <a className="inline-block">
                       <span
-                        className={classNames("uppercase", tagColor(tags?.[0]), 'inline-flex items-center px-2 rounded text-sm font-bold')}
+                        className={classNames("uppercase", "bg-blue-100 text-blue-800", 'inline-flex items-center px-2 rounded text-sm font-bold')}
                       >
                         {tags?.[0]}
                       </span>
@@ -76,7 +76,6 @@ export default function Home({ posts }) {
 
 export async function getStaticProps() {
   const posts = getAllPosts()
-  console.log("ALL POSTs", posts.length)
   return {
     props: {
       posts
