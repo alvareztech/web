@@ -13,19 +13,9 @@ export default function Course({ course }) {
   return (
     <Layout>
 
-      <div
-        className="bg-white max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-        <div
-          className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
-          <div>
-            <h2
-              className={classNames("uppercase", 'inline-flex items-center px-2 rounded text-xl font-bold')}>{course.title}</h2>
-          </div>
-
-        </div>
-        <div className="content">
-          <Component components={components} />
-        </div>
+      <h2 className='text-2xl'>{course.frontmatter.title}</h2>
+      <div className="content">
+        <Component components={components} />
       </div>
 
     </Layout>

@@ -15,7 +15,7 @@ export default function Contact() {
                   Comments, questions or feedback, happy to help you out!
                 </p>
                 <p className="text-lg text-gray-500">
-                  The best way to reach me is via @alvarez_tech on Twitter.
+                  The best way to reach me is via <a href='https://twitter.com/alvarez_tech'>@alvarez_tech</a> on Twitter.
                 </p>
                 <p className="text-lg text-gray-500">
                   Message @alvareztech

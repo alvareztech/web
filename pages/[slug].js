@@ -7,7 +7,7 @@ import { getMDXComponent } from "mdx-bundler/client";
 import { useMemo } from "react";
 
 const components = { GitHub, ...MDXComponent }
-const editUrl = (slug) => `https://github.com/alvareztech/website/edit/main/data/posts/${slug}.md`;
+const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.md`;
 
 export default function Post({ post }) {
   const Component = useMemo(() => getMDXComponent(post.code), post.code);
@@ -140,7 +140,9 @@ export default function Post({ post }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getPostSlugs('posts')
+  const postsPaths = getPostSlugs('posts')
+  const pagesPaths = getPostSlugs('pages')
+  const paths = postsPaths.concat(pagesPaths)
   return {
     paths, fallback: false
   }
