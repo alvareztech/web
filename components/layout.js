@@ -47,7 +47,6 @@ const navigation2 = [
 
 const navigation = [
   { name: 'Courses', href: '/courses' },
-  { name: 'Contact', href: '/contact' },
   { name: 'About', href: '/about' },
 ]
 
@@ -90,6 +89,7 @@ export default function Layout({ children, home }) {
             <a
               href="https://twitter.com/alvarez_tech"
               target="_blank"
+              rel="noreferrer"
               className="inline-block bg-white py-2 px-4 border border-transparent rounded-md text-base font-medium text-blue-600 hover:bg-blue-50"
             >
               Follow Me
@@ -132,7 +132,7 @@ export default function Layout({ children, home }) {
           )}
         </div>
         <div className="mt-8 md:mt-0 md:order-1">
-          <p className="text-center text-base text-gray-400">&copy; 2021 ALVAREZ
+          <p className="text-center text-base text-gray-400">&copy; 2022 ALVAREZ
             technologies, Inc. All rights
             reserved.</p>
         </div>
