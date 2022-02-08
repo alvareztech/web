@@ -1,0 +1,200 @@
+---
+title: Automate your releases to AppGallery with Github Actions (Part 1)
+summary: In this first part you will learn to automatically generate a signed APK ready to be published in AppGallery with GitHub Actions considering all security issues.
+date: 2019-06-08 08:00
+tags: [hms]
+---
+
+You probably use Github to manage your Android project. We all know that manually releasing can be very tedious and boring. From running some tests, generating the APK or AAB, signing it, entering the AppGallery Console, filling in information, uploading it, etc.
+
+With this series of guides we will automate the release process in the simplest way, doing some things at a low level to understand them using the Publising API to publish our APK or AAB to AppGallery. But first we will take all the precautions to manage some secret files such as the keystore to sign the application and the agconnect-services.json file. Of course we will do it for a project that uses the Huawei Mobile Services and the considerations that must be taken.
+
+## GitHub Actions
+
+GitHub Actions allows us to automate our development workflow and of course create our CI/CD for our Android project.
+
+Our first step will be to have our Android project on GitHub, then in the repository go to the Actions section.
+
+![GitHub Actions page](/images/githubactions1.png)
+
+Github has several quick start templates for different processes in different technologies, to have a base code we can select the Android CI template.
+
+![GitHub Actions Android](/images/githubactions2.png)
+
+This will generate a YAML file where we will write everything we want to do when a modification is made in the master branch either from a commit or a pull request approval.
+
+![GitHub Actions Android](/images/githubactions3.png)
+
+This template can already be executed except for a modification to allow gradlew execution. This is necessary to avoid execute permission problems.
+
+```script
+chmod +x gradlew
+```
+
+Our base YAML code would be the following:
+
+```YAML
+name: Android CI   
+on:   
+ push:   
+   branches: [ master ]   
+ pull_request:   
+   branches: [ master ]   
+jobs:   
+ build:   
+   runs-on: ubuntu-latest   
+   steps:   
+   - uses: actions/checkout@v2   
+   - name: set up JDK 1.8   
+     uses: actions/setup-java@v1   
+     with:   
+       java-version: 1.8   
+    - name: Build with Gradle   
+     run: |   
+        chmod +x gradlew   
+        ./gradlew build 
+```
+
+Any change made in the YAML file will allow us to execute the workflow, it can also be executed manually and obviously see the entire process log.
+
+![GitHub Actions Android](/images/githubactions4.png)
+
+## Securing sensitive data and files
+
+If we want our workflow to generate an APK or AAB signed and ready to upload to AppGallery we need some files, but those files have to be safe and they should not be versioned in the repository. They should even be placed in .gitignore to avoid uploading them by mistake.
+
+Most developers in most cases recommend to be careful with the following files in an Android project that uses Huawei Mobile Services.
+
+* The keystore file
+* The keystore password and keystore alias password values
+* The `agconnect-services.json` file
+
+We need this information but it cannot be visible in the YAML file because it is visible to those who have access to the repository. GitHub has a special space for this sensitive information, Secrets.
+
+![GitHub Actions Android](/images/githubactions5.png)
+
+The problem here is that only key-values can be uploaded and not files.
+
+
+To upload our keystore file (it is necessary for the application signature) we will obtain the string representation of it, the same with the agconnect-services.json configuration file.
+
+We will do this by command line with gpg.
+
+```script
+gpg -c --armor mykeystore.jks
+```
+
+This will ask for a passphrase that we must enter and will generate a mykeystore.jks.asc file. That file contains a Base64 string and that value is the one that we can save in Secrets.
+
+![GitHub Actions Android](/images/githubactions6.png)
+
+We must do this for each file that we consider sensible and that is necessary in our workflow. We must also save the passphrase of each one of them because we will use it to generate the file again from the base64 value when our CI/CD is executed.
+
+We will get something like this: (considering we put different passphrases, it could be just one)
+
+![GitHub Actions Android](/images/githubactions7.png)
+
+Note that we have a keystore.properties file where we have the values of the passwords and alias of the keystore.
+
+Well, the idea is to use these values in the workflow to generate the signed APK.
+
+We are going to create a new step in our YAML and do the reverse that we did. First we generate the .asc file, then with the passphrase generate the final file in its corresponding directory.
+
+
+```script
+- name: Prepare Secret Files   
+  run: |   
+     echo "${{ secrets.KEYSTORE }}" > alvareztech.jks.asc   
+     gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch alvareztech.jks.asc > app/alvareztech.jks   
+     echo "${{ secrets.KEYSTORE_PROPERTIES }}" > keystore.properties.asc   
+     gpg -d --passphrase "${{ secrets.KEYSTORE_PROPERTIES_PASSPHRASE }}" --batch keystore.properties.asc > keystore.properties   
+     echo "${{ secrets.AGCONNECT_SERVICES }}" > agconnect-services.json.asc    
+     gpg -d --passphrase "${{ secrets.AGCONNECT_SERVICES_PASSPHRASE }}" --batch agconnect-services.json.asc > app/agconnect-services.json 
+```
+
+## Generating the signed application
+
+Generating the APK is easy with a gradle command after having all the necessary files and having the signature configuration in the same build.gradle of the app module, as follows.
+
+```YAML
+signingConfigs {
+    release {
+        storeFile file(keystoreProperties['storeFile'])
+        storePassword keystoreProperties['storePassword']
+        keyAlias keystoreProperties['keyAlias']
+        keyPassword keystoreProperties['keyPassword']
+        v2SigningEnabled true
+    }
+}
+```
+
+So generating the signed APK is only:
+
+```script
+./gradlew assembleRelease
+```
+
+## Get signed APK file
+
+For now we will download the result file of the workflow, the idea is to upload this file to AppGallery through the Publising API provided by AppGallery Connect, but now we will settle by downloading this artifact.
+
+```YAML
+- name: Publish APK   
+  uses: actions/upload-artifact@v2   
+  with:   
+    name: app-release   
+    path: app/build/outputs/apk/release/
+```
+
+What we have is a workflow that generates a signed APK for change that we make in the master branch automatically. We can download the artifact, for now Github only allows download in ZIP format.
+
+![GitHub Actions Android](/images/githubactions8.png)
+
+## Conclusion
+
+We have everything ready to start using Publish API, we already take considerations for sensitive files in a project with Huawei Mobile Services. The goal is to continue putting our CI/CD together a bit on a low level to understand the whole process.
+
+The complete file so far is:
+
+```YAML
+name: Android CI    
+on:    
+ push:    
+   branches: [ master ]    
+ pull_request:    
+   branches: [ master ]    
+jobs:    
+ build:    
+   runs-on: ubuntu-latest    
+   steps:    
+   - uses: actions/checkout@v2    
+   - name: set up JDK 1.8    
+     uses: actions/setup-java@v1    
+     with:    
+       java-version: 1.8    
+   - name: Prepare Secret Files    
+     run: |    
+        echo "${{ secrets.KEYSTORE }}" > alvareztech.jks.asc    
+        gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch alvareztech.jks.asc > app/alvareztech.jks    
+        echo "${{ secrets.KEYSTORE_PROPERTIES }}" > keystore.properties.asc    
+        gpg -d --passphrase "${{ secrets.KEYSTORE_PROPERTIES_PASSPHRASE }}" --batch keystore.properties.asc > keystore.properties    
+        echo "${{ secrets.AGCONNECT_SERVICES }}" > agconnect-services.json.asc     
+        gpg -d --passphrase "${{ secrets.AGCONNECT_SERVICES_PASSPHRASE }}" --batch agconnect-services.json.asc > app/agconnect-services.json    
+    - name: Build with Gradle    
+     run: |    
+        chmod +x gradlew    
+        ./gradlew assembleRelease    
+    - name: Publish APK    
+     uses: actions/upload-artifact@v2    
+     with:    
+       name: app-release    
+       path: app/build/outputs/apk/release/    
+```
+
+Implemented in a real project can be seen in:
+
+<GitHub repo="facts-android" />
+
+## Resources
+
+[Publising API](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agcapi-publish_api_overview)
