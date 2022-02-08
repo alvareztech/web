@@ -1,89 +1,50 @@
 import Layout from "../components/layout";
 import { getAllPosts } from "../lib/posts";
 import Link from "next/link";
-import { classNames } from "../lib/util";
-import {
-  AcademicCapIcon,
-  BadgeCheckIcon,
-  CashIcon,
-  ClockIcon,
-  ReceiptRefundIcon,
-  UsersIcon,
-} from '@heroicons/react/outline'
 
 export default function Courses({ courses }) {
   return (
     <Layout>
-      <div className="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px">
-        {courses.map((course, courseIdx) => (
-          <div
-            key={course.title}
-            className={classNames(
-              courseIdx === 0 ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none' : '',
-              courseIdx === 1 ? 'sm:rounded-tr-lg' : '',
-              courseIdx === courses.length - 2 ? 'sm:rounded-bl-lg' : '',
-              courseIdx === courses.length - 1 ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none' : '',
-              'relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'
-            )}
-          >
-            <div>
-              <span
-                className={classNames(
-                  "bg-teal-50",
-                  "text-teal-700",
-                  'rounded-lg inline-flex p-3 ring-4 ring-white'
-                )}
-              >
-                <AcademicCapIcon className="h-6 w-6" aria-hidden="true" />
-              </span>
-            </div>
-            <div className="mt-8">
-              <h3 className="text-lg font-medium">
-                <Link href={"/courses/" + course.slug}>
-                  <a className="focus:outline-none">
-                    {/* Extend touch target to entire panel */}
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    {course.title}
-                  </a>
-                </Link>
-              </h3>
-              <p className="mt-2 text-sm text-gray-500">
-                {course.summary}
-              </p>
-            </div>
-            <span
-              className="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400"
-              aria-hidden="true"
-            >
-            </span>
+      <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+        <div className="absolute inset-0">
+          <div className="bg-white h-1/3 sm:h-2/3" />
+        </div>
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center">
+            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">Courses</h2>
+            <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+              Some courses I teach and their resources. Very soon I will publish more courses and new courses 😉
+            </p>
           </div>
-        ))}
+          <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+
+            {courses.map((course) => (
+              <div key={course.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+                <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-blue-600">
+                      <Link href={"/courses/" + course.slug}>
+                        <a className="hover:underline">
+                          <span className="uppercase">{course.category}</span>
+                        </a>
+                      </Link>
+                    </p>
+                    <Link href={"/courses/" + course.slug}>
+                      <a className="block mt-2">
+                        <p className="text-xl font-semibold text-gray-900">{course.title}</p>
+                        <p className="mt-3 text-base text-gray-500">{course.summary}</p>
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+          </div>
+        </div>
       </div>
     </Layout>
   )
-
-  // return (
-  //   <Layout>
-  //     <div
-  //       className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-  //       <h2
-  //         className="text-3xl font-bold text-gray-900 sm:text-4xl py-4">{courses.length} courses</h2>
-  //       <div className="space-x-2">
-  //         {courses.map(({ slug, date, title, tags, language, summary }) => (
-  //           <Link key={slug} href={"/courses/" + slug}>
-  //             <a>
-  //               <span
-  //                 key={title}
-  //                 className={classNames("uppercase", "bg-slate-500", 'inline-flex items-center px-2 my-1 rounded text-xl font-bold')}>
-  //                 {title}
-  //               </span>
-  //             </a>
-  //           </Link>
-  //         ))}
-  //       </div>
-  //     </div>
-  //   </Layout>
-  // )
 }
 
 export async function getStaticProps() {
