@@ -11,12 +11,12 @@ export default function Tag({ tags }) {
         className="text-3xl font-bold text-gray-900 sm:text-4xl py-4">{tags.length} tags</h2>
       <div className="space-x-2">
         {tags.map(tag => (
-          <Link key={tag.name} href={"/tag/" + tag.name}>
+          <Link key={tag} href={"/tag/" + tag}>
             <a>
               <span
-                key={tag.name}
-                className={classNames("uppercase", tag.style, 'inline-flex items-center px-2 my-1 rounded text-xl font-bold')}>
-                {tag.name}
+                key={tag}
+                className={classNames("uppercase", "bg-green-400", 'inline-flex items-center px-2 my-1 rounded text-xl font-bold')}>
+                {tag}
               </span>
             </a>
           </Link>

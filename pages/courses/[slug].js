@@ -34,14 +34,12 @@ export default function Course({ course }) {
 
 export async function getStaticPaths() {
   const paths = getCourseSlugs()
-  console.log(">>>>> ", paths)
   return {
     paths, fallback: false
   }
 }
 
 export async function getStaticProps({ params }) {
-  console.log("|>>>> " + params)
   const course = await getCourse(params.slug)
   return {
     props: {

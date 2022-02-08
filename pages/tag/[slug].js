@@ -1,10 +1,10 @@
 import Layout from '../../components/layout'
-import {getPostsByTag, getTags} from "../../lib/posts";
+import { getPostsByTag, getTags } from "../../lib/posts";
 import Link from "next/link";
 import Date from "../../components/date";
-import {classNames, tagColor} from "../../lib/util";
+import { classNames, tagColor } from "../../lib/util";
 
-export default function Tag({tag, posts}) {
+export default function Tag({ tag, posts }) {
   return (
     <Layout>
 
@@ -19,16 +19,16 @@ export default function Tag({tag, posts}) {
 
           <div
             className="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
-            {posts.map(({slug, date, title, tags, language, summary}) => (
+            {posts.map(({ slug, date, title, tags, language, summary }) => (
               <div key={slug}>
                 <div>
                   <Link href={"/tag/" + tags?.[0]}>
                     <a className="inline-block">
-                    <span
-                      className={classNames("uppercase", tagColor(tags?.[0]), 'inline-flex items-center px-2 rounded text-sm font-bold')}
-                    >
-                      {tags?.[0]}
-                    </span>
+                      <span
+                        className={classNames("uppercase", tagColor(tags?.[0]), 'inline-flex items-center px-2 rounded text-sm font-bold')}
+                      >
+                        {tags?.[0]}
+                      </span>
                     </a>
                   </Link>
                 </div>
@@ -43,12 +43,12 @@ export default function Tag({tag, posts}) {
                   <span
                     key={tag}
                     className="uppercase inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 mr-1">
-                {tag}
-              </span>
+                    {tag}
+                  </span>
                 ))}
                 <div className="mt-6 flex items-center">
                   <div className="flex space-x-1 text-sm text-gray-500">
-                    <Date dateString={date}/>
+                    <Date dateString={date} />
                   </div>
                 </div>
               </div>))}
@@ -62,18 +62,18 @@ export default function Tag({tag, posts}) {
 
 export async function getStaticPaths() {
   const tags = getTags()
-  const paths = tags.map(tag => "/tag/" + tag.name)
+  const paths = tags.map(tag => "/tag/" + tag)
   return {
     paths, fallback: false
   }
 }
 
-export async function getStaticProps({params}) {
-  const tagName = params.tag
-  const posts = await getPostsByTag(tagName)
+export async function getStaticProps({ params }) {
+  const tag = params.slug
+  const posts = await getPostsByTag(tag)
   return {
     props: {
-      tagName,
+      tag,
       posts
     }
   }
