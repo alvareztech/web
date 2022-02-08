@@ -48,7 +48,7 @@ export default function Courses({ courses }) {
                 </Link>
               </h3>
               <p className="mt-2 text-sm text-gray-500">
-                {course.description}
+                {course.summary}
               </p>
             </div>
             <span
