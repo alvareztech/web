@@ -1,10 +1,14 @@
 import Layout from "../components/layout";
 import { getAllPosts } from "../lib/posts";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Courses({ courses }) {
   return (
     <Layout>
+      <Head>
+        <title>Courses - ALVAREZ.tech</title>
+      </Head>
       <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
         <div className="absolute inset-0">
           <div className="bg-white h-1/3 sm:h-2/3" />
