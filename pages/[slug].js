@@ -2,12 +2,13 @@ import Layout from '../components/layout'
 import { getPost, getPostSlugs } from '../lib/posts'
 import Head from 'next/head'
 import GitHub from "../components/github";
+import YouTube from '../components/youtube';
 import MDXComponent from "../components/mdxComponents";
 import { getMDXComponent } from "mdx-bundler/client";
 import { useMemo } from "react";
 import Link from 'next/link';
 
-const components = { GitHub, ...MDXComponent }
+const components = { GitHub, YouTube, ...MDXComponent }
 const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.mdx`;
 
 export default function Post({ post }) {

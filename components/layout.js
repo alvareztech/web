@@ -48,6 +48,7 @@ const navigation2 = [
 const navigation = [
   { name: 'Projects', href: '/projects' },
   { name: 'Courses', href: '/courses' },
+  { name: 'Videos', href: '/tag/video' },
   { name: 'About', href: '/about' },
 ]
 
