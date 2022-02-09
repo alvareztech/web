@@ -75,6 +75,18 @@ const MyCode = (props) => {
   )
 }
 
+const ListDisc = (props) => {
+  return (
+    <ul className="list-disc">{props.children}</ul>
+  )
+}
+
+const ListDecimal = (props) => {
+  return (
+    <ol className="list-decimal">{props.children}</ol>
+  )
+}
+
 
 const MDXComponent = {
   Image,
@@ -85,7 +97,9 @@ const MDXComponent = {
   h2: Subtitle2,
   h3: Subtitle3,
   h4: Subtitle4,
-  pre: MyCode
+  pre: MyCode,
+  ul: ListDisc,
+  ol: ListDecimal
 };
 
 export default MDXComponent;
