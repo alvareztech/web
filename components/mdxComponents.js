@@ -44,19 +44,19 @@ const Paragraph = (props) => {
 
 const Subtitle = (props) => {
   return (
-    <h1 className="mt-2 text-2xl font-bold">{props.children}</h1>
+    <h1 className="mt-2 text-3xl font-bold">{props.children}</h1>
   )
 }
 
 const Subtitle2 = (props) => {
   return (
-    <h2 className="mt-4 text-xl font-bold">{props.children}</h2>
+    <h2 className="mt-4 text-2xl font-bold">{props.children}</h2>
   )
 }
 
 const Subtitle3 = (props) => {
   return (
-    <h3 className="mt-2 text-lg font-bold">{props.children}</h3>
+    <h3 className="mt-2 text-xl font-bold">{props.children}</h3>
   )
 }
 
@@ -69,9 +69,21 @@ const Subtitle4 = (props) => {
 const MyCode = (props) => {
   return (
     <pre {...props}
-      className="p-3 text-base block whitespace-pre overflow-x-scroll bg-amber-200 rounded-md">
+      className="p-3 text-base block whitespace-pre overflow-x-scroll bg-amber-100 rounded-md">
       {props.children}
     </pre>
+  )
+}
+
+const ListDisc = (props) => {
+  return (
+    <ul className="list-disc">{props.children}</ul>
+  )
+}
+
+const ListDecimal = (props) => {
+  return (
+    <ol className="list-decimal">{props.children}</ol>
   )
 }
 
@@ -85,7 +97,9 @@ const MDXComponent = {
   h2: Subtitle2,
   h3: Subtitle3,
   h4: Subtitle4,
-  pre: MyCode
+  pre: MyCode,
+  ul: ListDisc,
+  ol: ListDecimal
 };
 
 export default MDXComponent;
