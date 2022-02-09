@@ -119,7 +119,7 @@ export default function Post({ post }) {
           <div className="flex items-start justify-center mt-14 w-full">
             <div className="space-x-2 flex-1 -mt-0.5">
               {post.frontmatter.tags?.map(tag => (
-                <Link href={"/tag/" + tag}>
+                <Link href={"/tag/" + tag} key={tag}>
                   <a>
                     <span
                       key={tag}
