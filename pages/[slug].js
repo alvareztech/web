@@ -5,6 +5,7 @@ import GitHub from "../components/github";
 import MDXComponent from "../components/mdxComponents";
 import { getMDXComponent } from "mdx-bundler/client";
 import { useMemo } from "react";
+import Link from 'next/link';
 
 const components = { GitHub, ...MDXComponent }
 const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.mdx`;
@@ -95,10 +96,12 @@ export default function Post({ post }) {
       <article className="relative px-4 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto">
           <h1>
-            <span
-              className="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
-              {/*{post.tags[0]}*/}
-            </span>
+            <Link href={"/tag/" + post.frontmatter.tags?.[0]}>
+              <span
+                className="block text-base text-center text-blue-600 font-semibold tracking-wide uppercase">
+                {post.frontmatter.tags?.[0]}
+              </span>
+            </Link>
             <span
               className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               {post.frontmatter.title}
@@ -108,17 +111,23 @@ export default function Post({ post }) {
             {post.frontmatter.summary}
           </p>
 
-          {/*<div dangerouslySetInnerHTML={{__html: postData.contentHtml}}/>*/}
           <div className="content">
             <Component components={components} />
           </div>
+
           <div className="flex items-start justify-center mt-14 w-full">
             <div className="space-x-2 flex-1 -mt-0.5">
-              {post.tags?.map(tag => (<span
-                key={tag}
-                className="uppercase inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
-                {tag}
-              </span>))}
+              {post.frontmatter.tags?.map(tag => (
+                <Link href={"/tag/" + tag}>
+                  <a>
+                    <span
+                      key={tag}
+                      className="uppercase inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
+                      {tag}
+                    </span>
+                  </a>
+                </Link>
+              ))}
             </div>
             <div
               className="ml-4 text-sm text-gray-500 dark:text-gray-500 transition-colors hover:text-gray-700 dark:hover:text-gray-300">
