@@ -53,11 +53,11 @@ Conocemos algunas anotaciones y las explicamos rápidamente que pasa si las usam
 
 `@Deprecated` para aquellos métodos obsoletos. Imagina que hay varios programadores trabajando en el mismo proyecto, tu hiciste un método para solucionar algo pero luego se te ocurre otra mejor manera de hacerlo. Para eso no borras el método anterior porque otros lo siguen usando, pero si quieres que ya no lo usen en futuro ese método porque hay otro mejor, entonces simplemente adicionas la anotación `@Deprecated` a tu anterior método y listo.
 
-![](/images/java/annotations/anotaciones-java-1.jpeg)
+![](/images/anotaciones-java-1.jpeg)
 
 Tus otros programadores verán el mensaje de esta obsoleto (estará tachado su uso) y el IDE (o editor) les recomendará cambiar.
 
-![Ya sabes que significa cuando el método aparece tachado](/images/java/annotations/anotaciones-java-2.jpeg)
+![Ya sabes que significa cuando el método aparece tachado](/images/anotaciones-java-2.jpeg)
 
 Ya sabes que significa cuando el método aparece tachado
 
@@ -66,11 +66,11 @@ Ya sabes que significa cuando el método aparece tachado
 `@Override` le informa al compilador que sobreescribirá el método de la clase padre. Esto es aplicable cuando existe herencia de clases, si tu clase tiene un extends pueden sobreescribir su código poniendo en tu método que esta en la clase hijo con esta anotación.
 Si eres *Android Developer*, lo siguiente te es familiar, si no lo eres es fácil de entender que es una clase que hereda de otra con un método llamado `onCreate()`.
 
-![Trozo de código básico de una Activity en Android](/images/java/annotations/anotaciones-java-3.jpeg)
+![Trozo de código básico de una Activity en Android](/images/anotaciones-java-3.jpeg)
 
 En este trozo de código podemos ver que con la anotación `@Override` estamos sobre-escribiendo el método `onCreate()` que tiene su clase padre que es `AppCompatActivity`.
 
-![](/images/java/annotations/anotaciones-java-4.jpeg)
+![](/images/anotaciones-java-4.jpeg)
 
 Pero como sabemos podemos hacer que también suceda lo que el padre tiene en ese método, usando `super` y el método.
 
