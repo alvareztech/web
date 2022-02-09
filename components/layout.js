@@ -57,10 +57,12 @@ export default function Layout({ children, home }) {
       <meta name="description" content="Tutorials, videos, software development." />
       <meta property="og:image" content="" />
       <meta name="og:title" content={siteTitle} />
+
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@alvarez_tech" />
+      <meta name="twitter:creator" content="@alvarez_tech" />
       <meta name="twitter:label1" content="Written by" />
       <meta name="twitter:data1" content="Daniel Alvarez" />
-      <meta name="twitter:creator" content="@alvarez_tech" />
 
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

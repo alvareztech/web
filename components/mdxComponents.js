@@ -77,13 +77,13 @@ const MyCode = (props) => {
 
 const ListDisc = (props) => {
   return (
-    <ul className="list-disc">{props.children}</ul>
+    <ul className="list-disc my-2">{props.children}</ul>
   )
 }
 
 const ListDecimal = (props) => {
   return (
-    <ol className="list-decimal">{props.children}</ol>
+    <ol className="list-decimal my-2">{props.children}</ol>
   )
 }
 
