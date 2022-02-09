@@ -15,6 +15,7 @@ export default function Post({ post }) {
   return (<Layout>
     <Head>
       <title>{post.frontmatter.title}</title>
+      <meta name='twitter:title' content={post.frontmatter.title} />
     </Head>
 
     <div className="relative py-16 bg-white overflow-hidden">
