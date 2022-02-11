@@ -3,11 +3,14 @@ import { getPostsByTag, getTags } from "../../lib/posts";
 import Link from "next/link";
 import Date from "../../components/date";
 import { classNames, tagColor } from "../../lib/util";
+import Head from 'next/head';
 
 export default function Tag({ tag, posts }) {
   return (
     <Layout>
-
+      <Head>
+        <title>{tag.toUpperCase()} - ALVAREZ.tech</title>
+      </Head>
       <div
         className="bg-white max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <div
