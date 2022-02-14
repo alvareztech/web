@@ -4,6 +4,7 @@ import { getAllPosts } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { classNames, tagColor } from "../lib/util";
+import Image from 'next/image'
 
 export default function Home({ posts }) {
   return (
@@ -11,14 +12,17 @@ export default function Home({ posts }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className="bg-gray-50">
+
+      <section className="bg-gradient-to-r from-cyan-500 to-blue-500">
         <div
           className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-          <h2
-            className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            <span className="block">Hi! I am Daniel </span>
-            <span
-              className="block text-blue-600">Here I share everything I do. Tutorials, code and more.</span>
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            <span className="block text-gray-800">
+              Hi! I am Daniel
+            </span>
+            <span className="block text-white">
+              On this site I share everything I do. Tutorials, code and more.
+            </span>
           </h2>
         </div>
       </section>
@@ -28,33 +32,35 @@ export default function Home({ posts }) {
         <div
           className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
           <div>
-            <h2
-              className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
               Recent publications
             </h2>
           </div>
-          <div
-            className="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
-            {posts.map(({ slug, date, title, tags, language, summary }) => (
-              <div key={slug}>
+
+          <div className="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
+            {posts.map((post) => (
+              <div key={post.slug}>
+                {post.youtubeId &&
+                  <Link href={"/" + post.slug}>
+                    <img className='mb-2 drop-shadow-md rounded-lg h-48 w-full object-cover' src={'https://img.youtube.com/vi/' + post.youtubeId + '/mqdefault.jpg'} />
+                  </Link>
+                }
                 <div>
-                  <Link href={"/tag/" + tags?.[0]}>
+                  <Link href={"/tag/" + post.tags?.[0]}>
                     <a className="inline-block">
-                      <span
-                        className={classNames("uppercase", "bg-blue-100 text-blue-800", 'inline-flex items-center px-2 rounded text-sm font-bold')}
-                      >
-                        {tags?.[0]}
+                      <span className={classNames("text-white", "uppercase", getColor(post.tags?.[0]), 'inline-flex items-center px-2 rounded text-sm font-bold')}>
+                        {post.tags?.[0]}
                       </span>
                     </a>
                   </Link>
                 </div>
-                <Link href={"/" + slug}>
+                <Link href={"/" + post.slug}>
                   <a className="block mt-4">
-                    <p className="text-xl font-semibold text-gray-900">{title}</p>
-                    <p className="mt-3 text-base text-gray-500">{summary}</p>
+                    <p className="text-xl font-semibold text-gray-900">{post.title}</p>
+                    <p className="mt-3 text-base text-gray-500">{post.summary}</p>
                   </a>
                 </Link>
-                {tags?.slice(1).map(tag => (
+                {post.tags?.slice(1).map(tag => (
                   <span
                     key={tag}
                     className="uppercase inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 mr-1">
@@ -63,7 +69,7 @@ export default function Home({ posts }) {
                 ))}
                 <div className="mt-6 flex items-center">
                   <div className="flex space-x-1 text-sm text-gray-500">
-                    <Date dateString={date} />
+                    <Date dateString={post.date} />
                   </div>
                 </div>
               </div>))}
@@ -81,4 +87,26 @@ export async function getStaticProps() {
       posts
     }
   }
+}
+
+function getColor(tag) {
+  switch (tag) {
+    case "android":
+    case "androidx":
+    case "espresso":
+    case "retrofit":
+      return "bg-green-500"
+    case "ios":
+    case "facebook":
+      return "bg-blue-500"
+    case "angular":
+    case "java":
+    case "javafx":
+      return "bg-red-500"
+    case "kotlin":
+      return "bg-purple-500"
+    case "firebase":
+      return "bg-yellow-500"
+  }
+  return "bg-gray-500"
 }
