@@ -3,7 +3,8 @@ import Layout, { siteTitle } from '../components/layout'
 import { getAllPosts } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
-import { classNames } from "../lib/util";
+import { classNames, tagColor } from "../lib/util";
+import Image from 'next/image'
 
 export default function Home({ posts }) {
   return (
@@ -39,12 +40,15 @@ export default function Home({ posts }) {
           <div className="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
             {posts.map((post) => (
               <div key={post.slug}>
+                {post.youtubeId &&
+                  <Link href={"/" + post.slug}>
+                    <img className='mb-2 drop-shadow-md rounded-lg h-48 w-full object-cover' src={'https://img.youtube.com/vi/' + post.youtubeId + '/mqdefault.jpg'} />
+                  </Link>
+                }
                 <div>
                   <Link href={"/tag/" + post.tags?.[0]}>
                     <a className="inline-block">
-                      <span
-                        className={classNames("uppercase", tagColor(post.tags?.[0]), 'inline-flex items-center px-2 rounded text-sm font-bold')}
-                      >
+                      <span className={classNames("text-white", "uppercase", getColor(post.tags?.[0]), 'inline-flex items-center px-2 rounded text-sm font-bold')}>
                         {post.tags?.[0]}
                       </span>
                     </a>
@@ -85,24 +89,24 @@ export async function getStaticProps() {
   }
 }
 
-function tagColor(tag) {
+function getColor(tag) {
   switch (tag) {
     case "android":
     case "androidx":
     case "espresso":
     case "retrofit":
-      return "bg-green-100 text-green-800"
+      return "bg-green-500"
     case "ios":
     case "facebook":
-      return "bg-blue-100 text-blue-800"
+      return "bg-blue-500"
     case "angular":
     case "java":
     case "javafx":
-      return "bg-red-100 text-red-800"
+      return "bg-red-500"
     case "kotlin":
-      return "bg-purple-300 text-purple-700"
+      return "bg-purple-500"
     case "firebase":
-      return "bg-yellow-200 text-yellow-600"
+      return "bg-yellow-500"
   }
-  return "bg-blue-100 text-blue-800"
+  return "bg-gray-500"
 }
