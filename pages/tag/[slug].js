@@ -2,7 +2,7 @@ import Layout from '../../components/layout'
 import { getPostsByTag, getTags } from "../../lib/posts";
 import Link from "next/link";
 import Date from "../../components/date";
-import { classNames, tagColor } from "../../lib/util";
+import { classNames } from "../../lib/util";
 import Head from 'next/head';
 
 export default function Tag({ tag, posts }) {
@@ -17,32 +17,37 @@ export default function Tag({ tag, posts }) {
           className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
           <div>
             <h2
-              className={classNames("uppercase", "bg-blue-100 text-blue-800", 'inline-flex items-center px-2 rounded text-xl font-bold')}>{tag}</h2>
+              className={classNames('text-white', "uppercase", "bg-gray-500", 'inline-flex items-center px-2 rounded text-xl font-bold')}>{tag}</h2>
           </div>
 
           <div
             className="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
-            {posts.map(({ slug, date, title, tags, language, summary }) => (
-              <div key={slug}>
+            {posts.map((post) => (
+              <div key={post.slug}>
+                {post.youtubeId &&
+                  <Link href={"/" + post.slug}>
+                    <img className='mb-2 drop-shadow-md rounded-lg h-48 w-full object-cover' src={'https://img.youtube.com/vi/' + post.youtubeId + '/mqdefault.jpg'} />
+                  </Link>
+                }
                 <div>
-                  <Link href={"/tag/" + tags?.[0]}>
+                  <Link href={"/tag/" + post.tags?.[0]}>
                     <a className="inline-block">
                       <span
-                        className={classNames("uppercase", 'bg-blue-100 text-blue-800', 'inline-flex items-center px-2 rounded text-sm font-bold')}
+                        className={classNames('text-white', "uppercase", getColor(post.tags?.[0]), 'inline-flex items-center px-2 rounded text-sm font-bold')}
                       >
-                        {tags?.[0]}
+                        {post.tags?.[0]}
                       </span>
                     </a>
                   </Link>
                 </div>
-                <Link href={"/" + slug}>
+                <Link href={"/" + post.slug}>
                   <a className="block mt-4">
                     <p
-                      className="text-xl font-semibold text-gray-900">{title}</p>
-                    <p className="mt-3 text-base text-gray-500">{summary}</p>
+                      className="text-xl font-semibold text-gray-900">{post.title}</p>
+                    <p className="mt-3 text-base text-gray-500">{post.summary}</p>
                   </a>
                 </Link>
-                {tags?.slice(1).map(tag => (
+                {post.tags?.slice(1).map(tag => (
                   <span
                     key={tag}
                     className="uppercase inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 mr-1">
@@ -51,7 +56,7 @@ export default function Tag({ tag, posts }) {
                 ))}
                 <div className="mt-6 flex items-center">
                   <div className="flex space-x-1 text-sm text-gray-500">
-                    <Date dateString={date} />
+                    <Date dateString={post.date} />
                   </div>
                 </div>
               </div>))}
@@ -80,4 +85,26 @@ export async function getStaticProps({ params }) {
       posts
     }
   }
+}
+
+function getColor(tag) {
+  switch (tag) {
+    case "android":
+    case "androidx":
+    case "espresso":
+    case "retrofit":
+      return "bg-green-500"
+    case "ios":
+    case "facebook":
+      return "bg-blue-500"
+    case "angular":
+    case "java":
+    case "javafx":
+      return "bg-red-500"
+    case "kotlin":
+      return "bg-purple-500"
+    case "firebase":
+      return "bg-yellow-500"
+  }
+  return "bg-gray-500"
 }
