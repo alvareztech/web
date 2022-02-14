@@ -15,7 +15,7 @@ export default function Tag({ tags }) {
             <a>
               <span
                 key={tag}
-                className={classNames("uppercase", "bg-green-400", 'inline-flex items-center px-2 my-1 rounded text-xl font-bold')}>
+                className={classNames('text-white', "uppercase", getColor(tag), 'inline-flex items-center px-2 my-1 rounded text-xl font-bold')}>
                 {tag}
               </span>
             </a>
@@ -33,4 +33,26 @@ export async function getStaticProps() {
       tags
     }
   }
+}
+
+function getColor(tag) {
+  switch (tag) {
+    case "android":
+    case "androidx":
+    case "espresso":
+    case "retrofit":
+      return "bg-green-500"
+    case "ios":
+    case "facebook":
+      return "bg-blue-500"
+    case "angular":
+    case "java":
+    case "javafx":
+      return "bg-red-500"
+    case "kotlin":
+      return "bg-purple-500"
+    case "firebase":
+      return "bg-yellow-500"
+  }
+  return "bg-gray-500"
 }
