@@ -1,0 +1,98 @@
+---
+title: Android Versions
+---
+
+<table className="bg-green-600">
+  <thead>
+  <tr>
+    <th>Codename</th>
+    <th>Version</th>
+    <th>API level</th>
+    <th>Version Code</th>
+    <th>NDK release</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr><td>Android13</td><td>13</td><td>32 ?</td><td>T</td><td></td></tr>
+  <tr><td>Android12</td><td>12</td><td>31</td><td>S</td><td></td></tr>
+  <tr><td>Android11</td><td>11</td><td>30</td><td>R</td><td></td></tr>
+  <tr><td>Android10</td><td>10</td><td>29</td><td>Q</td><td></td></tr>
+  <tr><td>Pie</td><td>9</td><td>28</td><td>P</td><td></td></tr>
+  <tr><td>Oreo</td><td>8.1.0</td><td>27</td><td>O_MR1</td><td></td></tr>
+  <tr><td>Oreo</td><td>8.0.0</td><td>26</td><td>O</td><td></td></tr>
+  <tr><td>Nougat</td><td>7.1</td><td>25</td><td>N_MR1</td><td></td></tr>
+  <tr><td>Nougat</td><td>7.0</td><td>24</td><td>N</td><td></td></tr>
+  <tr><td>Marshmallow</td><td>6.0</td><td>23</td><td>M</td><td></td></tr>
+  <tr><td>Lollipop</td><td>5.1</td><td>22</td><td>LOLLIPOP_MR1</td><td></td></tr>
+  <tr><td>Lollipop</td><td>5.0</td><td>21</td><td>LOLLIPOP</td><td></td></tr>
+  <tr><td>KitKat</td><td>4.4 - 4.4.4</td><td>19</td><td>KITKAT</td><td></td></tr>
+  <tr><td>Jelly Bean</td><td>4.3.x</td><td>18</td><td>`JELLY_BEAN_MR2`</td><td></td></tr>
+  <tr><td>Jelly Bean</td><td>4.2.x</td><td>17</td><td>JELLY_BEAN_MR1</td><td></td></tr>
+  <tr><td>Jelly Bean</td><td>4.1.x</td><td>16</td><td>JELLY_BEAN</td><td></td></tr>
+  <tr><td>Ice Cream Sandwich</td><td>4.0.3 - 4.0.4</td><td>15</td><td>ICE_CREAM_SANDWICH_MR1</td><td>8</td></tr>
+  <tr><td>Ice Cream Sandwich</td><td>4.0.1 - 4.0.2</td><td>14</td><td>ICE_CREAM_SANDWICH</td><td>7</td></tr>
+  <tr><td>Honeycomb</td><td>3.2.x</td><td>13</td><td>HONEYCOMB_MR2</td><td></td></tr>
+  <tr><td>Honeycomb</td><td>3.1</td><td>12</td><td>HONEYCOMB_MR1</td><td>6</td></tr>
+  <tr><td>Honeycomb</td><td>3.0</td><td>11</td><td>HONEYCOMB</td><td></td></tr>
+  <tr><td>Gingerbread</td><td>2.3.3 - 2.3.7</td><td>10</td><td>GINGERBREAD_MR1</td><td></td></tr>
+  <tr><td>Gingerbread</td><td>2.3 - 2.3.2</td><td>9</td><td>GINGERBREAD</td><td>5</td></tr>
+  <tr><td>Froyo</td><td>2.2.x</td><td>8</td><td>FROYO</td><td>4</td></tr>
+  <tr><td>Eclair</td><td>2.1</td><td>7</td><td>ECLAIR_MR1</td><td>3</td></tr>
+  <tr><td>Eclair</td><td>2.0.1</td><td>6</td><td>ECLAIR_0_1</td><td></td></tr>
+  <tr><td>Eclair</td><td>2.0</td><td>5</td><td>ECLAIR</td><td></td></tr>
+  <tr><td>Donut</td><td>1.6</td><td>4</td><td>DONUT</td><td>2</td></tr>
+  <tr><td>Cupcake</td><td>1.5</td><td>3</td><td>CUPCAKE</td><td>1</td></tr>
+  <tr><td>(no codename)</td><td>1.1</td><td>2</td><td>BASE_1_1</td><td></td></tr>
+  <tr><td>(no codename)</td><td>1.0</td><td>1</td><td>BASE</td><td></td></tr>
+  </tbody>
+</table>
+
+## Version Code
+
+`Build.VERSION_CODES`
+
+```java
+public static class VERSION_CODES {
+    public static final int BASE = 1;
+    public static final int BASE_1_1 = 2;
+    public static final int CUPCAKE = 3;
+    public static final int CUR_DEVELOPMENT = 10000;
+    public static final int DONUT = 4;
+    public static final int ECLAIR = 5;
+    public static final int ECLAIR_0_1 = 6;
+    public static final int ECLAIR_MR1 = 7;
+    public static final int FROYO = 8;
+    public static final int GINGERBREAD = 9;
+    public static final int GINGERBREAD_MR1 = 10;
+    public static final int HONEYCOMB = 11;
+    public static final int HONEYCOMB_MR1 = 12;
+    public static final int HONEYCOMB_MR2 = 13;
+    public static final int ICE_CREAM_SANDWICH = 14;
+    public static final int ICE_CREAM_SANDWICH_MR1 = 15;
+    public static final int JELLY_BEAN = 16;
+    public static final int JELLY_BEAN_MR1 = 17;
+    public static final int JELLY_BEAN_MR2 = 18;
+    public static final int KITKAT = 19;
+    public static final int KITKAT_WATCH = 20;
+    public static final int LOLLIPOP = 21;
+    public static final int LOLLIPOP_MR1 = 22;
+    public static final int M = 23;
+    public static final int N = 24;
+    public static final int N_MR1 = 25;
+    public static final int O = 26;
+    public static final int O_MR1 = 27;
+    public static final int P = 28;
+    public static final int Q = 29;
+    public static final int R = 30;
+    public static final int S = 31;
+
+    public VERSION_CODES() {
+        throw new RuntimeException("Stub!");
+    }
+}
+```
+
+## Reference
+
+* [Codenames, Tags, and Build Numbers](https://source.android.com/setup/start/build-numbers)
+* [Android 13 Developer Preview](https://developer.android.com/about/versions/13)
