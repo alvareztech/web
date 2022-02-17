@@ -1,0 +1,35 @@
+---
+title: Servicios de Firebase que dependen de Google Play Services
+date: 2021-03-03 08:00
+tags: [firebase, google play]
+---
+
+Si bien los SDKs nativos para Android pueden depender de _Google Play Services_ siempre se pueden usar los servicios de Firebase sin estos si se usa en su lugar la API REST del servicio en cuestión.
+
+## Servicios de Firebase que NO requieren Google Play Services
+
+* `com.google.firebase:firebase-auth:20.0.0`
+* `com.google.firebase:firebase-firestore:22.0.0`
+* `com.google.firebase:firebase-functions:19.1.0`
+* `com.google.firebase:firebase-auth:20.0.0`
+* `com.google.firebase:firebase-crashlytics:17.2.2`
+* `com.google.firebase:firebase-inappmessaging:19.1.2`
+* `com.google.firebase:firebase-inappmessaging-display:19.1.2`
+* `com.google.firebase:firebase-installations:16.3.3`
+* `com.google.firebase:firebase-database:19.5.1`
+* `com.google.firebase:firebase-config:20.0.0`
+
+## Servicios de Firebase que SI requieren Google Play Services
+
+* `com.google.android.gms:play-services-ads:19.5.0`
+* `com.google.firebase:firebase-analytics:18.0.0`
+* `com.google.firebase:firebase-appindexing:19.1.0`
+* `com.google.firebase:firebase-messaging:21.0.0`
+* `com.google.firebase:firebase-dynamic-links:19.1.1`
+* `com.google.firebase:firebase-ml-vision:24.1.0`
+* `com.google.firebase:firebase-ml-model-interpreter:22.0.4`
+* `com.google.firebase:firebase-perf:19.0.9`
+
+## Reference
+
+[Dependencias de los SDK de Android de Firebase en los servicios de Google Play](https://firebase.google.com/docs/android/android-play-services)
