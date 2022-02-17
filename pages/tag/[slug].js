@@ -17,7 +17,7 @@ export default function Tag({ tag, posts }) {
           className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
           <div>
             <h2
-              className={classNames('text-white', "uppercase", "bg-gray-500", 'inline-flex items-center px-2 rounded text-xl font-bold')}>{tag}</h2>
+              className={classNames('text-white', "uppercase", getColor(tag), 'inline-flex items-center px-2 rounded text-xl font-bold')}>{tag}</h2>
           </div>
 
           <div
