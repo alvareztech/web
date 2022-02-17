@@ -1,0 +1,178 @@
+---
+title: "Codelab: Crear un bot para Slack sobre Google Cloud Platform"
+summary: Un codelab realizado en el Google IO Extended en La Paz el 11 de Junio 2016.
+tags: codelab, chatbot, slack, google cloud
+language: es
+date: 2016-06-11 08:00
+---
+
+Un codelab realizado en el Google IO Extended en La Paz el 11 de Junio 2016.
+
+* [Página del evento](https://www.facebook.com/events/1169325799779223/)
+
+## Slides
+
+<iframe allowFullScreen="" frameBorder="0" height="485" marginHeight="0" marginWidth="0" scrolling="no" src="//www.slideshare.net/slideshow/embed_code/key/Aodsl6q4p4iUQq" style={{"border":"1px solid #CCC","borderWidth":"1px","marginBottom":"5px","maxWidth":"100%"}} width="100%"></iframe>
+
+- [Descarga](https://drive.google.com/file/d/0B5wCprFP-EBZcEd2ajVHMHFnZms/view?usp=sharing)
+
+
+## Guía
+
+### 1. Google Cloud Platform
+
+- [console.cloud.google.com](https://console.cloud.google.com)
+
+### 2. Slack Team
+
+- [slack.com/create](https://slack.com/create)
+
+### 3. Google Cloud Shell
+
+- `gcloud auth list`
+- `gcloud config list project`
+- `gcloud config set compute/zone us-central1-f`
+
+### 4. Código de ejemplo
+
+- `git clone https://github.com/googlecodelabs/cloud-slack-bot.git`
+- `cd cloud-slack-bot/start`
+
+### 5. Slack bot
+
+- [my.slack.com/services/new/bot](http://my.slack.com/services/new/bot)
+
+### 6. La App
+
+- `npm install`
+- `nano kittenbot.js`
+- `node kittenbot.js`
+
+### 7. Primera modificación
+
+```javascript
+var Botkit = require('botkit')
+
+var controller = Botkit.slackbot({debug: false})
+controller
+  .spawn({
+    token: 'your-slack-token' // Edit this line!
+  })
+  .startRTM(function (err) {
+    if (err) {
+      throw new Error(err)
+    }
+  })
+
+controller.hears(
+  ['hola'], ['direct_message', 'direct_mention', 'mention'],
+  function (bot, message) { bot.reply(message, 'Miauuu. :smile_cat:') })
+```
+
+[Gist en GitHub](https://gist.github.com/alvareztech/61b37ea11a7a75d12ca44586973310d8)
+
+### 8. Segunda modificación
+
+```javascript
+// INICIO CONVERSACIÓN
+var maxCats = 20
+var catEmojis = [
+  ':smile_cat:',
+  ':smiley_cat:',
+  ':joy_cat:',
+  ':heart_eyes_cat:',
+  ':smirk_cat:',
+  ':kissing_cat:',
+  ':scream_cat:',
+  ':crying_cat_face:',
+  ':pouting_cat:',
+  ':cat:',
+  ':cat2:',
+  ':leopard:',
+  ':lion_face:',
+  ':tiger:',
+  ':tiger2:'
+]
+
+controller.hears(
+  ['gato', 'gatos', 'gatito', 'gatitos'],
+  ['ambient', 'direct_message', 'direct_mention', 'mention'],
+  function (bot, message) {
+    bot.startConversation(message, function (err, convo) {
+      if (err) {
+        console.log(err)
+        return
+      }
+      convo.ask('¿Quiéres que te envie gatitos? Dime SI o NO.', [
+        {
+          pattern: bot.utterances.yes,
+          callback: function (response, convo) {
+            convo.say('¡Genial!')
+            convo.ask('¿Cuantos?', [
+              {
+                pattern: '[0-9]+',
+                callback: function (response, convo) {
+                  var numCats =
+                  parseInt(response.text.replace(/[^0-9]/g, ''), 10)
+                  if (numCats === 0) {
+                    convo.say({
+                      'text': 'Lo siento pero yo no puedo enviarte cero gatos. ' +
+                        'Toma un perro. :dog:',
+                      'attachments': [
+                        {
+                          'fallback': 'Chihuahua Bubbles - https://youtu.be/s84dBopsIe4',
+                          'text': '<https://youtu.be/s84dBopsIe4|' +
+                            'Chihuahua Bubbles>!'
+                        }
+                      ]
+                    })
+                  } else if (numCats > maxCats) {
+                    convo.say('Lo siento, ' + numCats + ' es muchos gatos.')
+                  } else {
+                    var catMessage = ''
+                    for (var i = 0; i < numCats; i++) {
+                      catMessage = catMessage +
+                      catEmojis[Math.floor(Math.random() * catEmojis.length)]
+                    }
+                    convo.say(catMessage)
+                  }
+                  convo.next()
+                }
+              },
+              {
+                default: true,
+                callback: function (response, convo) {
+                  convo.say(
+                    "Mmmmm no te entiendo. Ingresa un número, por favor.")
+                  convo.repeat()
+                  convo.next()
+                }
+              }
+            ])
+            convo.next()
+          }
+        },
+        {
+          pattern: bot.utterances.no,
+          callback: function (response, convo) {
+            convo.say('Bueno, quizás luego.')
+            convo.next()
+          }
+        },
+        {
+          default: true,
+          callback: function (response, convo) {
+            // Repeat the question.
+            convo.repeat()
+            convo.next()
+          }
+        }
+      ])
+    })
+  })
+  // FIN CONVERSACIÓN
+```
+
+## Código
+
+* [Gist en GitHub](https://gist.github.com/alvareztech/8a169a0006dc845fdbf610539b48dd83)
