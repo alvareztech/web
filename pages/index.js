@@ -107,6 +107,8 @@ function getColor(tag) {
       return "bg-purple-500"
     case "firebase":
       return "bg-yellow-500"
+    case "swift":
+      return "bg-orange-500"
   }
   return "bg-gray-500"
 }
