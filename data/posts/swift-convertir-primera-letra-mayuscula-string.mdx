@@ -1,0 +1,28 @@
+---
+title: Cómo convertir la primera letra a mayúscula de un String
+tags: [swift]
+date: 2021-03-03 08:00
+---
+
+Si quieres convertir la primera letra de un String a mayúscula sin importar el resto de las letras, adiciona esta extensión:
+
+```java
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
+```
+
+Un ejemplo para probarlo:
+
+```swift
+let test = "winter is Comming"
+print(test.capitalizingFirstLetter())
+```
+
+Actualizado para Swift 5.0. Disponible desde iOS 8.0
