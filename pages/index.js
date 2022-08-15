@@ -21,7 +21,7 @@ export default function Home({ posts }) {
               Hi! I am Daniel
             </span>
             <span className="block text-white">
-              On this site I share everything I do. Tutorials, code and more.
+              On this site, I share some small projects and content I develop in my spare time. Most things are related to tech and code.
             </span>
           </h2>
         </div>
@@ -33,7 +33,7 @@ export default function Home({ posts }) {
           className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
           <div>
             <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-              Recent publications
+              Some posts
             </h2>
           </div>
 
