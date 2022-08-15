@@ -65,12 +65,13 @@ export default function Social() {
             <span className="mt-2 block text-3xl text-center leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight">
               Daniel Alvarez
             </span>
-          </h1>       
+          </h1>
           {
             socials.map((item) => (
               <a key={item.name}
                 href={item.href}
                 target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center m-2 px-2.5 py-1.5 border border-transparent text-lg font-medium rounded text-blue-500 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 <item.icon className="h-6 w-6 mr-2" aria-hidden="true" />
                 {item.name}
