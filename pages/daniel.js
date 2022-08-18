@@ -89,7 +89,7 @@ export default function Daniel() {
                 </p>
                 <h3>How we helped</h3>
                 <p>
-                  <div class="badge-base LI-profile-badge" data-locale="es_ES" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="alvareztech" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://mx.linkedin.com/in/alvareztech?trk=profile-badge">Daniel Alvarez</a></div>
+                  <div className="badge-base LI-profile-badge" data-locale="es_ES" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="alvareztech" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://mx.linkedin.com/in/alvareztech?trk=profile-badge">Daniel Alvarez</a></div>
                 </p>
                 <p>
                   Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique
