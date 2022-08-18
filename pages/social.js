@@ -62,7 +62,7 @@ export default function Social() {
         <div className="text-lg max-w-prose mx-auto">
           <h1>
             <span className="block text-lg text-center text-blue-600 font-semibold">Social Networks</span>
-            <span className="mt-2 block text-3xl text-center leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight">
+            <span className="mt-2 mb-8 block text-3xl text-center leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight">
               Daniel Alvarez
             </span>
           </h1>
