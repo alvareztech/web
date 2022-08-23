@@ -1,5 +1,4 @@
 import Layout from '../components/layout'
-import { MailIcon, PhoneIcon } from '@heroicons/react/outline'
 import Head from 'next/head'
 
 const socials = [
