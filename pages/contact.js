@@ -1,12 +1,13 @@
 import Layout from '../components/layout'
 import { MailIcon, PhoneIcon } from '@heroicons/react/outline'
 import Head from 'next/head'
+import { getTitle, titleContact } from '../lib/texts'
 
 export default function Contact() {
   return (
     <Layout>
       <Head>
-        <title>Contact - ALVAREZ.tech</title>
+        <title>{ getTitle(titleContact) }</title>
       </Head>
       <div className="bg-white">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">

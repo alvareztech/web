@@ -1,16 +1,16 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
+import Layout from '../components/layout'
 import { getAllPosts } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { classNames, tagColor } from "../lib/util";
-import Image from 'next/image'
+import { titleSite, subtitleSite } from '../lib/texts'
 
 export default function Home({ posts }) {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{ titleSite }</title>
       </Head>
 
       <section className="bg-gradient-to-r from-cyan-500 to-blue-500">
@@ -21,7 +21,7 @@ export default function Home({ posts }) {
               Hi! I am Daniel
             </span>
             <span className="block text-white">
-              On this site, I share some small projects and content I develop in my spare time. Most things are related to tech and code.
+              { subtitleSite }
             </span>
           </h2>
         </div>
