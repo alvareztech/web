@@ -3,6 +3,9 @@ import { getAllPosts } from "../lib/posts";
 import Link from "next/link";
 import Head from "next/head";
 
+const title = "Courses"
+const subtitle = "Some courses I have taught in the past and their resources. 🧐"
+
 export default function Courses({ courses }) {
   return (
     <Layout>
@@ -15,9 +18,9 @@ export default function Courses({ courses }) {
         </div>
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center">
-            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">Courses</h2>
+            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">{title}</h2>
             <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-              Some courses I teach and their resources. Very soon I will publish more courses and new courses 😉
+              {subtitle}
             </p>
           </div>
           <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">

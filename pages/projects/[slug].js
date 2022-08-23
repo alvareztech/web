@@ -24,6 +24,9 @@ export default function Project({ project }) {
               <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                 {project.frontmatter.title}
               </p>
+              <span className="uppercase inline-flex items-center mt-4 px-2 py-0.5 rounded-md text-sm font-medium bg-blue-100 text-blue-800">
+                {project.frontmatter.status}
+              </span>
             </div>
           </div>
           <div className="relative">
