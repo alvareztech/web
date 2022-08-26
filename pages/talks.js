@@ -3,12 +3,13 @@ import Layout from "../components/layout"
 import Link from "next/link"
 import Head from "next/head"
 import { classNames } from "../lib/util";
+import { getTitle, subtitleTalks, titleTalks } from "../lib/texts";
 
 export default function Talks({ talks }) {
   return (
     <Layout>
       <Head>
-        <title>Talks - ALVAREZ.tech</title>
+        <title>{ getTitle(titleTalks) }</title>
       </Head>
       <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
         <div className="absolute inset-0">
@@ -16,9 +17,9 @@ export default function Talks({ talks }) {
         </div>
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center">
-            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">Talks</h2>
+            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">{ titleTalks }</h2>
             <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-              Some tech talks that I have done over the years. Soon I will upload more talks and resources of them. 🙂
+              { subtitleTalks }
             </p>
           </div>
 
