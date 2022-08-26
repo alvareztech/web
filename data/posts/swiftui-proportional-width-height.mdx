@@ -1,0 +1,65 @@
+---
+title: Proportional Width or Height
+summary: You can use percentages for the width and height of your view with GeometryReader.
+date: 2022-08-25 08:00
+tags: [swiftui, swift]
+---
+
+You can adjust the width and height by percentages in SwiftUI, you just have to use `GeometryReader` and the line `.frame(width: metrics.size.width * 0.20)` in your view, _0.20_ is 20% of the total width. Obviously 100% is the total width.
+
+> The `GeometryReader` is container view that defines its content as a function of its own size and coordinate space.
+
+Let's look at the example for width.
+
+```swift
+GeometryReader { metrics in
+    HStack(spacing: 0) {
+        Text("First")
+            .frame(width: metrics.size.width * 0.50, alignment: .leading)
+            .background(.orange)
+        Text("Second ")
+            .frame(width: metrics.size.width * 0.30)
+            .background(.cyan)
+        Text("Third")
+            .frame(width: metrics.size.width * 0.20)
+            .background(.indigo)
+    }
+}
+```
+
+- `alignment: .leading` this only serves to align the content.
+
+![SwiftUI proportional width](/images/swiftui-proportional-width-1.png)
+
+You can remove the _frame_ of the last element so that it fills the necessary if you wish.
+
+![SwiftUI proportional width](/images/swiftui-proportional-width-2.png)
+
+This works the same way for landscape mode.
+
+```swift
+GeometryReader { metrics in
+    VStack(spacing: 0) {
+        Text("First")
+            .frame(height: metrics.size.height * 0.50)
+            .frame(maxWidth: .infinity)
+            .background(.orange)
+        Text("Second")
+            .frame(width: .infinity, height: metrics.size.height * 0.30)
+            .frame(maxWidth: .infinity)
+            .background(.cyan)
+        Text("Third")
+            .frame(width: .infinity, height: metrics.size.height * 0.20)
+            .frame(maxWidth: .infinity)
+            .background(.indigo)
+    }
+}
+```
+
+- The second frame `.frame(maxWidth: .infinity)` is just to make the _Text_ full width, just for teaching purposes.
+
+![SwiftUI proportional height](/images/swiftui-proportional-height.png)
+
+## Reference
+
+- [GeometryReader](https://developer.apple.com/documentation/swiftui/geometryreader)
