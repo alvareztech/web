@@ -1,0 +1,32 @@
+---
+title: Spread syntax / Rest parameter
+summary: The three dots in Javascript are the Spread syntax or Rest paramater.
+date: 2022-08-25 08:00
+tags: [javascript]
+---
+
+## Spread syntax
+
+The _Spread syntax_ expands its content where multiple arguments are expected.
+
+```javascript
+const firstNumbers = [1, 2, 3, 4, 5];
+const allNumbers = [...firstNumbers, 6, 7, 8]; // this is [1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+## Rest parameters
+
+This is used to create a function that has a non-finite number of parameters.
+
+```javascript
+function doSomething(x, ...args) {}
+```
+
+```javascript
+doSomething("hi", 1, 2, 3, 4)
+```
+
+## References
+
+- [Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+- [Rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
