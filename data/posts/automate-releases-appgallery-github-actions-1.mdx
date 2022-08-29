@@ -27,7 +27,7 @@ This will generate a YAML file where we will write everything we want to do when
 
 This template can already be executed except for a modification to allow gradlew execution. This is necessary to avoid execute permission problems.
 
-```script
+```bash
 chmod +x gradlew
 ```
 
@@ -80,7 +80,7 @@ To upload our keystore file (it is necessary for the application signature) we w
 
 We will do this by command line with gpg.
 
-```script
+```bash
 gpg -c --armor mykeystore.jks
 ```
 
@@ -101,7 +101,7 @@ Well, the idea is to use these values in the workflow to generate the signed APK
 We are going to create a new step in our YAML and do the reverse that we did. First we generate the .asc file, then with the passphrase generate the final file in its corresponding directory.
 
 
-```script
+```yml
 - name: Prepare Secret Files   
   run: |   
      echo "${{ secrets.KEYSTORE }}" > alvareztech.jks.asc   
@@ -130,7 +130,7 @@ signingConfigs {
 
 So generating the signed APK is only:
 
-```script
+```bash
 ./gradlew assembleRelease
 ```
 
@@ -138,7 +138,7 @@ So generating the signed APK is only:
 
 For now we will download the result file of the workflow, the idea is to upload this file to AppGallery through the Publising API provided by AppGallery Connect, but now we will settle by downloading this artifact.
 
-```YAML
+```yml
 - name: Publish APK   
   uses: actions/upload-artifact@v2   
   with:   
@@ -156,7 +156,7 @@ We have everything ready to start using Publish API, we already take considerati
 
 The complete file so far is:
 
-```YAML
+```yml
 name: Android CI    
 on:    
  push:    
