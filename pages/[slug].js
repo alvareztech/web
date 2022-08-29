@@ -12,7 +12,7 @@ const components = { GitHub, YouTube, ...MDXComponent }
 const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.mdx`;
 
 export default function Post({ post }) {
-  const Component = useMemo(() => getMDXComponent(post.code), post.code);
+  const Component = useMemo(() => getMDXComponent(post.code), [post.code]);
   return (<Layout>
     <Head>
       <title>{post.frontmatter.title}</title>
