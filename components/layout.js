@@ -56,12 +56,15 @@ const navigation = [
 export default function Layout({ children, home }) {
   return <>
     <Head>
-      <meta name="description" content="Tutorials, videos, software development." />
-      <meta property="og:image" content="" />
-      <meta name="og:title" content={siteTitle} />
+      <meta name="description" content="Software Engineer" />
+
+      <meta property="og:site_name" content="ALVAREZ.tech" />
+      <meta property="og:image" content="image.png" />
+      <meta property="og:title" content={siteTitle} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@alvarez_tech" />
+      <meta name="twitter:image" content="image.png" />
       <meta name="twitter:creator" content="@alvarez_tech" />
       <meta name="twitter:label1" content="Written by" />
       <meta name="twitter:data1" content="Daniel Alvarez" />

@@ -17,6 +17,13 @@ export default function Post({ post }) {
     <Head>
       <title>{post.frontmatter.title}</title>
       <meta name='twitter:title' content={post.frontmatter.title} />
+
+      <meta property="og:title" content={post.frontmatter.title} />
+      <meta property="og:description" content={post.frontmatter.summary} />
+      <meta property='og:type' content='article'/>
+      <meta property="article:tag" content={post.tags?.[0]} />
+      <meta property="article:publisher" content="https://alvarez.tech" />
+      <meta property="article:author" content="https://alvarez.tech" />
     </Head>
 
     <div className="relative py-16 bg-white overflow-hidden">
