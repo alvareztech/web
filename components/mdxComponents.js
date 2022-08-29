@@ -97,7 +97,7 @@ const MDXComponent = {
   h2: Subtitle2,
   h3: Subtitle3,
   h4: Subtitle4,
-  pre: MyCode,
+  // pre: MyCode,
   ul: ListDisc,
   ol: ListDecimal
 };
