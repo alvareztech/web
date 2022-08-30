@@ -14,25 +14,33 @@ export default function handler(req, res) {
     production: "https://alvarez.tech",
   }[process.env.NODE_ENV];
 
-  const staticPages = fs.readdirSync({
-    development: 'pages',
-    production: './',
-  }[process.env.NODE_ENV], {withFileTypes: true})
-    .filter(fileName => fileName.isFile())
-    .filter((staticPage) => {
-      return ![
-        "_app.js",
-        "_document.js",
-        "_error.js",
-        "[slug].js",
-        "404.js",
-        "index.js",
-        "tag.js",
-      ].includes(staticPage.name);
-    })
-    .map((staticPagePath) => {
-      return `${baseUrl}/${staticPagePath.name.replace('.js', '')}`;
-    });
+  // const staticPages = fs.readdirSync({
+  //   development: 'pages',
+  //   production: './',
+  // }[process.env.NODE_ENV], {withFileTypes: true})
+  //   .filter(fileName => fileName.isFile())
+  //   .filter((staticPage) => {
+  //     return ![
+  //       "_app.js",
+  //       "_document.js",
+  //       "_error.js",
+  //       "[slug].js",
+  //       "404.js",
+  //       "index.js",
+  //       "tag.js",
+  //     ].includes(staticPage.name);
+  //   })
+  //   .map((staticPagePath) => {
+  //     return `${baseUrl}/${staticPagePath.name.replace('.js', '')}`;
+  //   });
+
+  const staticPages = [
+    `${baseUrl}/contact`,
+    `${baseUrl}/social`,
+    `${baseUrl}/talks`,
+    `${baseUrl}/courses`,
+    `${baseUrl}/projects`,
+  ]
 
   const pages = getPostSlugs('pages')
   const pagesPaths = pages.map((page) => {
