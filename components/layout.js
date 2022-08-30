@@ -59,14 +59,14 @@ export default function Layout({children, home}) {
       <meta name="description" content="Software Engineer"/>
 
       <meta property="og:site_name" content="ALVAREZ.tech"/>
-      <meta property="og:image" content="image.png"/>
+      <meta property="og:image" content="https://alvarez.tech/image.png"/>
       <meta property="og:title" content={siteTitle}/>
 
       <meta property="fb:app_id" content="269827340075535"/>
 
       <meta name="twitter:card" content="summary_large_image"/>
       <meta name="twitter:site" content="@alvarez_tech"/>
-      <meta name="twitter:image" content="image.png"/>
+      <meta name="twitter:image" content="https://alvarez.tech/image.png"/>
       <meta name="twitter:creator" content="@alvarez_tech"/>
       <meta name="twitter:label1" content="Written by"/>
       <meta name="twitter:data1" content="Daniel Alvarez"/>
