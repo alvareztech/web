@@ -30,7 +30,7 @@ const navigation2 = [
     href: 'https://twitter.com/alvarez_tech',
     icon: (props) => (<svg fill="currentColor" viewBox="0 0 24 24" {...props}>
       <path
-        d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+        d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
     </svg>),
   }, {
     name: 'GitHub',
@@ -46,56 +46,61 @@ const navigation2 = [
 ]
 
 const navigation = [
-  { name: 'Projects', href: '/projects' },
-  { name: 'Courses', href: '/courses' },
-  { name: 'Talks', href: '/talks' },
-  { name: 'Videos', href: '/tag/video' },
-  { name: 'About', href: '/about' },
+  {name: 'Projects', href: '/projects'},
+  {name: 'Courses', href: '/courses'},
+  {name: 'Talks', href: '/talks'},
+  {name: 'Videos', href: '/tag/video'},
+  {name: 'About', href: '/about'},
 ]
 
-export default function Layout({ children, home }) {
+export default function Layout({children, home}) {
   return <>
     <Head>
-      <meta name="description" content="Software Engineer" />
+      <meta name="description" content="Software Engineer"/>
 
-      <meta property="og:site_name" content="ALVAREZ.tech" />
-      <meta property="og:image" content="image.png" />
-      <meta property="og:title" content={siteTitle} />
+      <meta property="og:site_name" content="ALVAREZ.tech"/>
+      <meta property="og:image" content="image.png"/>
+      <meta property="og:title" content={siteTitle}/>
 
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@alvarez_tech" />
-      <meta name="twitter:image" content="image.png" />
-      <meta name="twitter:creator" content="@alvarez_tech" />
-      <meta name="twitter:label1" content="Written by" />
-      <meta name="twitter:data1" content="Daniel Alvarez" />
+      <meta property="fb:app_id" content="269827340075535"/>
 
-      <meta name="theme-color" content="#0a84ff" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <meta name="twitter:card" content="summary_large_image"/>
+      <meta name="twitter:site" content="@alvarez_tech"/>
+      <meta name="twitter:image" content="image.png"/>
+      <meta name="twitter:creator" content="@alvarez_tech"/>
+      <meta name="twitter:label1" content="Written by"/>
+      <meta name="twitter:data1" content="Daniel Alvarez"/>
 
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-      <link rel="manifest" href="/site.webmanifest" />
+      <meta name="theme-color" content="#0a84ff"/>
+      <meta name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"/>
+
+      <link rel="apple-touch-icon" sizes="180x180"
+            href="/apple-touch-icon.png"/>
+      <link rel="icon" type="image/png" sizes="32x32"
+            href="/favicon-32x32.png"/>
+      <link rel="icon" type="image/png" sizes="16x16"
+            href="/favicon-16x16.png"/>
+      <link rel="manifest" href="/site.webmanifest"/>
     </Head>
-
-
-
-
 
 
     <header>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
-        <div className="w-full py-6 flex items-center justify-between border-b border-blue-500 lg:border-none">
+        <div
+          className="w-full py-6 flex items-center justify-between border-b border-blue-500 lg:border-none">
           <div className="flex items-center">
             <Link href="/">
               <a>
-                <span className="text-blue-600 text-2xl font-bold font-mono tracking-tighter">ALVAREZ.tech</span>
+                <span
+                  className="text-blue-600 text-2xl font-bold font-mono tracking-tighter">ALVAREZ.tech</span>
               </a>
             </Link>
             <div className="hidden ml-10 space-x-8 lg:block">
               {navigation.map((link) => (
                 <Link href={link.href} key={link.name}>
-                  <a className="text-base font-medium text-blue-600 hover:text-blue-400">
+                  <a
+                    className="text-base font-medium text-blue-600 hover:text-blue-400">
                     {link.name}
                   </a>
                 </Link>
@@ -115,19 +120,14 @@ export default function Layout({ children, home }) {
         </div>
         <div className="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">
           {navigation.map((link) => (
-            <a key={link.name} href={link.href} className="text-base font-medium text-blue-600 hover:text-blue-400">
+            <a key={link.name} href={link.href}
+               className="text-base font-medium text-blue-600 hover:text-blue-400">
               {link.name}
             </a>
           ))}
         </div>
       </nav>
     </header>
-
-
-
-
-
-
 
 
     <main>
@@ -140,11 +140,11 @@ export default function Layout({ children, home }) {
         <div className="flex justify-center space-x-6 md:order-2">
           {navigation2.map((item) =>
             <a key={item.name} href={item.href}
-              className="text-gray-400 hover:text-gray-500"
-              rel="noreferrer"
-              target="_blank">
+               className="text-gray-400 hover:text-gray-500"
+               rel="noreferrer"
+               target="_blank">
               <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
+              <item.icon className="h-6 w-6" aria-hidden="true"/>
             </a>
           )}
         </div>
