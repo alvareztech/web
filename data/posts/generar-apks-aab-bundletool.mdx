@@ -13,7 +13,7 @@ Para hacerlo puedes descargar el tool de linea de comandos del repositorio ofici
 
 Es un archivo _.jar_ y para generar todos los APKs puedes usar el siguiente comando:
 
-```
+```bash
 bundletool build-apks --bundle=/MyApp/my_app.aab --output=/MyApp/my_app.apks
 ```
 
@@ -21,7 +21,7 @@ bundletool build-apks --bundle=/MyApp/my_app.aab --output=/MyApp/my_app.apks
 
 Si quieres generar APKs firmados, puedes ejecutar lo siguiente (necesitas tu keystore):
 
-```
+```bash
 bundletool build-apks --bundle=/MyApp/my_app.aab --output=/MyApp/my_app.apks --ks=/MyApp/keystore.jks --ks-key-alias=MyAlias
 ```
 
@@ -29,7 +29,7 @@ Y te pedirá los passwords de el keystore y del alias.
 
 Si lo que quieres es generar un solo APK a fines de prueba, para compartir sin saber del device destino puedes generar un __APK universal__ adicionando el siguiente _flag_:
 
-```
+```bash
 --mode=universal
 ```
 
