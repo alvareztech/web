@@ -34,27 +34,27 @@ export default function handler(req, res) {
       return `${baseUrl}/${staticPagePath.name.replace('.js', '')}`;
     });
 
-  // const pages = getPostSlugs('pages')
-  // const pagesPaths = pages.map((page) => {
-  //   return `${baseUrl}/${page.params.slug}`
-  // });
-  //
-  // const posts = getPostSlugs('posts')
-  // const postPaths = posts.map((post) => {
-  //   return `${baseUrl}/${post.params.slug}`
-  // });
-  //
-  // const projects = getPostSlugs('projects')
-  // const projectPaths = projects.map((project) => {
-  //   return `${baseUrl}/${project.params.slug}`
-  // });
-  //
-  // const talks = getPostSlugs('talks')
-  // const talksPaths = talks.map((talk) => {
-  //   return `${baseUrl}/${talk.params.slug}`
-  // });
+  const pages = getPostSlugs('pages')
+  const pagesPaths = pages.map((page) => {
+    return `${baseUrl}/${page.params.slug}`
+  });
 
-  const allPaths = [...staticPages];
+  const posts = getPostSlugs('posts')
+  const postPaths = posts.map((post) => {
+    return `${baseUrl}/${post.params.slug}`
+  });
+
+  const projects = getPostSlugs('projects')
+  const projectPaths = projects.map((project) => {
+    return `${baseUrl}/${project.params.slug}`
+  });
+
+  const talks = getPostSlugs('talks')
+  const talksPaths = talks.map((talk) => {
+    return `${baseUrl}/${talk.params.slug}`
+  });
+
+  const allPaths = [...staticPages, ...pagesPaths, ...postPaths, ...projectPaths, ...talksPaths];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
