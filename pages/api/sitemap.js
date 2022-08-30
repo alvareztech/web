@@ -14,7 +14,10 @@ export default function handler(req, res) {
     production: "https://alvarez.tech",
   }[process.env.NODE_ENV];
 
-  const staticPages = fs.readdirSync("pages", {withFileTypes: true})
+  const staticPages = fs.readdirSync({
+    development: 'pages',
+    production: './',
+  }[process.env.NODE_ENV], {withFileTypes: true})
     .filter(fileName => fileName.isFile())
     .filter((staticPage) => {
       return ![
