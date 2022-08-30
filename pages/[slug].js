@@ -9,8 +9,9 @@ import {useMemo} from "react";
 import Link from 'next/link';
 import Slideshare from "../components/slideshare";
 import SpeakerDeck from "../components/speakerdeck";
+import Slides from "../components/slides";
 
-const components = {GitHub, YouTube, Slideshare, SpeakerDeck, ...MDXComponent}
+const components = {GitHub, YouTube, Slideshare, SpeakerDeck, Slides, ...MDXComponent}
 const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.mdx`;
 
 export default function Post({post}) {
