@@ -46,12 +46,12 @@ export default function handler(req, res) {
 
   const projects = getPostSlugs('projects')
   const projectPaths = projects.map((project) => {
-    return `${baseUrl}/${project.params.slug}`
+    return `${baseUrl}/projects/${project.params.slug}`
   });
 
   const talks = getPostSlugs('talks')
   const talksPaths = talks.map((talk) => {
-    return `${baseUrl}/${talk.params.slug}`
+    return `${baseUrl}/talks/${talk.params.slug}`
   });
 
   const allPaths = [...staticPages, ...pagesPaths, ...postPaths, ...projectPaths, ...talksPaths];
