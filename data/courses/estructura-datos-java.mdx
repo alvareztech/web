@@ -1,0 +1,174 @@
+---
+title: Estructura de datos con Java
+summary: Curso de Estructura de datos en la Universidad Boliviana de Informática Subsede La Paz.
+tags: java, javafx
+language: es
+duration: 6
+versions: 1
+---
+Recursos y contenido del Curso:
+
+## Basics: Curso de Java
+
+[Videos para descargar del curso de Java](https://drive.google.com/open?id=0B5wCprFP-EBZWDhXbm9WOWRPS3M)
+
+## Introducción
+
+* [Dos arrays de objetos Estudiante](https://gist.github.com/alvareztech/3fbb5521d8d95743b0008872b68a9603)
+* [Uso de de la clase Scanner](https://gist.github.com/alvareztech/1b75cf4393ac4887bed5afcf8627e1e0)
+
+## Pilas
+
+* [Creación y despliegue de una Pila (Stack) de objetos carta](https://gist.github.com/alvareztech/f17faf564e06abf2560c2d3ad78fbee3)
+
+## Colas
+
+* [Cola de prioridad de personas y uso de contantes en Java](https://gist.github.com/alvareztech/5373b9518225d6824353f410e92aabc2)
+
+## JavaFX
+
+* [Aplicación Zodiaco](https://gist.github.com/alvareztech/aa89a2c7468fedd463c313603ef5e4ec)
+* [Aplicación Jankenpon](https://gist.github.com/alvareztech/ea3f3db64acce18ca47381df11fc4f25)
+* [Label con propiedades de centrado, fuente y color](https://gist.github.com/alvareztech/a9780d0468c556ac5655631f380678ca)
+* [ImageView en un Button](https://gist.github.com/alvareztech/455c98fbee7cb3c0a54d276922f64612)
+* [Imprimir](https://alvarez.tech/labs/javafx-printing) (Lab)
+* [GridPane](https://gist.github.com/alvareztech/993c9701ca236bffe64ece20b0becf05) (para acomodar en forma de grilla)
+* [TableView](https://gist.github.com/alvareztech/0506bbc84f32b6c740e729c2b8b31f64) (adicionar y eliminación de objetos en una tabla)
+* [JavaFX & TreeSet](https://gist.github.com/alvareztech/56a2fdc4ff3b0421471bdcd6004be906)
+* [Alerts](https://gist.github.com/alvareztech/b51b197123172b0e71a493efe8afebc1)
+* [Eliminación desde ListView](https://gist.github.com/alvareztech/b5ea06478778de7225bdb4bd2bd8a71c)
+* [Búsqueda en un ListView](https://gist.github.com/alvareztech/1cfbb4651b863938c07af94304d2a048)
+* [ChoiceBox](https://gist.github.com/alvareztech/674755b1cf5513a706148362cb5132b8)
+* [Uso de FXML](https://gist.github.com/alvareztech/4cbbf5aca181e45bb02cde6429428d10)
+* [Diferencia entre fechas, Date, Calendar](https://gist.github.com/alvareztech/4362417bb7f61a0a81247b317ea3228d)
+
+---
+
+Más ejemplos fueron publicados en el grupo de Facebook y en Classroom.
+
+---
+
+## Prácticas
+
+Prácticas que se realizaron durante la materia.
+
+---
+
+### Práctica 1
+
+Crear la clase `Cancion` que tenga los siguientes atributos:
+
+* nombre
+* artista
+* album
+* duracion
+
+Crear un array con al menos 5 canciones y crear un método para mostrar la canción de más duración.
+
+---
+
+### Práctica 2
+
+Crear un método estático en Main.java que sea capaz de que dadas dos pilas de libros, colocar los libros del autor con nombre `Luisa` en la primera pila y los demás en la segunda pila. Se pueden usar pilas auxiliares o temporales.
+
+---
+
+### Práctica 3
+
+Se tiene una agencia que vende tickets para entradas a un concierto de música. Dicha agencia tiene dos ventanillas en las cuales cada ventanilla tiene dos pilas de tickets una de tipo VIP y otra de tipo general.
+
+Los tickets tienen como atributos el tipo, costo y el nombre del concierto que pertenece.
+
+Cada vez que se vende una entrada se lo traslada a una sola pila de vendidos.
+
+Se pide realizar los siguientes ejercicios:
+
+1. Determinar cuanto se recaudó al vender las entradas.
+2. Determinar cuantos tickets se quedaron sin vender hasta el momento.
+3. Determinar que tipo de entradas se vendió más.
+
+> Nota: Cada solución debe estar en un método estático.
+
+---
+
+### Práctica 4
+
+Una clínica de salud sólo puede atender a un paciente a la vez y tienen una fila larga de pacientes esperando atención.
+
+Se pide crear una cola de simple con objetos paciente y solucionar los siguientes ejercicios. Cada paciente tiene como atributos el nombre, edad y sexo.
+
+1. Despachar (eliminar) a los pacientes que tengan edad menor a 10 años, puesto que el doctor no está capacitado para atenderlos.
+
+2. Trasladar a todos los hombres a una nueva fila de solo hombres.
+
+3. De ambas filas de pacientes, mostrar a los pacientes por orden de edad, de mayor a menor.
+
+> Nota: Cada solución debe estar en un método estático en el clase principal (`Main.java`)
+
+---
+
+### Práctica 5
+
+Seguir el siguiente lab:
+
+[Generar un gráfico Pie con JavaFX](https://alvarez.tech/labs/generar-piechart-javafx)
+
+---
+
+### Práctica 6
+
+Desarrollar el juego de "Piedra, Papel, Tijeras" con las siguientes características:
+
+* Tres botones con una Imagen que represente Piedra, Papel, Tijeras.
+* El usuario al presionar el botón esta jugando con la computadora, la computadora debe usar una de las tres opciones al azar.
+* Se debe mostrar abajo un `Label` con un mensaje de quien ganó.
+
+El siguiente código genera un número aleatorio hasta 3, es decir puede ser 0, 1, 2.
+
+```java
+Random random = new Random();
+int numeroAleatorio = random.nextInt(3);
+System.out.println(numeroAleatorio);
+```
+
+De esa forma se puede hacer que la computadora juegue Papel, Piedra o Tijeras al azar.
+
+---
+
+## Tests
+
+### Test 1
+
+#### Versión 1
+
+Se tiene una memoria USB (pendrive) que almacena varios archivos en un cola simple. Cada archivo tiene un nombre, extensión, peso en KB (por ejemplo 232.5 KB).
+Se pide realizar lo siguiente:
+
+1. (35%) Calcular cuanto de espacio en MB tiene ocupado el pendrive.
+2. (40%) Quitar todos los archivos de música con extensión .mp3 y .wav, colocarlos en otro pendrive de solo esos archivos.
+3. (25%) Crear un nuevo método que muestre el contenido de la cola de forma inversa.
+
+#### Versión 2
+
+Se tiene una memoria USB (pendrive) que almacena varios archivos en un cola simple. Cada archivo tiene un nombre, extensión, peso en MB (por ejemplo 2.7 MB).
+Se pide realizar lo siguiente:
+
+1. (40%) Quitar todos los archivos de fotografías .jpg y .png, colocarlos en otro pendrive de solo esos archivos.
+2. (35%) Calcular cuanto de espacio en MB tiene ocupado el pendrive.
+3. (25%) Crear un nuevo método que muestre el contenido de la cola de forma inversa.
+
+#### Soluciones
+
+* [Por Juan Daniel Ramos](https://gist.github.com/JDRamosC/3119035171078f9d681a404554686c07)
+* [Por Pablo Sanchez](https://gist.github.com/PabloSanchezMartinez/3d1e3634c6e77f130f59f75f91ee5124)
+
+---
+
+## Ejercicios
+
+Una tienda de disfraces se va preparando para la fecha de Halloween. La tienda va elaborando disfraces y cuando ya está listo para la venta lo registran en un listado. Un listado que tiene el nombre del difraz, el sexo para cual es, el precio se venta, además si es para adulto o niño.
+
+1. Se pide implementar y tener al menos 7 disfraces para la venta, además de mostrar el contenido del listado 
+2. Hacer un cálculo para ver cuánto se ganará si se vende todo los disfraces para vender 
+3. Determinar que disfraces hay más en stock. Por ejemplo: hay más disfraces de hombres adultos o hay más disfraces de mujeres niñas 
+
