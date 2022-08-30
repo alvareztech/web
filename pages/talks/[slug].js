@@ -7,8 +7,9 @@ import {useMemo} from "react";
 import Image from 'next/image';
 import Head from 'next/head';
 import Slideshare from "../../components/slideshare";
+import SpeakerDeck from "../../components/speakerdeck";
 
-const components = {GitHub, Slideshare, ...MDXComponent}
+const components = {GitHub, Slideshare, SpeakerDeck, ...MDXComponent}
 
 export default function Talk({talk}) {
   const Component = useMemo(() => getMDXComponent(talk.code), talk.code);
