@@ -9,11 +9,7 @@ export default function handler(req, res) {
   // Instructing the Vercel edge to cache the file
   res.setHeader('Cache-control', 'stale-while-revalidate, s-maxage=3600')
 
-
-  const baseUrl = {
-    development: "http://localhost:3000",
-    production: "https://alvarez.tech",
-  }[process.env.NODE_ENV];
+  const baseUrl = "https://alvarez.tech";
 
   const staticPages = fs.readdirSync("pages", {withFileTypes: true})
     .filter(fileName => fileName.isFile())
