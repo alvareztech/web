@@ -7,8 +7,9 @@ import MDXComponent from "../components/mdxComponents";
 import {getMDXComponent} from "mdx-bundler/client";
 import {useMemo} from "react";
 import Link from 'next/link';
+import Slideshare from "../components/slideshare";
 
-const components = {GitHub, YouTube, ...MDXComponent}
+const components = {GitHub, YouTube, Slideshare, ...MDXComponent}
 const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.mdx`;
 
 export default function Post({post}) {
