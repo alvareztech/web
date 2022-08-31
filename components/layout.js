@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-
-const name = 'ALVAREZ.tech'
-export const siteTitle = 'ALVAREZ.tech, Software Development by Daniel'
+import {titleSite} from "../lib/texts";
 
 const navigation2 = [
   {
@@ -60,7 +58,7 @@ export default function Layout({children, home}) {
 
       <meta property="og:site_name" content="ALVAREZ.tech"/>
       <meta property="og:image" content="https://alvarez.tech/image.png"/>
-      <meta property="og:title" content={siteTitle}/>
+      <meta property="og:title" content={titleSite}/>
 
       <meta property="fb:app_id" content="269827340075535"/>
 
@@ -127,6 +125,25 @@ export default function Layout({children, home}) {
           ))}
         </div>
       </nav>
+
+      {home &&
+        <div className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24">
+          <div className="text-center">
+            <h1
+              className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+              <span className="block xl:inline">Daniel</span>{' '}
+              <span className="block text-blue-600 xl:inline">Alvarez</span>
+            </h1>
+            <p
+              className="mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
+              Hi! I&apos;m a software engineer. I share some projects and
+              content I develop in my spare time. Most things are related
+              to <span className="text-blue-500 font-medium">tech</span> and
+              code.
+            </p>
+          </div>
+        </div>
+      }
     </header>
 
 
