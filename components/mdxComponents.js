@@ -9,7 +9,7 @@ const CustomLink = (props) => {
     return (
       <Link href={href}>
         <a {...props}
-          className="font-medium text-sky-500 underline decoration-2 decoration-sky-500 hover:no-underline"
+           className="font-medium text-sky-500 underline decoration-2 decoration-sky-500 hover:no-underline"
         >{props.children}</a>
       </Link>
     );
@@ -69,7 +69,7 @@ const Subtitle4 = (props) => {
 const MyCode = (props) => {
   return (
     <pre {...props}
-      className="p-3 text-base block whitespace-pre overflow-x-scroll bg-amber-100 rounded-md">
+         className="p-3 text-base block whitespace-pre overflow-x-scroll bg-amber-100 rounded-md">
       {props.children}
     </pre>
   )
@@ -87,6 +87,15 @@ const ListDecimal = (props) => {
   )
 }
 
+const Blockquote = (props) => {
+  return (
+    <blockquote
+      className="bg-amber-100 border-l-8 border-amber-300">
+      <p className="px-4 py-1 italic">
+        {props.children}
+      </p>
+    </blockquote>)
+}
 
 const MDXComponent = {
   Image,
@@ -99,7 +108,8 @@ const MDXComponent = {
   h4: Subtitle4,
   // pre: MyCode,
   ul: ListDisc,
-  ol: ListDecimal
+  ol: ListDecimal,
+  blockquote: Blockquote
 };
 
 export default MDXComponent;
