@@ -6,8 +6,9 @@ import GitHub from '../../components/github';
 import { useMemo } from "react";
 import Image from 'next/image';
 import Head from 'next/head';
+import GooglePlay from "../../components/googleplay";
 
-const components = { GitHub, ...MDXComponent }
+const components = { GitHub, GooglePlay, ...MDXComponent }
 
 export default function Project({ project }) {
   const Component = useMemo(() => getMDXComponent(project.code), project.code);
