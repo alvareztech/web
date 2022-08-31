@@ -3,6 +3,7 @@ import { getAllPosts } from "../lib/posts";
 import Link from "next/link";
 import Head from "next/head";
 import { titleCourses, subtitleCourses, getTitle } from "../lib/texts";
+import Date from "../components/date";
 
 export default function Courses({ courses }) {
   return (
@@ -40,6 +41,11 @@ export default function Courses({ courses }) {
                         <p className="mt-3 text-base text-gray-500">{course.summary}</p>
                       </a>
                     </Link>
+                    <div className="mt-6 flex items-center">
+                      <div className="flex space-x-1 text-sm text-gray-400">
+                        <Date dateString={course.date} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -4,6 +4,7 @@ import Link from "next/link"
 import Head from "next/head"
 import { classNames } from "../lib/util";
 import { getTitle, subtitleTalks, titleTalks } from "../lib/texts";
+import Date from "../components/date";
 
 export default function Talks({ talks }) {
   return (
@@ -41,6 +42,11 @@ export default function Talks({ talks }) {
                         <p className="mt-3 text-base text-gray-500">{talk.summary}</p>
                       </a>
                     </Link>
+                    <div className="mt-6 flex items-center">
+                      <div className="flex space-x-1 text-sm text-gray-400">
+                        <Date dateString={talk.date} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
