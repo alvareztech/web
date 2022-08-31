@@ -31,7 +31,7 @@ export default function Talks({ talks }) {
                     <p className="text-sm font-medium text-blue-600">
                       <Link href={"/talks/" + talk.slug}>
                         <a className="hover:underline">
-                          <span className="uppercase">{talk.category}</span>
+                          <span className="uppercase">{talk.tags?.[0]}</span>
                         </a>
                       </Link>
                     </p>

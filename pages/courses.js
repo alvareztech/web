@@ -30,7 +30,7 @@ export default function Courses({ courses }) {
                     <p className="text-sm font-medium text-blue-600">
                       <Link href={"/courses/" + course.slug}>
                         <a className="hover:underline">
-                          <span className="uppercase">{course.category}</span>
+                          <span className="uppercase">{course.tags?.[0]}</span>
                         </a>
                       </Link>
                     </p>
