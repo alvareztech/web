@@ -1,0 +1,37 @@
+---
+title: Pull Request report generator
+summary: A python script to generate PDF (and HTML) Pull Request reports.
+tags: [python]
+language: en
+category: tool
+status: open-to-updates
+---
+
+A python script to generate PDF (and HTML) Pull Request reports.
+
+The report includes:
+
+- Approvers for each PR with the approval date
+- Modified files
+- Merged time
+- Commit hash
+- Direct links to Github commits, users, and pull requests
+
+## Running
+
+It is possible to generate one or more repository reports with a command line with the following parameters:
+
+```bash
+python3 main.py --since v2.0 --until v2.8 --repos repo1,repo2
+```
+
+- `since`: Tag name of the penultimate version from which the report will be generated.
+- `until`: Tag name of the latest version or the one from which the report is to be generated.
+- `repos`: List of repositories (slug only) separated by a single comma (no spaces)
+- `token`: Token or PAT (Personal Access Token) from Github. This parameter is optional if the `config.py` file is used.
+
+The `repos` parameter can be set the following values to automatically generate reports from all repos in `util.py`.
+
+[More info](https://github.com/alvareztech/pull-request-report-generator)
+
+<GitHub repo="pull-request-report-generator"/>
