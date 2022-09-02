@@ -6,6 +6,7 @@ import Date from '../components/date'
 import { classNames } from "../lib/util";
 import { titleSite } from '../lib/texts'
 import Post from '../components/post'
+import Project from '../components/project'
 
 export default function Home({ posts, projects }) {
   return (
@@ -30,21 +31,7 @@ export default function Home({ posts, projects }) {
           <div className="mx-auto mt-8 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
             {
               projects.map((project) => (
-                <div key={project.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
-                  <div className="flex flex-1 flex-col justify-between bg-white p-6">
-                    <div className="flex-1">
-                      <p className="text-sm font-semibold font-mono text-blue-600 uppercase">
-                        {project.category}
-                      </p>
-                      <Link href={"/projects/" + project.slug}>
-                        <a className="mt-2 block">
-                          <p className="text-xl font-black font-mono text-gray-900 tracking-tighter">{project.title}</p>
-                          <p className="mt-3 text-base text-gray-500">{project.summary}</p>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+                <Project project={project} key={project.slug} />
               ))
             }
           </div>
