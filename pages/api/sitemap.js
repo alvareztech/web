@@ -1,5 +1,5 @@
 import fs from "fs";
-import {getPostSlugs} from "../../lib/posts";
+import { getPostSlugs, getTags } from "../../lib/posts";
 
 export default function handler(req, res) {
 
@@ -43,26 +43,21 @@ export default function handler(req, res) {
   ]
 
   const pages = getPostSlugs('pages')
-  const pagesPaths = pages.map((page) => {
-    return `${baseUrl}/${page.params.slug}`
-  });
+  const pagesPaths = pages.map((page) => `${baseUrl}/${page.params.slug}`);
 
   const posts = getPostSlugs('posts')
-  const postPaths = posts.map((post) => {
-    return `${baseUrl}/${post.params.slug}`
-  });
+  const postPaths = posts.map((post) => `${baseUrl}/${post.params.slug}`);
 
   const projects = getPostSlugs('projects')
-  const projectPaths = projects.map((project) => {
-    return `${baseUrl}/projects/${project.params.slug}`
-  });
+  const projectPaths = projects.map((project) => `${baseUrl}/projects/${project.params.slug}`);
 
   const talks = getPostSlugs('talks')
-  const talksPaths = talks.map((talk) => {
-    return `${baseUrl}/talks/${talk.params.slug}`
-  });
+  const talksPaths = talks.map((talk) => `${baseUrl}/talks/${talk.params.slug}`);
 
-  const allPaths = [...staticPages, ...pagesPaths, ...postPaths, ...projectPaths, ...talksPaths];
+  const tags = getTags()
+  const tagPaths = tags.map(tag => `${baseUrl}/tag/${tag}`)
+
+  const allPaths = [...staticPages, ...pagesPaths, ...postPaths, ...projectPaths, ...talksPaths, ...tagPaths];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
