@@ -37,7 +37,7 @@ export default function Home({ posts, projects }) {
                       </p>
                       <Link href={"/projects/" + project.slug}>
                         <a className="mt-2 block">
-                          <p className="text-xl font-semibold text-gray-900">{project.title}</p>
+                          <p className="text-xl font-black font-mono text-gray-900 tracking-tighter">{project.title}</p>
                           <p className="mt-3 text-base text-gray-500">{project.summary}</p>
                         </a>
                       </Link>
@@ -77,7 +77,7 @@ export default function Home({ posts, projects }) {
                       </Link>
                       <Link href={post.slug}>
                         <a className="mt-2 block">
-                          <p className="text-xl font-semibold text-gray-900">{post.title}</p>
+                          <p className="text-xl font-black font-mono tracking-tighter text-gray-900">{post.title}</p>
                           <p className="mt-3 text-base text-gray-500">{post.summary}</p>
                         </a>
                       </Link>

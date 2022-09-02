@@ -114,12 +114,12 @@ export default function Post({post}) {
           <h1>
             <Link href={"/tag/" + post.frontmatter.tags?.[0]}>
               <span
-                className="block text-base text-center text-blue-600 font-semibold tracking-wide uppercase">
+                className="block text-base text-center text-blue-600 font-semibold font-mono tracking-wide uppercase">
                 {post.frontmatter.tags?.[0]}
               </span>
             </Link>
             <span
-              className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              className="mt-2 block text-3xl text-center leading-8 font-black font-mono tracking-tighter text-gray-900 sm:text-4xl">
               {post.frontmatter.title}
             </span>
           </h1>
