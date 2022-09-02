@@ -54,11 +54,11 @@ const navigation = [
 export default function Layout({children, home}) {
   return <>
     <Head>
-      <meta name="description" content="Software Engineer"/>
+      <meta name="description" content="Projects I'm working on, iOS, Android, web, automation, mostly related to tech."/>
 
       <meta property="og:site_name" content="ALVAREZ.tech"/>
       <meta property="og:image" content="https://alvarez.tech/image.png"/>
-      <meta property="og:title" content={titleSite}/>
+      <meta property="og:title" content="ALVAREZ.tech | Daniel Alvarez | Software Engineer"/>
 
       <meta property="fb:app_id" content="269827340075535"/>
 
