@@ -30,7 +30,7 @@ En este tutorial veremos que hicimos y como lo configuramos.
 
 Para utilizar Fresco, el primer paso es colocar la dependencia en el `build.gradle` del módulo:
 
-```
+```groovy
 compile 'com.facebook.fresco:fresco:1.5.0'
 ```
 
@@ -44,7 +44,7 @@ La mejor forma de hacerlo es crear una nueva clase Java que herede de `Applicati
 
 No te preocupes esa clase ya esta en el proyecto y con la inicialización de Fresco.
 
-```
+```java
 Fresco.initialize(this);
 ```
 
@@ -56,7 +56,7 @@ Lo que sucede es que Fresco tiene su propia versión de `ImageView` esa se llama
 
 Si quieres usar Fresco una opción es usar ese `View` en tus diseños y luego referenciarlas en Java como si fuera un `ImageView` pero como una clase `SimpleDraweeView`.
 
-```
+```xml
 <com.facebook.drawee.view.SimpleDraweeView
     android:id="@+id/fotoSimpleDraweeView"
     android:layout_width="48dp"
@@ -76,7 +76,7 @@ Nota que ahí es donde le puedes decir, si quieres que la imagen sea circular, q
 
 Como te lo imaginas, la que carga la imagen es el adaptador, ese es el archivo `AmigosAdapter` (línea 42).
 
-```
+```java
 Uri uri = Uri.parse(a.getFotoURL());
 holder.fotoSimpleDraweeView.setImageURI(uri);
 ```
