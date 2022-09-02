@@ -14,7 +14,7 @@ export default function Project({ project }) {
                             <p className="mt-3 text-base text-gray-500">{project.summary}</p>
                         </a>
                     </Link>
-                    <div className="mt-4 flex items-center">
+                    <div className="mt-4 flex flex-wrap items-center">
                         {project.tags?.map(tag => (
                             <span
                                 key={tag}
