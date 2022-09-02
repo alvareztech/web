@@ -119,7 +119,7 @@ export default function Post({post}) {
               </span>
             </Link>
             <span
-              className="mt-2 block text-3xl text-center leading-8 font-black font-mono tracking-tighter text-gray-900 sm:text-4xl">
+              className="mt-2 block text-3xl text-center leading-8 font-bold font-mono tracking-tighter text-gray-900 sm:text-4xl">
               {post.frontmatter.title}
             </span>
           </h1>

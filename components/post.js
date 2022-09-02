@@ -24,7 +24,7 @@ export default function Post({ post }) {
                     </Link>
                     <Link href={'/' + post.slug}>
                         <a className="mt-2 block">
-                            <p className="text-xl font-black font-mono tracking-tighter text-gray-900">{post.title}</p>
+                            <p className="text-xl font-bold font-mono tracking-tighter text-gray-900">{post.title}</p>
                             <p className="mt-3 text-base text-gray-500">{post.summary}</p>
                         </a>
                     </Link>
@@ -52,25 +52,26 @@ export default function Post({ post }) {
 
 function getColor(tag) {
     switch (tag) {
-      case "android":
-      case "androidx":
-      case "espresso":
-      case "retrofit":
-        return "bg-green-500"
-      case "ios":
-      case "facebook":
-        return "bg-blue-500"
-      case "angular":
-      case "java":
-      case "javafx":
-        return "bg-red-500"
-      case "kotlin":
-        return "bg-purple-500"
-      case "firebase":
-        return "bg-yellow-500"
-      case "swift":
-        return "bg-orange-500"
+        case "android":
+        case "androidx":
+        case "espresso":
+        case "retrofit":
+            return "bg-green-500"
+        case "ios":
+        case "facebook":
+            return "bg-blue-500"
+        case "angular":
+        case "java":
+        case "javafx":
+        case "hms":
+            return "bg-red-500"
+        case "kotlin":
+            return "bg-purple-500"
+        case "firebase":
+            return "bg-yellow-500"
+        case "swift":
+        case "swiftui":
+            return "bg-orange-500"
     }
     return "bg-gray-500"
-  }
-  
+}
