@@ -58,7 +58,7 @@ export default function Home({ posts, projects }) {
           <div className="mx-auto mt-8 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
             {
               posts.map((post) => (
-                <Post post={post} />
+                <Post post={post} key={post.slug} />
               ))
             }
           </div>

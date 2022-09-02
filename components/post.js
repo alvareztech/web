@@ -4,7 +4,7 @@ import Date from './date';
 
 export default function Post({ post }) {
     return (
-        <div key={post.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
+        <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
 
             {post.youtubeId &&
                 <div className="flex-shrink-0">
