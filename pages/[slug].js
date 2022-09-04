@@ -27,7 +27,7 @@ export default function Post({ post }) {
       <meta property="article:publisher" content="https://alvarez.tech" />
       <meta property="article:author" content="https://alvarez.tech" />
       {post.frontmatter.tags?.map(tag => (
-        <meta property="article:tag" content={tag} />
+        <meta property="article:tag" content={tag} key={tag} />
       ))}
 
       <meta name='twitter:title' content={post.frontmatter.title} />
