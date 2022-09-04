@@ -1,43 +1,45 @@
 import Layout from '../components/layout'
-import {getPost, getPostSlugs} from '../lib/posts'
+import { getPost, getPostSlugs } from '../lib/posts'
 import Head from 'next/head'
 import GitHub from "../components/github";
 import YouTube from '../components/youtube';
 import MDXComponent from "../components/mdxComponents";
-import {getMDXComponent} from "mdx-bundler/client";
-import {useMemo} from "react";
+import { getMDXComponent } from "mdx-bundler/client";
+import { useMemo } from "react";
 import Link from 'next/link';
 import Slideshare from "../components/slideshare";
 import SpeakerDeck from "../components/speakerdeck";
 import Slides from "../components/slides";
 
-const components = {GitHub, YouTube, Slideshare, SpeakerDeck, Slides, ...MDXComponent}
+const components = { GitHub, YouTube, Slideshare, SpeakerDeck, Slides, ...MDXComponent }
 const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.mdx`;
 
-export default function Post({post}) {
+export default function Post({ post }) {
   const Component = useMemo(() => getMDXComponent(post.code), [post.code]);
   return (<Layout>
     <Head>
       <title>{post.frontmatter.title}</title>
 
-      <meta property="og:title" content={post.frontmatter.title}/>
-      <meta property="og:description" content={post.frontmatter.summary}/>
-      <meta property="og:url" content={"https://alvarez.tech/" + post.slug}/>
-      <meta property='og:type' content='article'/>
-      <meta property="article:tag" content={post.tags?.[0]}/>
-      <meta property="article:publisher" content="https://alvarez.tech"/>
-      <meta property="article:author" content="https://alvarez.tech"/>
+      <meta property="og:title" content={post.frontmatter.title} />
+      <meta property="og:description" content={post.frontmatter.summary} />
+      <meta property="og:url" content={"https://alvarez.tech/" + post.slug} />
+      <meta property='og:type' content='article' />
+      <meta property="article:publisher" content="https://alvarez.tech" />
+      <meta property="article:author" content="https://alvarez.tech" />
+      {post.frontmatter.tags?.map(tag => (
+        <meta property="article:tag" content={tag} />
+      ))}
 
-      <meta name='twitter:title' content={post.frontmatter.title}/>
-      <meta name='twitter:description' content={post.frontmatter.summary}/>
-      <meta name='twitter:url' content={"https://alvarez.tech/" + post.slug}/>
+      <meta name='twitter:title' content={post.frontmatter.title} />
+      <meta name='twitter:description' content={post.frontmatter.summary} />
+      <meta name='twitter:url' content={"https://alvarez.tech/" + post.slug} />
     </Head>
 
     <div className="relative py-16 bg-white overflow-hidden">
       <div
         className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
         <div className="relative h-full text-lg max-w-prose mx-auto"
-             aria-hidden="true">
+          aria-hidden="true">
           <svg
             className="absolute top-12 left-full transform translate-x-32"
             width={404}
@@ -55,11 +57,11 @@ export default function Post({post}) {
                 patternUnits="userSpaceOnUse"
               >
                 <rect x={0} y={0} width={4} height={4} className="text-gray-200"
-                      fill="currentColor"/>
+                  fill="currentColor" />
               </pattern>
             </defs>
             <rect width={404} height={384}
-                  fill="url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)"/>
+              fill="url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)" />
           </svg>
           <svg
             className="absolute top-1/2 right-full transform -translate-y-1/2 -translate-x-32"
@@ -78,11 +80,11 @@ export default function Post({post}) {
                 patternUnits="userSpaceOnUse"
               >
                 <rect x={0} y={0} width={4} height={4} className="text-gray-200"
-                      fill="currentColor"/>
+                  fill="currentColor" />
               </pattern>
             </defs>
             <rect width={404} height={384}
-                  fill="url(#f210dbf6-a58d-4871-961e-36d5016a0f49)"/>
+              fill="url(#f210dbf6-a58d-4871-961e-36d5016a0f49)" />
           </svg>
           <svg
             className="absolute bottom-12 left-full transform translate-x-32"
@@ -101,11 +103,11 @@ export default function Post({post}) {
                 patternUnits="userSpaceOnUse"
               >
                 <rect x={0} y={0} width={4} height={4} className="text-gray-200"
-                      fill="currentColor"/>
+                  fill="currentColor" />
               </pattern>
             </defs>
             <rect width={404} height={384}
-                  fill="url(#d3eb07ae-5182-43e6-857d-35c643af9034)"/>
+              fill="url(#d3eb07ae-5182-43e6-857d-35c643af9034)" />
           </svg>
         </div>
       </div>
@@ -128,7 +130,7 @@ export default function Post({post}) {
           </p>
 
           <div className="content">
-            <Component components={components}/>
+            <Component components={components} />
           </div>
 
           <div className="flex items-start justify-center mt-14 w-full">
@@ -173,7 +175,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({params}) {
+export async function getStaticProps({ params }) {
   const post = await getPost(params.slug, 'posts')
   return {
     props: {
