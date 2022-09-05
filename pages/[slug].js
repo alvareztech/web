@@ -10,6 +10,7 @@ import Link from 'next/link';
 import Slideshare from "../components/slideshare";
 import SpeakerDeck from "../components/speakerdeck";
 import Slides from "../components/slides";
+import Script from 'next/script';
 
 const components = { GitHub, YouTube, Slideshare, SpeakerDeck, Slides, ...MDXComponent }
 const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.mdx`;
@@ -158,6 +159,26 @@ export default function Post({ post }) {
               </a>
             </div>
           </div>
+          <Script
+            id='giscus'
+            strategy='lazyOnload'
+            src="https://giscus.app/client.js"
+            data-repo="alvareztech/web"
+            data-repo-id="R_kgDOGv9Tkg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOGv9Tks4CRPkE"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="preferred_color_scheme"
+            data-lang="en"
+            crossorigin="anonymous"
+            async
+          >
+          </Script>
+          <div className='giscus mt-4'></div>
         </div>
 
       </article>
