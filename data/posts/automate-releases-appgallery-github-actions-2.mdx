@@ -1,10 +1,11 @@
 ---
 title: Automate your releases to AppGallery with Github Actions (Part 2)
+summary: Automatically upload the APK to the AppGallery using the Publishing API
 date: 2019-06-08 08:00
 tags: [hms, android, github, github actions]
 ---
 
-Our goal is to be able to automatically upload our new auto-generated signed APK to AppGallery with Github Actions.
+Our goal is to be able to automatically upload our new auto-generated signed APK to _AppGallery_ with _Github Actions_.
 
 In the first part of this guide we managed to start the process taking into account security for sensitive information and we obtained a correctly signed APK ready to publish it to AppGallery. You can see the first part here:
 
@@ -228,11 +229,11 @@ The next thing to finish the process, automatically push the release, maybe auto
 
 You can see the yml file here:
 
-[.../.github/workflows/android.yml](https://github.com/alvareztech/facts-android/blob/master/.github/workflows/android.yml)
+[.github/workflows/android.yml](https://github.com/alvareztech/facts-android/blob/master/.github/workflows/android.yml)
 
 And you can see the script here:
 
-[.../my_script.py](https://github.com/alvareztech/facts-android/blob/master/my_script.py)
+[my_script.py](https://github.com/alvareztech/facts-android/blob/master/my_script.py)
 
 Implemented in a real project can be seen in:
 

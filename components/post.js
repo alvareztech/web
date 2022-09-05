@@ -4,7 +4,7 @@ import Date from './date';
 
 export default function Post({ post }) {
     return (
-        <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
+        <div className="flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl">
 
             {post.youtubeId &&
                 <div className="flex-shrink-0">
@@ -12,7 +12,7 @@ export default function Post({ post }) {
                 </div>
             }
 
-            <div className="flex flex-1 flex-col justify-between bg-white p-6">
+            <div className="flex flex-1 flex-col justify-between bg-white p-6 hover:bg-yellow-100">
                 <div className="flex-1">
                     <Link href={"/tag/" + post.tags?.[0]}>
                         <a className="inline-block">

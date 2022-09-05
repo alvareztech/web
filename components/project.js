@@ -2,8 +2,8 @@ import Link from 'next/link'
 
 export default function Project({ project }) {
     return (
-        <div key={project.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
-            <div className="flex flex-1 flex-col justify-between bg-white p-6">
+        <div key={project.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl">
+            <div className="flex flex-1 flex-col justify-between bg-white p-6 hover:bg-yellow-100">
                 <div className="flex-1">
                     <p className="text-sm font-semibold font-mono text-blue-600 uppercase">
                         {project.category}
