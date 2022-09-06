@@ -13,15 +13,11 @@ export default function Tag({ tag, posts }) {
       <Head>
         <title>{getTitle(tag.toUpperCase())}</title>
       </Head>
-      <div
-        className="bg-white max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-        <div
-          className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
-          <div>
-            <h2
-              className={classNames('text-white', "uppercase", getColor(tag), 'inline-flex items-center px-2 rounded text-xl font-bold')}>{tag}</h2>
-          </div>
-
+      <div className="bg-white max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+        <div className="relative max-w-lg mx-auto lg:max-w-7xl">
+          <h2 className={'uppercase tracking-tighter font-bold font-mono text-2xl'}>
+            {tag}
+          </h2>
           <div
             className="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
             {posts.map((post) => (
@@ -30,8 +26,7 @@ export default function Tag({ tag, posts }) {
           </div>
         </div>
       </div>
-
-    </Layout>
+    </Layout >
   )
 }
 

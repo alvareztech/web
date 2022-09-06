@@ -37,7 +37,7 @@ export default function Courses({ courses }) {
                     </p>
                     <Link href={"/courses/" + course.slug}>
                       <a className="block mt-2">
-                        <p className="text-xl font-semibold text-gray-900">{course.title}</p>
+                        <p className="text-xl font-semibold text-gray-900 font-mono tracking-tighter">{course.title}</p>
                         <p className="mt-3 text-base text-gray-500">{course.summary}</p>
                       </a>
                     </Link>

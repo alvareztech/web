@@ -1,18 +1,17 @@
 import Layout from '../../components/layout';
-import {getPostSlugs, getPost} from '../../lib/posts';
-import {getMDXComponent} from "mdx-bundler/client";
+import { getPostSlugs, getPost } from '../../lib/posts';
+import { getMDXComponent } from "mdx-bundler/client";
 import MDXComponent from '../../components/mdxComponents';
 import GitHub from '../../components/github';
-import {useMemo} from "react";
-import Image from 'next/image';
+import { useMemo } from "react";
 import Head from 'next/head';
 import Slideshare from "../../components/slideshare";
 import SpeakerDeck from "../../components/speakerdeck";
 import Slides from "../../components/slides";
 
-const components = {GitHub, Slideshare, SpeakerDeck, Slides, ...MDXComponent}
+const components = { GitHub, Slideshare, SpeakerDeck, Slides, ...MDXComponent }
 
-export default function Talk({talk}) {
+export default function Talk({ talk }) {
   const Component = useMemo(() => getMDXComponent(talk.code), talk.code);
   return (
     <Layout>
@@ -25,9 +24,9 @@ export default function Talk({talk}) {
           <div className="relative z-10 mb-8 md:mb-2 md:px-6">
             <div className="text-base max-w-prose lg:max-w-none">
               <h2
-                className="leading-6 text-blue-600 font-semibold tracking-wide uppercase">{talk.frontmatter.category}</h2>
+                className="leading-6 text-blue-600 font-bold tracking-tighter font-mono uppercase">{talk.frontmatter.tags?.[0]}</h2>
               <p
-                className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                className="mt-2 text-3xl leading-8 font-bold text-gray-900 sm:text-4xl font-mono tracking-tighter">
                 {talk.frontmatter.title}
               </p>
             </div>
@@ -51,11 +50,11 @@ export default function Talk({talk}) {
                   patternUnits="userSpaceOnUse"
                 >
                   <rect x={0} y={0} width={4} height={4}
-                        className="text-gray-200" fill="currentColor"/>
+                    className="text-gray-200" fill="currentColor" />
                 </pattern>
               </defs>
               <rect width={404} height={384}
-                    fill="url(#95e8f2de-6d30-4b7e-8159-f791729db21b)"/>
+                fill="url(#95e8f2de-6d30-4b7e-8159-f791729db21b)" />
             </svg>
             <svg
               className="hidden md:block absolute bottom-0 left-0 -mb-20 -ml-20"
@@ -75,18 +74,18 @@ export default function Talk({talk}) {
                   patternUnits="userSpaceOnUse"
                 >
                   <rect x={0} y={0} width={4} height={4}
-                        className="text-gray-200" fill="currentColor"/>
+                    className="text-gray-200" fill="currentColor" />
                 </pattern>
               </defs>
               <rect width={404} height={384}
-                    fill="url(#7a00fe67-0343-4a3c-8e81-c145097a3ce0)"/>
+                fill="url(#7a00fe67-0343-4a3c-8e81-c145097a3ce0)" />
             </svg>
             <div className="relative md:bg-white md:p-6">
               <div className="lg:grid lg:grid-cols-2 lg:gap-6">
                 <div
                   className="prose prose-indigo prose-lg text-gray-500 lg:max-w-none">
                   <div className="content">
-                    <Component components={components}/>
+                    <Component components={components} />
                   </div>
                 </div>
                 <div
@@ -110,7 +109,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({params}) {
+export async function getStaticProps({ params }) {
   const talk = await getPost(params.slug, 'talks')
   return {
     props: {

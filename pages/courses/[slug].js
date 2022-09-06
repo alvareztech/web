@@ -15,7 +15,7 @@ export default function Course({ course }) {
   const stats = [
     { label: 'Apps desarrolladas', value: course.frontmatter.developed_apps },
     { label: 'Students', value: course.frontmatter.students },
-    { label: 'Duration', value: course.frontmatter.duration + " month(s)" },
+    { label: 'Duration', value: `${course.frontmatter.duration} month(s)` },
     { label: 'Versions', value: course.frontmatter.versions },
   ]
   return (
@@ -56,7 +56,7 @@ export default function Course({ course }) {
           <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
             {/* Content area */}
             <div className="pt-12 sm:pt-16 lg:pt-20">
-              <h2 className="text-3xl text-gray-900 font-extrabold tracking-tight sm:text-4xl">
+              <h2 className="text-3xl text-gray-900 font-bold tracking-tighter font-mono sm:text-4xl">
                 {course.frontmatter.title}
               </h2>
               <div className="mt-6 text-gray-500 space-y-6">
@@ -80,9 +80,9 @@ export default function Course({ course }) {
                 ))}
               </dl>
               <div className="mt-10">
-                <Link href="/contact">
+                <Link href={`/contact`}>
                   <a className="text-base font-medium text-blue-600">
-                    Para más información sobre un curso puedes contactarme <span aria-hidden="true">&rarr;</span>
+                    More info about new courses <span aria-hidden="true">&rarr;</span>
                   </a>
                 </Link>
               </div>
