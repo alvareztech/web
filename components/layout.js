@@ -77,8 +77,8 @@ export default function Layout({ children, home }) {
 
         <div className="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">
           {navigation.map((link) => (
-            <Link href={link.href}>
-              <a key={link.name} className="text-base font-mono tracking-tighter font-bold lowercase text-blue-600 hover:text-white hover:bg-blue-600">
+            <Link href={link.href} key={link.name}>
+              <a className={`text-base font-mono tracking-tighter font-bold lowercase text-blue-600 hover:text-white hover:bg-blue-600`}>
                 {link.name}
               </a>
             </Link>
