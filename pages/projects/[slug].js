@@ -22,13 +22,13 @@ export default function Project({ project }) {
         <div class="mx-auto max-w-max lg:max-w-7xl">
           <div class="relative z-10 mb-8 md:mb-2 md:px-6">
             <p className='text-base font-mono font-bold text-blue-600 tracking-tighter uppercase'>{project.frontmatter.category}</p>
-            <h2 className='font-mono text-3xl tracking-tighter font-extrabold'>{project.frontmatter.title}</h2>
+            <h2 className='font-mono text-4xl tracking-tighter font-black'>{project.frontmatter.title}</h2>
             <p className='text-base font-mono text-blue-600 uppercase'>{project.frontmatter.status}</p>
           </div>
           <div class="relative">
             <div class="relative md:bg-white md:p-6">
               <div class="lg:grid lg:grid-cols-2 lg:gap-6">
-                <div className='content'>
+                <div className='content text-lg'>
                   <Component components={components} />
                 </div>
                 <div>
