@@ -18,16 +18,16 @@ export default function Project({ project }) {
         <title>{project.frontmatter.title}</title>
       </Head>
 
-      <div class="overflow-hidden bg-white py-16 px-4 sm:px-6 lg:px-8 xl:py-36">
-        <div class="mx-auto max-w-max lg:max-w-7xl">
-          <div class="relative z-10 mb-8 md:mb-2 md:px-6">
+      <div className="overflow-hidden bg-white py-16 px-4 sm:px-6 lg:px-8 xl:py-36">
+        <div className="mx-auto max-w-max lg:max-w-7xl">
+          <div className="relative z-10 mb-8 md:mb-2 md:px-6">
             <p className='text-base font-mono font-bold text-blue-600 tracking-tighter uppercase'>{project.frontmatter.category}</p>
             <h2 className='font-mono text-4xl tracking-tighter font-black'>{project.frontmatter.title}</h2>
             <p className='text-base font-mono text-blue-600 uppercase'>{project.frontmatter.status}</p>
           </div>
-          <div class="relative">
-            <div class="relative md:bg-white md:p-6">
-              <div class="lg:grid lg:grid-cols-2 lg:gap-6">
+          <div className="relative">
+            <div className="relative md:bg-white md:p-6">
+              <div className="lg:grid lg:grid-cols-2 lg:gap-6">
                 <div className='content text-lg'>
                   <Component components={components} />
                 </div>
@@ -38,7 +38,7 @@ export default function Project({ project }) {
                   }
                 </div>
               </div>
-              <div class="mt-8 inline-flex rounded-md shadow">
+              <div className="mt-8 inline-flex rounded-md shadow">
 
               </div>
             </div>
