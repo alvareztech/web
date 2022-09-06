@@ -17,83 +17,70 @@ export default function Project({ project }) {
       <Head>
         <title>{project.frontmatter.title}</title>
       </Head>
-      <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
-        <div className="max-w-max lg:max-w-7xl mx-auto">
-          <div className="relative z-10 mb-8 md:mb-2 md:px-6">
-            <div className="text-base max-w-prose lg:max-w-none">
-              <h2 className="leading-6 text-blue-600 font-semibold tracking-wide uppercase">{project.frontmatter.category}</h2>
-              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                {project.frontmatter.title}
-              </p>
-              <span className="uppercase inline-flex items-center mt-4 px-2 py-0.5 rounded-md text-sm font-medium bg-blue-100 text-blue-800">
-                {project.frontmatter.status}
-              </span>
-            </div>
-          </div>
-          <div className="relative">
-            <svg
-              className="hidden md:block absolute top-0 right-0 -mt-20 -mr-20"
-              width={404}
-              height={384}
-              fill="none"
-              viewBox="0 0 404 384"
-              aria-hidden="true"
-            >
-              <defs>
-                <pattern
-                  id="95e8f2de-6d30-4b7e-8159-f791729db21b"
-                  x={0}
-                  y={0}
-                  width={20}
-                  height={20}
-                  patternUnits="userSpaceOnUse"
-                >
-                  <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
-                </pattern>
-              </defs>
-              <rect width={404} height={384} fill="url(#95e8f2de-6d30-4b7e-8159-f791729db21b)" />
-            </svg>
-            <svg
-              className="hidden md:block absolute bottom-0 left-0 -mb-20 -ml-20"
-              width={404}
-              height={384}
-              fill="none"
-              viewBox="0 0 404 384"
-              aria-hidden="true"
-            >
-              <defs>
-                <pattern
-                  id="7a00fe67-0343-4a3c-8e81-c145097a3ce0"
-                  x={0}
-                  y={0}
-                  width={20}
-                  height={20}
-                  patternUnits="userSpaceOnUse"
-                >
-                  <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
-                </pattern>
-              </defs>
-              <rect width={404} height={384} fill="url(#7a00fe67-0343-4a3c-8e81-c145097a3ce0)" />
-            </svg>
-            <div className="relative md:bg-white md:p-6">
-              <div className="lg:grid lg:grid-cols-2 lg:gap-6">
-                <div className="prose prose-indigo prose-lg text-gray-500 lg:max-w-none">
-                  <div className="content">
-                    <Component components={components} />
-                  </div>
-                </div>
-                <div className="mt-6 prose prose-indigo prose-lg text-gray-500 lg:mt-0">
 
+      <div class="overflow-hidden bg-white py-16 px-4 sm:px-6 lg:px-8 xl:py-36">
+        <div class="mx-auto max-w-max lg:max-w-7xl">
+          <div class="relative z-10 mb-8 md:mb-2 md:px-6">
+            <p className='text-base font-mono font-bold text-blue-600 tracking-tighter uppercase'>{project.frontmatter.category}</p>
+            <h2 className='font-mono text-3xl tracking-tighter font-extrabold'>{project.frontmatter.title}</h2>
+            <p className='text-base font-mono text-blue-600 uppercase'>{project.frontmatter.status}</p>
+          </div>
+          <div class="relative">
+            <div class="relative md:bg-white md:p-6">
+              <div class="lg:grid lg:grid-cols-2 lg:gap-6">
+                <div className='content'>
+                  <Component components={components} />
                 </div>
+                <div>
+                  <GitHub repo={project.frontmatter.repo} />
+                  {project.frontmatter.goopleplay &&
+                    <GooglePlay appId={project.frontmatter.goopleplay} />
+                  }
+                </div>
+              </div>
+              <div class="mt-8 inline-flex rounded-md shadow">
+
               </div>
             </div>
           </div>
         </div>
       </div>
 
+
     </Layout>
   )
 }
+
+{/* <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+<div className="max-w-max lg:max-w-7xl mx-auto">
+  <div className="relative z-10 mb-8 md:mb-2 md:px-6">
+    <div className="text-base max-w-prose lg:max-w-none">
+      <h2 className="leading-6 text-blue-600 font-semibold tracking-wide uppercase">{project.frontmatter.category}</h2>
+      <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        {project.frontmatter.title}
+      </p>
+      <span className="uppercase inline-flex items-center mt-4 px-2 py-0.5 rounded-md text-sm font-medium bg-blue-100 text-blue-800">
+        {project.frontmatter.status}
+      </span>
+    </div>
+  </div>
+  <div className="relative">
+    <div className="relative md:bg-white md:p-6">
+      <div className="lg:grid lg:grid-cols-2 lg:gap-6">
+        <div className="prose prose-indigo prose-lg text-gray-500 lg:max-w-none">
+          <div className="content">
+            <Component components={components} />
+          </div>
+        </div>
+        <div className="mt-6 prose prose-indigo prose-lg text-gray-500 lg:mt-0">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> */}
+
 
 export async function getStaticPaths() {
   const paths = getPostSlugs('projects')
