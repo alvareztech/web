@@ -21,6 +21,7 @@ export default function Post({ post }) {
   return (<Layout>
     <Head>
       <title>{post.frontmatter.title}</title>
+      <meta name="description" content={post.frontmatter.summary} />
 
       <meta property="og:title" content={post.frontmatter.title} />
       <meta property="og:description" content={post.frontmatter.summary} />

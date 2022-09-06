@@ -4,26 +4,29 @@ import { getMDXComponent } from "mdx-bundler/client";
 import MDXComponent from '../../components/mdxComponents';
 import GitHub from '../../components/github';
 import { useMemo } from "react";
-import Image from 'next/image';
 import Head from 'next/head';
 import GooglePlay from "../../components/googleplay";
+import AppGallery from '../../components/appgallery';
 
-const components = { GitHub, GooglePlay, ...MDXComponent }
+const components = { GitHub, GooglePlay, AppGallery, ...MDXComponent }
 
 export default function Project({ project }) {
-  const Component = useMemo(() => getMDXComponent(project.code), project.code);
+  const Component = useMemo(() => getMDXComponent(project.code), [project.code]);
   return (
     <Layout>
       <Head>
         <title>{project.frontmatter.title}</title>
+        <meta name="description" content={project.frontmatter.summary} />
+        <meta property="og:title" content={project.frontmatter.title} />
+        <meta property="og:description" content={project.frontmatter.summary} />
       </Head>
 
       <div className="overflow-hidden bg-white py-16 px-4 sm:px-6 lg:px-8 xl:py-36">
         <div className="mx-auto max-w-max lg:max-w-7xl">
           <div className="relative z-10 mb-8 md:mb-2 md:px-6">
-            <p className='text-base font-mono font-bold text-blue-600 tracking-tighter uppercase'>{project.frontmatter.category}</p>
+            <p className='mb-2 text-base font-mono font-bold text-blue-600 tracking-tighter uppercase'>{project.frontmatter.category}</p>
             <h2 className='font-mono text-4xl tracking-tighter font-black'>{project.frontmatter.title}</h2>
-            <p className='text-base font-mono text-blue-600 uppercase'>{project.frontmatter.status}</p>
+            <p className='inline-flex items-center px-2 py-0.5 mt-4 text-base font-mono bg-blue-100 text-blue-800 rounded-md uppercase'>{project.frontmatter.status}</p>
           </div>
           <div className="relative">
             <div className="relative md:bg-white md:p-6">
@@ -31,10 +34,17 @@ export default function Project({ project }) {
                 <div className='content text-lg'>
                   <Component components={components} />
                 </div>
-                <div>
+                <div className='mt-3'>
+                  <h2 className='text-2xl font-bold'>Repository</h2>
                   <GitHub repo={project.frontmatter.repo} />
+                  {(project.frontmatter.goopleplay || project.frontmatter.appgallery) &&
+                    <h2 className='text-2xl font-bold'>Download</h2>
+                  }
                   {project.frontmatter.goopleplay &&
                     <GooglePlay appId={project.frontmatter.goopleplay} />
+                  }
+                  {project.frontmatter.appgallery &&
+                    <AppGallery appId={project.frontmatter.appgallery} />
                   }
                 </div>
               </div>
