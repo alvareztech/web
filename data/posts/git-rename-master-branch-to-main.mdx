@@ -1,0 +1,25 @@
+---
+title: Rename master branch to main
+summary: Git commands to rename your master branch to main.
+tags: [git]
+date: 2022-09-01 08:00
+---
+
+## Rename branch locally
+
+```shell
+git branch -m master main
+```
+## Push the new main branch to the remote
+
+```shell
+git push -u origin main
+```
+
+## Remove the master branch on the remote
+
+```shell
+git push origin --delete master
+```
+
+If your `master` branch is the default on GitHub or another, you may not be able to remove it, you should first change the default or main branch and then try to remove it.
