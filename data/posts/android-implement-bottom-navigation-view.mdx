@@ -1,12 +1,10 @@
 ---
 title: Implement Bottom Navigation View for Android
-summary: Implementation of a Bottom Navigation View in an Android application.
+summary: A bottom navigation bar for your app
 tags: [android, material, jetpack, androidx, video]
 youtubeId: aTPwcWQIckw
 date: 2016-10-22 08:00
 ---
-
-Implementation of a Bottom Navigation View in an Android application.
 
 <YouTube videoId="aTPwcWQIckw" />
 
@@ -17,18 +15,14 @@ Implementation of a Bottom Navigation View in an Android application.
 Dependency addition (0.48)
 
 ```groovy
-~~compile 'com.android.support:design:25.0.0'~~
+implementation 'com.google.android.material:material:1.6.1'
 ```
 
-```groovy
-implementation 'com.google.android.material:material:1.1.0'
-```
-
-## Adding  the component
+## Adding the component
 
 Adding the `BottomNavigationView` (1.08)
 
-```
+```xml
 <com.google.android.material.bottomnavigation.BottomNavigationView
     android:id="@+id/bottomNavigationView"
     android:layout_width="match_parent"
@@ -36,15 +30,6 @@ Adding the `BottomNavigationView` (1.08)
     android:layout_gravity="bottom"
     app:labelVisibilityMode="labeled"
     app:menu="@menu/menu_navigation" />
-```
-
-Versión del video (deprecated):
-
-```xml
-<android.support.design.widget.BottomNavigationView
-    android:id="@+id/bottomNavigationView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
 ```
 
 ## Menu
@@ -85,9 +70,9 @@ Menu creation (1.38)
 </menu>
 ```
 
-<GitHub repo="BottomNavigationViewSample"/>
+<GitHub repo="BottomNavigationViewSample" />
 
-> The updated version is in _master_ branch if you need exactly the video version you can use the _video_ branch.
+> The updated version is in `main` branch if you need exactly the video version you can use the `video` branch.
 
 After you download or clone the project you can import it with the "Import Project" option from Android Studio.
 
@@ -99,12 +84,13 @@ After you download or clone the project you can import it with the "Import Proje
 
 Now it's posible to add _badges_ to each section.
 
-__Import BadgeDrawable__
+#### Import BadgeDrawable
 
 ```java
 import com.google.android.material.badge.BadgeDrawable;
 ```
-__Set a value or mark by the id of the menu__
+
+#### Set a value or mark by the id of the menu
 
 ```java
 BadgeDrawable badge = bottomNavigationView.getOrCreateBadge(R.id.inicioItem);
@@ -116,7 +102,7 @@ badge.setVisible(true);
 
 It's no longer neccesary to place a shadow manually, it's already in the default theme.
 
-__Default__
+#### Default
 
 ```xml
 style="@style/Widget.MaterialComponents.BottomNavigationView"
@@ -134,7 +120,7 @@ And this is the old style with some animation, but not recommended.
 style="@style/Widget.Design.BottomNavigationView"
 ```
 
-### Remove animation
+## Remove animation
 
 If you don't want the selection animation you can add the following attribute.
 
@@ -142,41 +128,14 @@ If you don't want the selection animation you can add the following attribute.
 app:labelVisibilityMode="labeled"
 ```
 
-~~If you don't want the zoom animation when the option changes (shift mode) there is no a method that allows it yet, but you can use this:~~
-
-```java
-private void removeShiftMode(BottomNavigationView bottomNavigationView) {~~
-    BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
-    try {
-        Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
-        shiftingMode.setAccessible(true);
-        shiftingMode.setBoolean(menuView, false);
-        shiftingMode.setAccessible(false);
-        for (int i = 0; i < menuView.getChildCount(); i++) {
-            BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
-            //noinspection RestrictedApi
-            item.setShiftingMode(false);
-            //noinspection RestrictedApi
-            item.setChecked(item.getItemData().isChecked());
-        }
-    } catch (NoSuchFieldException e) {
-    } catch (IllegalAccessException e) {
-    }
-}
-```
-
-~~You can download the same example with this change.~~
-
-<GitHub repo="BottomNavigationViewSample" branch="remove-shift" />
-
 ## With Fragments
 
-If you want an example with fragments I leave it here (not updated with _AndroidX_ yet):
+If you want an example with fragments I leave it here:
 
 <GitHub repo="BottomNavigationViewSample" branch="fragments" />
 
 ## Resources
 
-* [Class Definition](https://developer.android.com/reference/android/support/design/widget/BottomNavigationView.html) (deprecated)
-* [Class Definition](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView)
-* [Design guide](https://material.io/design/components/bottom-navigation.html)
+- [Class Definition](https://developer.android.com/reference/android/support/design/widget/BottomNavigationView.html) (deprecated)
+- [Class Definition](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView)
+- [Design guide](https://material.io/design/components/bottom-navigation.html)
