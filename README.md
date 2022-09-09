@@ -6,4 +6,8 @@
 
 This site was built with [Next.js](https://nextjs.org/), a React framework.
 
-> This site is still under development but is updated frequently to add new content and improvements.
+- Open source
+- No tracking (cookieless), no ads, always free.
+- [Giscus](https://giscus.app/) for comments and discussions.
+
+> This site is still under active development.
