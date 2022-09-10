@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { classNames } from '../lib/util';
+import { getColor } from '../lib/util';
 import Date from './date';
 
 export default function Post({ post }) {
@@ -14,10 +14,10 @@ export default function Post({ post }) {
 
       <div className="flex flex-1 flex-col justify-between bg-white p-6 hover:bg-yellow-100">
         <div className="flex-1">
-          <Link href={"/tag/" + post.tags?.[0]}>
+          <Link href={`/tag/${post.tags?.[0]}`}>
             <a className="inline-block">
               <span
-                className={classNames("text-white", "uppercase", getColor(post.tags?.[0]), 'inline-flex items-center px-2 rounded text-sm font-semibold font-mono')}>
+                className={`text-white uppercase ${getColor(post.tags?.[0])} inline-flex items-center px-2 rounded text-sm font-semibold font-mono`}>
                 {post.tags?.[0]}
               </span>
             </a>
@@ -48,30 +48,4 @@ export default function Post({ post }) {
       </div>
     </div>
   )
-}
-
-function getColor(tag) {
-  switch (tag) {
-    case "android":
-    case "androidx":
-    case "espresso":
-    case "retrofit":
-      return "bg-green-500"
-    case "ios":
-    case "facebook":
-      return "bg-blue-500"
-    case "angular":
-    case "java":
-    case "javafx":
-    case "hms":
-      return "bg-red-500"
-    case "kotlin":
-      return "bg-purple-500"
-    case "firebase":
-      return "bg-yellow-500"
-    case "swift":
-    case "swiftui":
-      return "bg-orange-500"
-  }
-  return "bg-gray-500"
 }
