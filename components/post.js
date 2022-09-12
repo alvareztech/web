@@ -22,7 +22,7 @@ export default function Post({ post }) {
               </span>
             </a>
           </Link>
-          <Link href={'/' + post.slug}>
+          <Link href={`/${post.slug}`}>
             <a className="mt-2 block">
               <p className="text-xl font-bold font-mono tracking-tighter text-gray-900">{post.title}</p>
               <p className="mt-3 text-base text-gray-500">{post.summary}</p>
@@ -31,11 +31,11 @@ export default function Post({ post }) {
 
           <div className="mt-4 flex items-center">
             {post.tags?.slice(1).map(tag => (
-              <span
-                key={tag}
-                className="uppercase inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-gray-100 text-gray-800 mr-1">
-                {tag}
-              </span>
+              <Link href={`/tag/${tag}`} key={tag}>
+                <a className='uppercase inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-gray-100 text-gray-700 mr-1 hover:bg-gray-200'>
+                  {tag}
+                </a>
+              </Link>
             ))}
           </div>
 

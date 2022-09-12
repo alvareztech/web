@@ -139,11 +139,11 @@ export default function Post({ post }) {
           <div className="flex items-start justify-center mt-14 w-full">
             <div className="space-x-2 flex-1 -mt-0.5">
               {post.frontmatter.tags?.map(tag => (
-                <Link href={"/tag/" + tag} key={tag}>
+                <Link href={`/tag/${tag}`} key={tag}>
                   <a>
                     <span
                       key={tag}
-                      className="uppercase inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium font-mono bg-gray-100 text-gray-800">
+                      className="uppercase inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium font-mono bg-gray-100 text-gray-700 hover:bg-gray-200">
                       {tag}
                     </span>
                   </a>
