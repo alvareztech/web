@@ -55,42 +55,9 @@ export default function Project({ project }) {
           </div>
         </div>
       </div>
-
-
     </Layout>
   )
 }
-
-{/* <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
-<div className="max-w-max lg:max-w-7xl mx-auto">
-  <div className="relative z-10 mb-8 md:mb-2 md:px-6">
-    <div className="text-base max-w-prose lg:max-w-none">
-      <h2 className="leading-6 text-blue-600 font-semibold tracking-wide uppercase">{project.frontmatter.category}</h2>
-      <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-        {project.frontmatter.title}
-      </p>
-      <span className="uppercase inline-flex items-center mt-4 px-2 py-0.5 rounded-md text-sm font-medium bg-blue-100 text-blue-800">
-        {project.frontmatter.status}
-      </span>
-    </div>
-  </div>
-  <div className="relative">
-    <div className="relative md:bg-white md:p-6">
-      <div className="lg:grid lg:grid-cols-2 lg:gap-6">
-        <div className="prose prose-indigo prose-lg text-gray-500 lg:max-w-none">
-          <div className="content">
-            <Component components={components} />
-          </div>
-        </div>
-        <div className="mt-6 prose prose-indigo prose-lg text-gray-500 lg:mt-0">
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div> */}
-
 
 export async function getStaticPaths() {
   const paths = getPostSlugs('projects')
