@@ -34,34 +34,35 @@ export default function Layout({ children, home }) {
       <link rel="manifest" href="/site.webmanifest" />
     </Head>
 
+    <div className='flex flex-col h-screen'>
+      <header>
+        <Navigation />
 
-    <header>
-      <Navigation />
-
-      {home &&
-        <div className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24">
-          <div className="text-center">
-            <h1
-              className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-              <span className="block xl:inline tracking-tighter font-mono">Daniel</span>{' '}
-              <span className="block text-blue-600 xl:inline font-mono tracking-tighter">Alvarez</span>
-            </h1>
-            <p
-              className="mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
-              Hi! I&apos;m a software engineer. I share some projects and
-              content I develop in my spare time. Most things are related
-              to <span className="text-blue-500 font-bold font-mono">tech</span> and
-              code.
-            </p>
+        {home &&
+          <div className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24">
+            <div className="text-center">
+              <h1
+                className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                <span className="block xl:inline tracking-tighter font-mono">Daniel</span>{' '}
+                <span className="block text-blue-600 xl:inline font-mono tracking-tighter">Alvarez</span>
+              </h1>
+              <p
+                className="mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
+                Hi! I&apos;m a software engineer. I share some projects and
+                content I develop in my spare time. Most things are related
+                to <span className="text-blue-500 font-bold font-mono">tech</span> and
+                code.
+              </p>
+            </div>
           </div>
-        </div>
-      }
-    </header>
+        }
+      </header>
 
-    <main>
-      {children}
-    </main>
+      <main className='grow'>
+        {children}
+      </main>
 
-    <Footer />
+      <Footer />
+    </div>
   </>
 }
