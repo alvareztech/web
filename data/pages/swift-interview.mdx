@@ -1,0 +1,177 @@
+---
+title: Swift Interview
+summary: Classic code questions
+tags: [swift]
+date: 2022-09-01 08:00
+---
+
+### What is the output of the following?
+
+```swift
+class A {
+    var b: B
+
+    init(b: B) {
+        self.b = b
+    }
+
+    deinit {
+        print("A")
+    }
+}
+
+class B {
+    var a: A?
+
+    deinit {
+        print("B")
+    }
+}
+
+var b: B? = B()
+var a: A? = A(b: b!)
+
+b?.a = a
+a = nil
+```
+
+```shell
+A
+```
+
+### What will be printed to the console?
+
+```swift
+func doSomething() {
+    defer { print("a") }
+    defer { print("b") }
+    defer { print("c") }
+    print("d")
+}
+
+doSomething()
+```
+
+```shell
+d
+c
+b
+a
+```
+
+> A defer statement is used for executing code just before transferring program control outside of the scope that the `defer` statement appears in.
+
+> This scope is anything beetween `{` `}`, functions, do blocks, loops.
+
+> Similar to `finally` in other languages.
+
+### What is the output of the following?
+
+```swift
+class BaseViewController {
+    var view = "" {
+        didSet {
+            print("Base \(view)")
+        }
+    }
+}
+
+class SubViewController: BaseViewController {
+    override var view: String {
+        didSet {
+            print("Sub: \(view)")
+        }
+    }
+}
+
+let viewController = SubViewController()
+viewController.view = "a"
+viewController.view = "b"
+```
+
+```shell
+Base: a
+Sub: a
+Base: b
+Sub: b
+```
+
+### What is the output of the following?
+
+```swift
+var x = 5
+
+func increment() -> Int {
+    defer { x += 1 }
+    return x
+}
+
+x = increment()
+let result = increment()
+
+print(x, result, x)
+```
+
+```shell
+6 5 6
+```
+
+### What is the output of the following?
+
+```swift
+let x = 15
+var result = 0
+
+switch x {
+case 1...15:
+    result = 1
+    fallthrough
+case 2:
+    result = 102
+case 5:
+    result = 103
+default:
+    result = 104
+}
+
+print(result)
+```
+
+```shell
+102
+```
+
+> The `fallthrough` keyword simply causes code execution to move directly to the statements inside the next case (or `default` case) block
+
+> Swift has five **control transfer statements**: `continue`, `break`, `fallthrough`, `return`, `throw`.
+
+### What is the output of the following?
+
+```swift
+func check(a: () -> ()) {
+    func a() {
+        print("Turing")
+    }
+    a()
+}
+
+func addition(y a: () -> ()) {
+    func y() {
+        print("Quiz")
+    }
+    y()
+}
+
+check {
+    print("Swift")
+}
+
+addition {
+    print("Turing")
+}
+```
+
+```shell
+Turing
+Quiz
+```
