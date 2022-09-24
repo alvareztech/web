@@ -10,7 +10,6 @@ import Link from 'next/link';
 import Slideshare from "../components/slideshare";
 import SpeakerDeck from "../components/speakerdeck";
 import Slides from "../components/slides";
-import Script from 'next/script';
 import Comments from '../components/comments';
 
 const components = { GitHub, YouTube, Slideshare, SpeakerDeck, Slides, ...MDXComponent }

@@ -1,6 +1,5 @@
 import Layout from '../components/layout'
-import {MailIcon, PhoneIcon} from '@heroicons/react/outline'
-import {CameraIcon} from '@heroicons/react/solid'
+import { CameraIcon } from '@heroicons/react/solid'
 import Head from 'next/head'
 import Image from "next/image";
 
@@ -10,12 +9,12 @@ export default function Daniel() {
       <Head>
         <title>Daniel Alvarez - ALVAREZ.tech</title>
         <script src="https://platform.linkedin.com/badges/js/profile.js" async
-                defer type="text/javascript"></script>
+          defer type="text/javascript"></script>
       </Head>
       <div className="bg-white overflow-hidden">
         <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div
-            className="hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen"/>
+            className="hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen" />
           <div
             className="mx-auto text-base max-w-prose lg:grid lg:grid-cols-2 lg:gap-8 lg:max-w-none">
             <div>
@@ -48,11 +47,11 @@ export default function Daniel() {
                     patternUnits="userSpaceOnUse"
                   >
                     <rect x={0} y={0} width={4} height={4}
-                          className="text-gray-200" fill="currentColor"/>
+                      className="text-gray-200" fill="currentColor" />
                   </pattern>
                 </defs>
                 <rect width={404} height={384}
-                      fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)"/>
+                  fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)" />
               </svg>
               <div
                 className="relative text-base mx-auto max-w-prose lg:max-w-none">
@@ -68,7 +67,7 @@ export default function Daniel() {
                   </div>
                   <figcaption className="mt-3 flex text-sm text-gray-500">
                     <CameraIcon className="flex-none w-5 h-5 text-gray-400"
-                                aria-hidden="true"/>
+                      aria-hidden="true" />
                     <span className="ml-2">San Francisco</span>
                   </figcaption>
                 </figure>
