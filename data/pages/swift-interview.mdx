@@ -1,9 +1,90 @@
 ---
-title: Swift Interview
+title: Swift Code Interview
 summary: Classic code questions
 tags: [swift]
 date: 2022-09-01 08:00
 ---
+
+### What is the output of the following?
+
+```swift
+struct Author {
+    var book: String
+    var content: String {
+        return book
+    }
+}
+
+var author = Author(book: "AAA")
+var authorCopy = author
+
+author.book = "BBB"
+
+print(author.content, authorCopy.content)
+```
+
+#### Answer
+
+```shell
+BBB AAA
+```
+
+### What is the output?
+
+```swift
+class R: NSObject {
+    let int: Int
+    init(_ int: Int) {
+        self.int = int
+    }
+}
+
+func == (l: R, r: R) -> Bool {
+    return l.int == r.int
+}
+
+let i1: NSObject = R(2)
+let i2: NSObject = R(2)
+let i3: R = R(3)
+let i4: R = R(3)
+
+print((i1 as? R))
+print((i2 as? R))
+print((i2 as! R))
+print((i2 as! R))
+print(i1 == i2, i3 == i4, (i1 as? R) == (i2 as? R), (i1 as! R) == (i2 as! R))
+```
+
+#### Answer
+
+```shell
+Optional(<__lldb_expr_76.R: 0x600003e4c210>)
+Optional(<__lldb_expr_76.R: 0x600003e48380>)
+<__lldb_expr_76.R: 0x600003e48380>
+<__lldb_expr_76.R: 0x600003e48380>
+false true false true
+```
+
+### What is the output of the following?
+
+```swift
+let numbers: [String?] = ["1", "two", nil]
+
+let mapped: [Any] = numbers.compactMap { $0 }
+let intArray: [Int?] = numbers.compactMap { Int($0 ?? "0") }
+
+print(mapped.count)
+print(intArray.count)
+```
+
+#### Answer
+
+```shell
+2
+3
+```
+
+> `compactMap` returns an array containing the non-nil results of calling the given transformation with each element of this sequence.
 
 ### What is the output of the following?
 
@@ -35,6 +116,8 @@ b?.a = a
 a = nil
 ```
 
+#### Answer
+
 ```shell
 A
 ```
@@ -51,6 +134,8 @@ func doSomething() {
 
 doSomething()
 ```
+
+#### Answer
 
 ```shell
 d
@@ -89,6 +174,8 @@ viewController.view = "a"
 viewController.view = "b"
 ```
 
+#### Answer
+
 ```shell
 Base: a
 Sub: a
@@ -111,6 +198,8 @@ let result = increment()
 
 print(x, result, x)
 ```
+
+#### Answer
 
 ```shell
 6 5 6
@@ -137,6 +226,8 @@ default:
 print(result)
 ```
 
+#### Answer
+
 ```shell
 102
 ```
@@ -150,28 +241,110 @@ print(result)
 ```swift
 func check(a: () -> ()) {
     func a() {
-        print("Turing")
+        print("a")
     }
     a()
 }
 
 func addition(y a: () -> ()) {
     func y() {
-        print("Quiz")
+        print("y")
     }
     y()
 }
 
 check {
-    print("Swift")
+    print("Check")
 }
 
 addition {
-    print("Turing")
+    print("Addition")
 }
 ```
 
+#### Answer
+
 ```shell
-Turing
-Quiz
+a
+y
+```
+
+> With the new redeclaration inside the closure, the functionality is rewritten.
+
+
+### What is the output of the following?
+
+```swift
+final class JR {
+    func show() {
+        print("JR")
+    }
+}
+
+struct Y {
+    var ref = JR()
+
+    mutating func change() -> String {
+        ref.show()
+        return isKnownUniquelyReferenced(&ref) ? "No copy" : "Copy"
+    }
+}
+
+let x = Y()
+var array = [x]
+
+print(array[0].change(), array[0].ref.show())
+```
+
+#### Answer
+
+```shell
+JR
+JR
+Copy ()
+```
+
+> `isKnownUniquelyReferenced(_:)` returns a Boolean value indicating whether the given object is known to have a single strong reference.
+
+### What is the output?
+
+```swift
+let x: String?? = .some(nil)
+let outputX = (x ?? "inner") ?? "outer"
+
+let y: String?? = nil
+let outputY = (y ?? "inner") ?? "outer"
+
+print("\(x) \(y) \(outputX) \(outputY)")
+```
+
+#### Answer
+
+```shell
+Optional(nil) nil outer inner
+```
+
+### What is the output?
+
+```swift
+func doSomething(number: Int) {
+    if number % 2 == 0 {
+        defer {
+            print("A")
+        }
+        print("B")
+    } else {
+        print("C")
+    }
+    print("D")
+}
+
+doSomething(number: 4)
+```
+#### Answer
+
+```shell
+B
+A
+D
 ```
