@@ -2,7 +2,7 @@ import { getAllPosts } from "../lib/posts"
 import Layout from "../components/layout"
 import Link from "next/link"
 import Head from "next/head"
-import { getTitle, subtitleProjects, titleProjects } from "../lib/texts"
+import { getTitle, titleProjects } from "../lib/texts"
 import Project from "../components/project"
 
 export default function Projects({ projects }) {

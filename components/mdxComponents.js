@@ -9,14 +9,14 @@ const CustomLink = (props) => {
     return (
       <Link href={href}>
         <a {...props}
-          className="font-medium text-sky-500 underline decoration-2 decoration-sky-500 hover:no-underline"
+          className="font-medium underline underline-offset-4 decoration-4 decoration-blue-500 hover:no-underline hover:bg-blue-500 hover:text-white"
         >{props.children}</a>
       </Link>
     );
   }
   return <a
-    className="font-medium text-sky-500 underline decoration-2 decoration-sky-500 hover:no-underline"
-    target="_blank" rel="noreferrer" {...props} />;
+    className="font-medium underline underline-offset-4 decoration-4 decoration-blue-500 hover:no-underline hover:bg-blue-500 hover:text-white"
+    target="_blank" rel="noreferrer" {...props} >{props.children}</a>
 };
 
 const BlogImg = (props) => {
