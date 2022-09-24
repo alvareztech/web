@@ -1,5 +1,5 @@
 ---
-title: Swift Interview
+title: Swift Code Interview
 summary: Classic code questions
 tags: [swift]
 date: 2022-09-01 08:00
@@ -305,3 +305,46 @@ Copy ()
 ```
 
 > `isKnownUniquelyReferenced(_:)` returns a Boolean value indicating whether the given object is known to have a single strong reference.
+
+### What is the output?
+
+```swift
+let x: String?? = .some(nil)
+let outputX = (x ?? "inner") ?? "outer"
+
+let y: String?? = nil
+let outputY = (y ?? "inner") ?? "outer"
+
+print("\(x) \(y) \(outputX) \(outputY)")
+```
+
+#### Answer
+
+```shell
+Optional(nil) nil outer inner
+```
+
+### What is the output?
+
+```swift
+func doSomething(number: Int) {
+    if number % 2 == 0 {
+        defer {
+            print("A")
+        }
+        print("B")
+    } else {
+        print("C")
+    }
+    print("D")
+}
+
+doSomething(number: 4)
+```
+#### Answer
+
+```shell
+B
+A
+D
+```
