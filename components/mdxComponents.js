@@ -9,7 +9,7 @@ const CustomLink = (props) => {
     return (
       <Link href={href}>
         <a {...props}
-           className="font-medium text-sky-500 underline decoration-2 decoration-sky-500 hover:no-underline"
+          className="font-medium text-sky-500 underline decoration-2 decoration-sky-500 hover:no-underline"
         >{props.children}</a>
       </Link>
     );
@@ -44,7 +44,7 @@ const Paragraph = (props) => {
 
 const Subtitle = (props) => {
   return (
-    <h1 className="mt-2 text-3xl font-bold">{props.children}</h1>
+    <h1 className="mt-4 text-3xl font-bold">{props.children}</h1>
   )
 }
 
@@ -56,20 +56,20 @@ const Subtitle2 = (props) => {
 
 const Subtitle3 = (props) => {
   return (
-    <h3 className="mt-2 text-xl font-bold">{props.children}</h3>
+    <h3 className="mt-4 text-xl font-bold">{props.children}</h3>
   )
 }
 
 const Subtitle4 = (props) => {
   return (
-    <h4 className="mt-2 text-lg font-bold">{props.children}</h4>
+    <h4 className="mt-4 text-lg font-bold">{props.children}</h4>
   )
 }
 
 const MyCode = (props) => {
   return (
     <pre {...props}
-         className="p-3 text-base block whitespace-pre overflow-x-scroll bg-amber-100 rounded-md">
+      className="p-3 text-base block whitespace-pre overflow-x-scroll bg-amber-100 rounded-md">
       {props.children}
     </pre>
   )
@@ -90,7 +90,7 @@ const ListDecimal = (props) => {
 const Blockquote = (props) => {
   return (
     <blockquote
-      className="bg-amber-100 border-l-8 border-amber-300">
+      className="mt-1 bg-amber-100 border-l-8 border-amber-300">
       <p className="px-4 py-1 italic">
         {props.children}
       </p>
