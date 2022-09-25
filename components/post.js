@@ -4,7 +4,7 @@ import Date from './date';
 
 export default function Post({ post }) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl">
+    <div className="flex flex-col overflow-hidden rounded shadow-lg hover:shadow-xl">
 
       {post.youtubeId &&
         <div className="flex-shrink-0">
@@ -24,17 +24,15 @@ export default function Post({ post }) {
           </Link>
           <Link href={`/${post.slug}`}>
             <a className="mt-2 block">
-              <p className="text-xl font-bold font-mono tracking-tighter text-gray-900">{post.title}</p>
+              <p className="card-title">{post.title}</p>
               <p className="mt-3 text-base text-gray-500">{post.summary}</p>
             </a>
           </Link>
 
-          <div className="mt-4 flex items-center">
+          <div className="mt-4 flex flex-wrap items-center">
             {post.tags?.slice(1).map(tag => (
               <Link href={`/tag/${tag}`} key={tag}>
-                <a className='uppercase inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-gray-100 text-gray-700 mr-1 hover:bg-gray-200'>
-                  {tag}
-                </a>
+                <a className='tag'>{tag}</a>
               </Link>
             ))}
           </div>

@@ -2,4 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'prism.css';
+@import "prism.css";
+
+.card-title {
+  @apply text-xl font-bold font-mono tracking-tighter text-gray-900;
+}
+
+.tag {
+  @apply uppercase inline-flex items-center px-2 py-0.5 mr-1 rounded text-xs font-mono font-medium bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-100 hover:opacity-60;
+}
