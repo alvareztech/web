@@ -1,4 +1,4 @@
-import { CodeIcon, DownloadIcon, CloudIcon } from '@heroicons/react/solid'
+import { DownloadIcon, CloudIcon } from '@heroicons/react/solid'
 
 export default function GitHub({ repo, branch = "master" }) {
   var repoUri = "alvareztech/" + repo
@@ -7,11 +7,9 @@ export default function GitHub({ repo, branch = "master" }) {
   }
   return (
     <div className='text-center'>
-      <a href={"https://github.com/" + repoUri}
-        target="_blank"
-        rel="noreferrer">
+      <a href={`https://github.com/${repoUri}`} target="_blank" rel="noreferrer">
         <div
-          className="my-8 inline-flex items-center px-2 py-2 shadow-sm text-base leading-4 font-medium rounded-md text-white bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50">
+          className="my-8 inline-flex items-center px-2 py-2 shadow-sm font-medium tracking-tight leading-4 rounded text-white bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50">
           <svg fill="currentColor" viewBox="0 0 24 24" className="h-6 w-6 mr-1" aria-hidden="true" >
             <path
               fillRule="evenodd"
@@ -22,17 +20,13 @@ export default function GitHub({ repo, branch = "master" }) {
           {repo}
         </div>
       </a>
-      <a href={"https://github.dev/" + repoUri}
-        target="_blank"
-        rel="noreferrer">
-        <div className='inline-flex ml-2 text-white bg-blue-500 px-2 py-2 rounded-md hover:shadow-lg hover:shadow-blue-500/50'>
+      <a href={`https://github.dev/${repoUri}`} target="_blank" rel="noreferrer">
+        <div className='inline-flex ml-2 text-white bg-blue-500 px-2 py-2 rounded hover:shadow-lg hover:shadow-blue-500/50'>
           <CloudIcon className="h-6 w-6" aria-hidden="true" />
         </div>
       </a>
-      <a href={"https://github.com/alvareztech/" + repo + "/archive/refs/heads/" + branch + ".zip"}
-        target="_blank"
-        rel="noreferrer">
-        <div className='inline-flex ml-2 text-white bg-blue-500 px-2 py-2 rounded-md hover:shadow-lg hover:shadow-blue-500/50'>
+      <a href={`https://github.com/alvareztech/${repo}/archive/refs/heads/${branch}.zip`} target="_blank" rel="noreferrer">
+        <div className='inline-flex ml-2 text-white bg-blue-500 px-2 py-2 rounded hover:shadow-lg hover:shadow-blue-500/50'>
           <DownloadIcon className="h-6 w-6" aria-hidden="true" />
         </div>
       </a>

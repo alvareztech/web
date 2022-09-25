@@ -32,7 +32,7 @@ export default function Post({ post }) {
           <div className="mt-4 flex flex-wrap items-center">
             {post.tags?.slice(1).map(tag => (
               <Link href={`/tag/${tag}`} key={tag}>
-                <a className='tag'>{tag}</a>
+                <a className='tagx'>{tag}</a>
               </Link>
             ))}
           </div>
