@@ -1,8 +1,5 @@
 import Layout from '../../components/layout'
 import { getPostsByTag, getTags } from "../../lib/posts";
-import Link from "next/link";
-import Date from "../../components/date";
-import { classNames } from "../../lib/util";
 import Head from 'next/head';
 import { getTitle } from '../../lib/texts';
 import Post from '../../components/post';
@@ -47,28 +44,4 @@ export async function getStaticProps({ params }) {
       posts
     }
   }
-}
-
-function getColor(tag) {
-  switch (tag) {
-    case "android":
-    case "androidx":
-    case "espresso":
-    case "retrofit":
-      return "bg-green-500"
-    case "ios":
-    case "facebook":
-      return "bg-blue-500"
-    case "angular":
-    case "java":
-    case "javafx":
-      return "bg-red-500"
-    case "kotlin":
-      return "bg-purple-500"
-    case "firebase":
-      return "bg-yellow-500"
-    case "swift":
-      return "bg-orange-500"
-  }
-  return "bg-gray-500"
 }
