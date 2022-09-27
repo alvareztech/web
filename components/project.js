@@ -17,7 +17,7 @@ export default function Project({ project }) {
           <div className="mt-4 flex flex-wrap items-center">
             {project.tags?.map(tag => (
               <Link href={`/tag/${tag}`} key={tag}>
-                <a className="tag">{tag}</a>
+                <a className="tagx">{tag}</a>
               </Link>
             ))}
           </div>
