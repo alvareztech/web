@@ -3,7 +3,6 @@ import { getColor } from '../lib/util';
 import Date from './date';
 
 export default function Post({ post }) {
-  const color = getColor(post.tags?.[0])
   return (
     <div className="flex flex-col overflow-hidden rounded shadow-lg hover:shadow-xl">
 
@@ -18,7 +17,7 @@ export default function Post({ post }) {
           <Link href={`/tag/${post.tags?.[0]}`}>
             <a className="inline-block">
               <span
-                className={`text-white uppercase ${color} inline-flex items-center px-2 rounded text-sm font-semibold font-mono`}>
+                className={`text-white uppercase ${getColor(post.tags?.[0])} inline-flex items-center px-2 rounded text-sm font-semibold font-mono`}>
                 {post.tags?.[0]}
               </span>
             </a>
