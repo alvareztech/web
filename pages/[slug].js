@@ -15,7 +15,7 @@ import Comments from '../components/comments';
 const components = { GitHub, YouTube, Slideshare, SpeakerDeck, Slides, ...MDXComponent }
 const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.mdx`;
 
-export default function Post({ post }) {
+export default function Post({ post, isPage }) {
   const Component = useMemo(() => getMDXComponent(post.code), [post.code]);
   return (<Layout>
     <Head>
@@ -73,7 +73,9 @@ export default function Post({ post }) {
               <a href={editUrl(post.slug)} target="_blank" rel="noreferrer">{'Edit on Github'}</a>
             </div>
           </div>
-          <Comments />
+          {!isPage &&
+            <Comments />
+          }
         </div>
 
       </article>
@@ -92,10 +94,16 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const post = await getPost(params.slug, 'posts')
+  let isPage = false;
+  let post = await getPost(params.slug, 'posts');
+  if (post == null) {
+    post = await getPost(params.slug, 'pages');
+    isPage = true;
+  }
   return {
     props: {
-      post
+      post,
+      isPage
     }
   }
 }
