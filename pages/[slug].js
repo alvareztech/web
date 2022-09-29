@@ -68,10 +68,12 @@ export default function Post({ post, isPage }) {
                 </Link>
               ))}
             </div>
-            <div
-              className="ml-4 text-sm text-gray-500 dark:text-gray-500 transition-colors hover:text-gray-700 dark:hover:text-gray-300">
-              <a href={editUrl(post.slug)} target="_blank" rel="noreferrer">{'Edit on Github'}</a>
-            </div>
+            {!isPage &&
+              <div
+                className="ml-4 text-sm text-gray-500 dark:text-gray-500 transition-colors hover:text-gray-700 dark:hover:text-gray-300">
+                <a href={editUrl(post.slug)} target="_blank" rel="noreferrer">{'Edit on Github'}</a>
+              </div>
+            }
           </div>
           {!isPage &&
             <Comments />
