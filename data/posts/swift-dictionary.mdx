@@ -1,0 +1,88 @@
+---
+title: Dictionaries
+summary: Collection of key-value pairs where you can select the type of key, Int, String, Any, etc.
+tags: [swift]
+date: 2022-09-30 10:07
+---
+
+- A diccionary don't have a specified order.
+- A dictionary `Key` type must conform to the `Hashable` protocol, like a set's value type.
+
+## Creating empty dictionary
+
+```swift
+var currencies: [String: String] = [:]
+```
+
+### Adding pairs
+
+```swift
+currencies["USD"] = "United States dollar"
+currencies["BOB"] = "Boliviano"
+currencies["MXN"] = "Mexican peso"
+```
+
+## Creating a dictionary with pairs
+
+```swift
+var currencies: [String: String] = ["USD": "United States dollar",
+                                    "BOB": "Boliviano",
+                                    "MXN": "Mexican peso"]
+```
+
+## Updating values
+
+The advantage of using `updateValue()` is that you can get the old value on the same line.
+
+If the pair doesn't exist, this creates it.
+
+```swift
+if let oldValue = currencies.updateValue("Euro", forKey: "EUR") {
+    print("Old value: \(oldValue)")
+}
+```
+
+## Removing pairs
+
+The advantage of using `removeValue()` is that you can get the removed value on the same line.
+
+```swift
+if let removedValue = currencies.removeValue(forKey: "EUR") {
+    print("The removed currency is \(removedValue).")
+}
+```
+
+## Iterating over a dictionary
+
+```swift
+for (code, name) in currencies {
+    print("\(code) = \(name)")
+}
+```
+
+### Keys
+
+```swift
+for code in currencies.keys {
+    print("Code: \(code)")
+}
+```
+
+### Values
+
+```swift
+for name in currencies.values {
+    print("Name: \(name)")
+}
+```
+
+## Creating a array with keys or values
+
+```swift
+let codes = [String](currencies.keys)
+let names = [String](currencies.values)
+```
+
+## Reference
+
+- [Dictionaries](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html#ID113)
