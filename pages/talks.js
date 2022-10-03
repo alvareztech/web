@@ -1,9 +1,7 @@
 import { getAllPosts } from "../lib/posts"
 import Layout from "../components/layout"
-import Link from "next/link"
 import Head from "next/head"
 import { getTitle, subtitleTalks, titleTalks } from "../lib/texts";
-import Date from "../components/date";
 import TalkCard from "../components/talk_card";
 
 export default function Talks({ talks }) {
