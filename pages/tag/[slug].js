@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { getTitle } from '../../lib/texts';
 import Post from '../../components/post';
 import Project from '../../components/project';
+import CourseCard from '../../components/course_card';
+import TalkCard from '../../components/talk_card';
 
 export default function Tag({ tag, posts, projects, courses, talks }) {
   return (
@@ -37,6 +39,28 @@ export default function Tag({ tag, posts, projects, courses, talks }) {
             className="mb-8 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
             {posts.map((post) => (
               <Post post={post} key={post.slug} />
+            ))}
+          </div>
+
+          {courses.length > 0 &&
+            <h2 className='mt-12 text-xl font-mono font-bold tracking-tighter'>Courses</h2>
+          }
+
+          <div
+            className="mb-8 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
+            {courses.map((course) => (
+              <CourseCard course={course} key={course.slug} />
+            ))}
+          </div>
+
+          {talks.length > 0 &&
+            <h2 className='mt-12 text-xl font-mono font-bold tracking-tighter'>Talks</h2>
+          }
+
+          <div
+            className="mb-8 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
+            {talks.map((talk) => (
+              <TalkCard talk={talk} key={talk.slug} />
             ))}
           </div>
 
