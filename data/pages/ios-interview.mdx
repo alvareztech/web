@@ -1,0 +1,179 @@
+---
+title: iOS Software Engineer
+summary: Summary
+tags: [ios, swift]
+date: 2022-10-03 10:29
+language: es
+---
+
+## Swift Syntax
+
+### Question 1
+
+Given this code:
+
+```swift
+func actualCars(cars: [Car?]?) -> [Car] {
+
+}
+```
+
+How would you write a function to return the array of actual (non-nil) cars in the an instance of this type? If none, or if arrayOfCars itself is nil, return an empty array (i.e. [ ])
+
+#### Solution
+
+```swift
+func actualCars(cars: [Car?]?) -> [Car] {
+  guard let cars = cars else { return [] }
+  return cars.compactMap()
+}
+```
+
+Looking for knowledge of optional handling, guard l and collection filter/map functions.
+
+### Question 2
+
+Given this code:
+
+```swift
+func showRecordForId(_ id: String?) -> Void {
+ makeAsyncCallToBackendForRecord(identifier: id, completion: { (record: Record? in
+    self.recordLabelView.text = record.messageText
+    self.recordImageView.image = UIImage(named: record.imageName)
+ )}
+}
+```
+
+What are the errors in it?
+
+## Swift Best Practices
+
+What is the difference between `if let` and `guard let`?
+
+Which do you prefer, and why?
+
+## Inter-object Communications
+
+There are several ways to pass information, state or signals between objects (e.g. view controllers, data models, etc.) in Swift. What are the ones you're familiar with? Which do you prefer to use, and why?
+
+## Architecture/Design
+
+Suppose you had a UX component to design that is a list of videos, including a thumbnail and some metadata (e.g. title, owner, etc.). This component will be used on multiple pages. It is fed by data from an asynchronous call to a REST service. The user has no mental model of how many videos "should" be in the result set (i.e. imagine search results, as opposed to a view of their own videos). How would you break down this design into components? What technology choices would you make?
+
+## Quality Practices
+
+Describe the quality practices you employed, in the most quality-focused project you've worked on. What worked well, and what didn't? What problems were found in production, and what should have changed about those practices to catch them earlier?
+
+## Giver / Taker / Mentorship
+
+Tell me about two or three people whom you have helped get ahead at work. Who were they, and how did you help?
+
+## Swift vs Obj-C
+
+You helped migrate the code on Project Gamma from Objective-C to Swift. Tell me about that. In particular, what aspects of Swift did you take advantage of in the new code? What problems did Swift help you solve that were harder in Objective-C?
+
+## Differences in architectural patterns
+
+You helped migrate Project Kappa from MVC to MVVM. Tell me about that. In particular, what motivated the change, and what problems were you able to solve with MVVM that MVC had caused/introduced?
+
+## Minutiae
+
+Does an opening curly brace belong at the end of the initiating line, or on the next line?
+
+## Architecture
+
+Given the opportunity to write a brand new app of moderate complexity, what architecture and design patterns would you use?
+Complexity of the app will include:
+
+- 20-30 screens
+- 3-4 tabs with navigation controllers in each
+- BLE and Web connectivity
+- Localized in multiple languages
+- Accessible to disabled users
+- Highest confidence in the quality of the app - defects are potentially deadly
+
+What are its advantages? Have you used this architecture in the past? What was the result?
+
+## Source Control
+
+### Question 1
+
+What type of source control have you used at work? How do you handle feature branches? How do you prepare your code for code review?
+
+## Agile methodology and tools
+
+### Question 1
+
+Tell me about the software development process at your most recent job? How do you assign the tasks, provide estimates, and keep track of the progress and roadblocks?
+
+### Build process and tools
+
+How do you deliver the builds to the QA, beta users, or your customers?
+
+## Unit Tests
+
+### Question 1
+
+Ask the candidate about creating unit tests in Xcode and what kind of tests he/she will create for a software component.
+
+## Important iOS Frameworks
+
+### Question 1
+
+What kind of iOS frameworks have you used in your apps?
+
+#### Solution
+
+UIKit and Foundation are the most important frameworks that everybody is using. Core Data and Core Bluetooth are plus because we are using them Ask some concrete questions to make sure the candidate has used them.
+
+## GDQ and threading concepts
+
+### Question 1
+
+What are the DispatchQueue types and when would you use them?
+
+#### Solution
+
+Using `DispatchQueue` is essential to handle serial o asynchronous tasks. Dispatch queue types are Mai Global, or Custom. See for example if the candidate knows how to asynchronously populate rows of a lo list.
+
+## Design Patterns
+
+### Question 1
+
+What kind of design patterns have you used?
+
+#### Solution
+
+This is a more advanced question. Most of the developers use the design patterns without knowing the concepts. These are the most common iOS des patterns:
+
+- Creational: Singleton.
+- Structural: MVC, Decorator, Adapter, Facade.
+- Behavioral: Observer, and Memento
+
+See if the candidate knows how to implement them iOS.
+
+## RxSwift
+
+- What is a DisposeBag?
+- Can you have multiple DisposeBags?
+- How do you handle concurrency in RxSwift? How do you handle errors in RxSwift?
+- What is the difference between RxSwift and RxCocoa?
+- What is a Custom Reactive Extension?
+- What are Bindings?
+- How do you handle Unit Testing for RxSwift code?
+- Describe your ideal implementation of Clean Architecture Design from scratch using RxSwift (Love this one)
+
+## Combine
+
+- Describe differences between RxSwift and Combine
+- Describe a scenario where you'll use Combine over RxSwift
+- Have you found a limitation while working with Combine?
+
+## SwiftUI
+
+- Can you use RxSwift with SwiftUI?
+- is it possible to use MVVM, Viper, Coordinator patterns with SwiftUI?
+- Can you work with UIKit and SwiftUI in the same project?
+- How do you avoid massive SwiftUI views?
+- How do you create custom graphics with SwiftUI?
+- How do you Test & Debug SwiftUI?
