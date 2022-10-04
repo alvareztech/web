@@ -16,7 +16,9 @@ const components = { GitHub, YouTube, Slideshare, SpeakerDeck, Slides, ...MDXCom
 const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/posts/${slug}.mdx`;
 
 export default function Post({ post, isPage }) {
+
   const Component = useMemo(() => getMDXComponent(post.code), [post.code]);
+
   return (<Layout>
     <Head>
       <title>{post.frontmatter.title}</title>
@@ -24,7 +26,7 @@ export default function Post({ post, isPage }) {
 
       <meta property="og:title" content={post.frontmatter.title} />
       <meta property="og:description" content={post.frontmatter.summary} />
-      <meta property="og:url" content={"https://alvarez.tech/" + post.slug} />
+      <meta property="og:url" content={`https://alvarez.tech/${post.slug}`} />
       <meta property='og:type' content='article' />
       <meta property="article:publisher" content="https://alvarez.tech" />
       <meta property="article:author" content="https://alvarez.tech" />
@@ -34,14 +36,14 @@ export default function Post({ post, isPage }) {
 
       <meta name='twitter:title' content={post.frontmatter.title} />
       <meta name='twitter:description' content={post.frontmatter.summary} />
-      <meta name='twitter:url' content={"https://alvarez.tech/" + post.slug} />
+      <meta name='twitter:url' content={`https://alvarez.tech/${post.slug}`} />
     </Head>
 
     <div className="relative py-16 bg-white overflow-hidden">
       <article className="relative px-4 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto">
           <h1>
-            <Link href={"/tag/" + post.frontmatter.tags?.[0]}>
+            <Link href={`/tag/${post.frontmatter.tags?.[0]}`}>
               <span
                 className="block text-base text-center text-blue-600 font-semibold font-mono tracking-wide uppercase">
                 {post.frontmatter.tags?.[0]}

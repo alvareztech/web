@@ -42,30 +42,6 @@ const Paragraph = (props) => {
   )
 }
 
-const Subtitle = (props) => {
-  return (
-    <h1 className="mt-4 text-3xl font-bold">{props.children}</h1>
-  )
-}
-
-const Subtitle2 = (props) => {
-  return (
-    <h2 className="mt-4 text-2xl font-bold">{props.children}</h2>
-  )
-}
-
-const Subtitle3 = (props) => {
-  return (
-    <h3 className="mt-4 text-xl font-bold">{props.children}</h3>
-  )
-}
-
-const Subtitle4 = (props) => {
-  return (
-    <h4 className="mt-4 text-lg font-bold">{props.children}</h4>
-  )
-}
-
 const MyCode = (props) => {
   return (
     <pre {...props}
@@ -102,11 +78,6 @@ const MDXComponent = {
   a: CustomLink,
   BlogImg,
   p: Paragraph,
-  h1: Subtitle,
-  h2: Subtitle2,
-  h3: Subtitle3,
-  h4: Subtitle4,
-  // pre: MyCode,
   ul: ListDisc,
   ol: ListDecimal,
   blockquote: Blockquote
