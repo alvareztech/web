@@ -17,7 +17,7 @@ const editUrl = (slug) => `https://github.com/alvareztech/web/edit/main/data/pos
 
 export default function Post({ post, isPage }) {
 
-  const Component = useMemo(() => getMDXComponent(post.code), [post.code]);
+  const Content = useMemo(() => getMDXComponent(post.code), [post.code]);
 
   return (<Layout>
     <Head>
@@ -59,7 +59,7 @@ export default function Post({ post, isPage }) {
           </p>
 
           <div className="content">
-            <Component components={components} />
+            <Content components={components} />
           </div>
 
           <div className="flex items-start justify-center mt-14 w-full">

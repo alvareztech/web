@@ -29,5 +29,9 @@ div.content h4 {
 }
 
 nav.toc {
-  @apply bg-slate-600 relative;
+  @apply bg-yellow-50 w-60 fixed top-80 right-40 text-sm no-underline scroll-m-6; /*bg-yellow-50 rounded absolute top-4 left-4;*/
+}
+
+nav.toc ol {
+  @apply list-none;
 }
