@@ -44,13 +44,15 @@ export default function Post({ post, isPage }) {
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <article className="mx-auto max-w-3xl">
 
-        <h1 className='mt-20'>
-          <Link href={`/tag/${mainTag}`}>
-            <a
-              className={`px-1 py-0.5 text-base text-white ${getColor(mainTag)} rounded font-semibold font-mono tracking-wide uppercase`}>
-              {mainTag}
-            </a>
-          </Link>
+        <h1 className='mt-28'>
+          {mainTag &&
+            <Link href={`/tag/${mainTag}`}>
+              <a
+                className={`px-1 py-0.5 text-base text-white ${getColor(mainTag)} rounded font-semibold font-mono tracking-wide uppercase`}>
+                {mainTag}
+              </a>
+            </Link>
+          }
           <span
             className="mt-4 block text-4xl leading-8 font-bold font-mono tracking-tighter text-gray-900 sm:text-4xl">
             {post.frontmatter.title}
@@ -85,6 +87,27 @@ export default function Post({ post, isPage }) {
 
       </article>
     </div>
+
+    {/* Table of Contents */}
+    {post.headings.length > 0 &&
+      <div className='bg-slate-100 p-4 w-60 rounded fixed top-80 right-6 hidden xl:block'>
+        <ul>
+          <li>
+            <a href='#' className='text-sm text-slate-500 hover:text-blue-500'>Home</a>
+          </li>
+          {
+            post.headings.map(heading => (
+              <li>
+                {heading.level == 2 &&
+                  <>&nbsp;&nbsp;&nbsp;&nbsp;</>
+                }
+                <a href={`#${heading.id}`} className="text-sm text-slate-500 hover:text-blue-500">{heading.name}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    }
 
   </Layout>)
 }
