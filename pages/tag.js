@@ -21,7 +21,7 @@ export default function Tag({ tags }) {
               <a>
                 <span
                   key={tag}
-                  className={`text-white uppercase ${getColor(tag)} inline-flex items-center px-2 my-1 rounded text-xl font-bold font-mono hover:opacity-60`}>
+                  className={`text-white uppercase ${getColor(tag)} inline-flex items-center px-1 my-1 rounded text-xl font-bold font-mono hover:opacity-60`}>
                   {tag}
                 </span>
               </a>
