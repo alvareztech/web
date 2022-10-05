@@ -97,7 +97,7 @@ export default function Post({ post, isPage }) {
           </li>
           {
             post.headings.map(heading => (
-              <li>
+              <li key={heading.id}>
                 {heading.level == 2 &&
                   <>&nbsp;&nbsp;</>
                 }
