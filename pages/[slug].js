@@ -62,7 +62,7 @@ export default function Post({ post, isPage }) {
           {post.frontmatter.summary}
         </p>
 
-        <div class="content">
+        <div className="content">
           <Content components={components} />
         </div>
 
@@ -89,17 +89,17 @@ export default function Post({ post, isPage }) {
     </div>
 
     {/* Table of Contents */}
-    {post.headings.length > 0 &&
-      <div className='bg-slate-100 p-4 w-60 rounded fixed top-80 right-6 hidden xl:block'>
+    {isTocEnabled(post, isPage) &&
+      <div className='bg-slate-100 p-4 w-60 rounded fixed top-60 right-6 hidden xl:block'>
         <ul>
           <li>
-            <a href='#' className='text-sm text-slate-500 hover:text-blue-500'>Home</a>
+            <a href='#' className='text-sm text-slate-500 hover:text-blue-500'>Intro</a>
           </li>
           {
             post.headings.map(heading => (
               <li>
                 {heading.level == 2 &&
-                  <>&nbsp;&nbsp;&nbsp;&nbsp;</>
+                  <>&nbsp;&nbsp;</>
                 }
                 <a href={`#${heading.id}`} className="text-sm text-slate-500 hover:text-blue-500">{heading.name}</a>
               </li>
@@ -135,14 +135,16 @@ export async function getStaticProps({ params }) {
     }
   }
 }
-/*
-<ul className=''>
-              {
-                post.headings.map(heading => (
-                  <li>
-                    <a href={`#${heading.id}`} className="text-sm hover:bg-blue-500">{heading.name}</a>
-                  </li>
-                ))
-              }
-            </ul>
-*/
+
+function isTocEnabled(post, isPage) {
+  if (post.headings.length > 0) {
+    if (isPage) {
+      if (post.frontmatter.toc) {
+        return true;
+      }
+    } else {
+      return true;
+    }
+  }
+  return false;
+}
