@@ -1,0 +1,84 @@
+---
+title: Queues
+summary: Swift doesn't have a dedicated Queue struct. Let's create our own Queue struct.
+tags: [swift]
+date: 2022-10-06 02:38
+---
+As we did for the [Stacks](/swift-stacks), we are going to create our Queue `Struct`.
+
+A queue uses FIFO (first-in first-out) ordering and these are its basic operations:
+
+- `add(element)`: Or `enqueue(element)`, add an element.
+- `remove()`: Or `dequeue()`, remove and return an element.
+- `peek()`: Return the first element of the queue.
+- `isEmpty()`
+
+## First contact
+
+Basically with an array we can do any type of operations, to create a Queue we only have to limit the behavior.
+
+With the code below, you can see that with array methods, we can replicate a Queue functionality. `append()` to `add()`, `removeFirst()` to `remove()`.
+
+```swift
+var queue: [String] = []
+
+queue.append("A")
+queue.append("B")
+queue.append("C")
+```
+
+```swift
+while !queue.isEmpty {
+    let e = queue.removeFirst()
+    print(e)
+}
+```
+
+### Output
+
+```swift
+A
+B
+C
+```
+
+## Version 1: A generic struct
+
+```swift
+struct Queue<Element> {
+    private var array: [Element] = []
+
+    mutating func add(_ element: Element) {
+        array.append(element)
+    }
+
+    mutating func remove() -> Element? {
+        return array.removeFirst()
+    }
+
+    func peek() -> Element? {
+        return array.first
+    }
+
+    var isEmpty: Bool {
+      return array.isEmpty
+    }
+}
+```
+
+### How to use
+
+```swift
+var queue = Queue<String>()
+
+queue.add("A")
+queue.add("B")
+queue.add("C")
+
+while !queue.isEmpty {
+    let e = queue.remove()
+    print(e ?? "")
+}
+```
+
+Alternatively instead of using an array you can also use a `LinkedList` as the main container to create the `Struct`.
