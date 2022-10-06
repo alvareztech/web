@@ -52,11 +52,11 @@ struct Stack {
     }
 
     mutating func pop() -> String? {
-        return array.popLast()
+        array.popLast()
     }
 
     func peek() -> String? {
-        return array.last
+        array.last
     }
 
     var isEmpty: Bool {
@@ -70,6 +70,8 @@ struct Stack {
 ```
 
 > Since the `push()` and `pop()` functions must modify the content or the array (which is an attribute of the `Struct`), then it is necessary that this function be `mutating`. Note that the `peek()` function does not modify or extract a value, it only reads the top element, that's why you don't need the `mutating` keyword.
+
+> Remember that if the function has only one line of code you can save the `return` keyword.
 
 ### How to use
 
@@ -97,11 +99,11 @@ struct Stack<Element> {
     }
 
     mutating func pop() -> Element? {
-        return array.popLast()
+        array.popLast()
     }
 
     func peek() -> Element? {
-        return array.last
+        array.last
     }
 
     var isEmpty: Bool {
@@ -128,3 +130,7 @@ while !stack.isEmpty {
 }
 
 ```
+
+You can also see the [Queue](/swift-queues) `Struct` implementation.
+
+_Updated for Swift 5.7_

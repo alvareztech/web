@@ -4,6 +4,7 @@ summary: Swift doesn't have a dedicated Queue struct. Let's create our own Queue
 tags: [swift]
 date: 2022-10-06 02:38
 ---
+
 As we did for the [Stacks](/swift-stacks), we are going to create our Queue `Struct`.
 
 A queue uses FIFO (first-in first-out) ordering and these are its basic operations:
@@ -53,18 +54,22 @@ struct Queue<Element> {
     }
 
     mutating func remove() -> Element? {
-        return array.removeFirst()
+        array.removeFirst()
     }
 
     func peek() -> Element? {
-        return array.first
+        array.first
     }
 
     var isEmpty: Bool {
-      return array.isEmpty
+        array.isEmpty
     }
 }
 ```
+
+> Since the `add()` and `remove()` functions must modify the content or the array (which is an attribute of the `Struct`), then it is necessary that this function be `mutating`. Note that the `peek()` function does not modify or extract a value, it only reads the top element, that's why you don't need the `mutating` keyword.
+
+> Remember that if the function has only one line of code you can save the `return` keyword.
 
 ### How to use
 
@@ -82,3 +87,5 @@ while !queue.isEmpty {
 ```
 
 Alternatively instead of using an array you can also use a `LinkedList` as the main container to create the `Struct`.
+
+_Updated for Swift 5.7_
