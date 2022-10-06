@@ -1,0 +1,130 @@
+---
+title: Stacks
+summary: Swift doesn't have a dedicated Stack struct. Let's create our own Stack struct.
+tags: [swift]
+date: 2022-10-06 10:07
+---
+
+A stack uses LIFO (last-in first-out) ordering and these are its basic operations:
+
+- `push(element)`: Add an element.
+- `pop()`: Remove and return an element.
+- `peek()`: Return the top element of the stack.
+- `isEmpty()`
+
+## First contact
+
+Basically with an array we can do any type of operations, to create a Stack we only have to limit the behavior.
+
+With the code below, you can see that with array methods, we can replicate a Stack functionality. `append()` to `push()`, `popLast()` to `pop()`.
+
+```swift
+var stack: [String] = []
+
+stack.append("A")
+stack.append("B")
+stack.append("C")
+
+while !stack.isEmpty {
+    let e = stack.popLast()
+    print(e ?? "")
+}
+```
+
+### Output
+
+```swift
+C
+B
+A
+```
+
+Of course, this alternative is dangerous even for you, if you want a structure that always acts as a Stack you _must limit_ and not leave it open to use other array methods.
+
+## Version 1: A struct
+
+```swift
+struct Stack {
+    private var array: [String] = []
+
+    mutating func push(_ element: String) {j
+        array.append(element)
+    }
+
+    mutating func pop() -> String? {
+        return array.popLast()
+    }
+
+    func peek() -> String? {
+        return array.last
+    }
+
+    var isEmpty: Bool {
+        array.isEmpty
+    }
+
+    var count: Int {
+        array.count
+    }
+}
+```
+
+> Since the `push()` and `pop()` functions must modify the content or the array (which is an attribute of the `Struct`), then it is necessary that this function be `mutating`. Note that the `peek()` function does not modify or extract a value, it only reads the top element, that's why you don't need the `mutating` keyword.
+
+### How to use
+
+```swift
+var stack = Stack()
+stack.push("A")
+stack.push("B")
+stack.push("C")
+
+while !stack.isEmpty {
+    print(stack.pop() ?? "")
+}
+```
+
+## Version 2: A generic stack
+
+We don't want a Stack just for Strings, but rather for any type, for that we use **Generics**.
+
+```swift
+struct Stack<Element> {
+    private var array: [Element] = []
+
+    mutating func push(_ element: Element) {
+        array.append(element)
+    }
+
+    mutating func pop() -> Element? {
+        return array.popLast()
+    }
+
+    func peek() -> Element? {
+        return array.last
+    }
+
+    var isEmpty: Bool {
+        array.isEmpty
+    }
+
+    var count: Int {
+        array.count
+    }
+}
+```
+
+### How to use
+
+```swift
+var stack = Stack<String>()
+
+stack.push("A")
+stack.push("B")
+stack.push("C")
+
+while !stack.isEmpty {
+    print(stack.pop() ?? "")
+}
+
+```
