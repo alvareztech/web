@@ -13,7 +13,7 @@
 }
 
 div.content {
-  @apply text-lg
+  @apply text-lg;
 }
 
 div.content h1 {
@@ -30,6 +30,10 @@ div.content h3 {
 
 div.content h4 {
   @apply mt-4 text-lg font-bold;
+}
+
+:not(pre) > code {
+  @apply text-blue-600 font-semibold text-base;
 }
 
 /* nav.toc {
