@@ -5,9 +5,9 @@ date: 2019-06-08 08:00
 tags: [hms, android, github, github actions]
 ---
 
-You probably use Github to manage your Android project. We all know that manually releasing can be very tedious and boring. From running some tests, generating the APK or AAB, signing it, entering the AppGallery Console, filling in information, uploading it, etc.
+You probably use Github to manage your Android project. We all know that manually releasing can be very tedious and boring. From running some tests, generating the APK or AAB, signing it, entering the _AppGallery Console_, filling in information, uploading it, etc.
 
-With this series of guides we will automate the release process in the simplest way, doing some things at a low level to understand them using the Publising API to publish our APK or AAB to AppGallery. But first we will take all the precautions to manage some secret files such as the keystore to sign the application and the agconnect-services.json file. Of course we will do it for a project that uses the Huawei Mobile Services and the considerations that must be taken.
+With this series of guides we will automate the release process in the simplest way, doing some things at a low level to understand them using the Publising API to publish our APK or AAB to AppGallery. But first we will take all the precautions to manage some secret files such as the keystore to sign the application and the `agconnect-services.json` file. Of course we will do it for a project that uses the Huawei Mobile Services and the considerations that must be taken.
 
 ## GitHub Actions
 
@@ -61,9 +61,9 @@ Any change made in the YAML file will allow us to execute the workflow, it can a
 
 ## Securing sensitive data and files
 
-If we want our workflow to generate an APK or AAB signed and ready to upload to AppGallery we need some files, but those files have to be safe and they should not be versioned in the repository. They should even be placed in .gitignore to avoid uploading them by mistake.
+If we want our workflow to generate an APK or AAB signed and ready to upload to AppGallery we need some files, but those files have to be safe and they should not be versioned in the repository. They should even be placed in `.gitignore` to avoid uploading them by mistake.
 
-Most developers in most cases recommend to be careful with the following files in an Android project that uses Huawei Mobile Services.
+Most developers in most cases recommend to be careful with the following files in an Android project that uses _Huawei Mobile Services_.
 
 * The keystore file
 * The keystore password and keystore alias password values
@@ -94,11 +94,11 @@ We will get something like this: (considering we put different passphrases, it c
 
 ![GitHub Actions Android](/images/githubactions7.png)
 
-Note that we have a keystore.properties file where we have the values of the passwords and alias of the keystore.
+Note that we have a `keystore.properties` file where we have the values of the passwords and alias of the keystore.
 
 Well, the idea is to use these values in the workflow to generate the signed APK.
 
-We are going to create a new step in our YAML and do the reverse that we did. First we generate the .asc file, then with the passphrase generate the final file in its corresponding directory.
+We are going to create a new step in our YAML and do the reverse that we did. First we generate the `.asc` file, then with the passphrase generate the final file in its corresponding directory.
 
 
 ```yml
@@ -114,7 +114,7 @@ We are going to create a new step in our YAML and do the reverse that we did. Fi
 
 ## Generating the signed application
 
-Generating the APK is easy with a gradle command after having all the necessary files and having the signature configuration in the same build.gradle of the app module, as follows.
+Generating the APK is easy with a gradle command after having all the necessary files and having the signature configuration in the same `build.gradle` of the app module, as follows.
 
 ```YAML
 signingConfigs {
@@ -136,7 +136,7 @@ So generating the signed APK is only:
 
 ## Get signed APK file
 
-For now we will download the result file of the workflow, the idea is to upload this file to AppGallery through the Publising API provided by AppGallery Connect, but now we will settle by downloading this artifact.
+For now we will download the result file of the workflow, the idea is to upload this file to _AppGallery_ through the _Publising API_ provided by _AppGallery Connect_, but now we will settle by downloading this artifact.
 
 ```yml
 - name: Publish APK
@@ -152,7 +152,7 @@ What we have is a workflow that generates a signed APK for change that we make i
 
 ## Conclusion
 
-We have everything ready to start using Publish API, we already take considerations for sensitive files in a project with Huawei Mobile Services. The goal is to continue putting our CI/CD together a bit on a low level to understand the whole process.
+We have everything ready to start using _Publish API_, we already take considerations for sensitive files in a project with _Huawei Mobile Services_. The goal is to continue putting our CI/CD together a bit on a low level to understand the whole process.
 
 The complete file so far is:
 
