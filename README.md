@@ -11,11 +11,3 @@ This site was built with [Next.js](https://nextjs.org/), a React framework.
 - [Giscus](https://giscus.app/) for comments and discussions.
 
 > This site is still under active development.
-
-```mermaid
-  graph TD;
-      A-->B;
-      A-->C;
-      B-->D;
-      C-->D;
-```
