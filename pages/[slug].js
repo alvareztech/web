@@ -42,7 +42,7 @@ export default function Post({ post, isPage }) {
     </Head>
 
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <article className="mx-auto max-w-3xl">
+      <article className="mx-auto max-w-3xl break-words">
 
         <h1 className='mt-28'>
           {mainTag &&
