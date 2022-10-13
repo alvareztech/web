@@ -36,6 +36,14 @@ div.content h4 {
   @apply text-blue-600 font-semibold text-base;
 }
 
+div.content table {
+  @apply w-full my-10;
+}
+
+div.content thead {
+  @apply bg-slate-100;
+}
+
 /* nav.toc {
   @apply bg-yellow-50 w-60 fixed top-80 right-40 text-sm no-underline scroll-m-6; /*bg-yellow-50 rounded absolute top-4 left-4;
 }
