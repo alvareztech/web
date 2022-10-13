@@ -56,7 +56,7 @@ export default function Daniel() {
                   I use my deep knowledge in both platforms to sync features, optimize resources usage, and lead teams.
                 </p>
                 <p className='mt-4'>
-                  <a href='/docs/resume_daniel_alvarez.pdf'>Resume</a>
+                  <a href='/resume.pdf'>Resume</a>
                 </p>
               </div>
             </div>
