@@ -90,7 +90,7 @@ export default function Post({ post, isPage }) {
 
     {/* Table of Contents */}
     {isTocEnabled(post, isPage) &&
-      <div className='bg-slate-100 p-4 w-60 rounded fixed top-60 right-6 hidden xl:block'>
+      <div className='bg-slate-100 p-4 w-60 rounded fixed top-60 right-6 hidden xl:block break-words'>
         <ul>
           <li>
             <a href='#' className='text-sm text-slate-500 hover:text-blue-500'>Intro</a>
@@ -98,7 +98,7 @@ export default function Post({ post, isPage }) {
           {
             post.headings.map(heading => (
               <li key={heading.id}>
-                {heading.level == 2 &&
+                {heading.level === 2 &&
                   <>&nbsp;&nbsp;</>
                 }
                 <a href={`#${heading.id}`} className="text-sm text-slate-500 hover:text-blue-500">{heading.name}</a>
