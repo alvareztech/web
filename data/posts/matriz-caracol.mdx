@@ -1,12 +1,12 @@
 ---
-title: Generar Matriz Caracol
-summary: Generar una matriz caracol es un problema clásico en programación, especialmente cuando estamos iniciando a utilizar Arrays y una matriz es simplemente un array bidimensional.
-tags: [algorithm, java]
+title: Generar Matriz Caracol, Spiral Matrix
+summary: Generar una matriz caracol o Spiral Matrix es un problema clásico en programación, especialmente cuando estamos iniciando a utilizar Arrays y una matriz es simplemente un array bidimensional.
+tags: [algorithm, java, swift]
 date: 2017-06-11 08:00
 language: es
 ---
 
-## Matriz Caracol
+## Matriz Caracol o Spiral Matrix
 
 Una matriz caracol tiene la forma de su nombre, por ejemplo una matriz cuadrada de tamaño 5 sería la siguiente:
 
@@ -16,11 +16,13 @@ La forma más sencilla de resolverlo es tener cuatro ciclos repetitivos que reco
 
 ![](https://firebasestorage.googleapis.com/v0/b/maksha-41f4f.appspot.com/o/labs%2Fprog-matriz-caracol%2Fmatriz-caracol-2.png?alt=media&token=20629042-8a39-4a8b-8c58-c3abfad95b59)
 
-En el diagrama de flujo, `n` es la dimensión de la matriz cuadrada y `x` es un número con cual empezara a generar la matriz caracol. A continuación la solución en _Java_.
+En el diagrama de flujo, `n` es la dimensión de la matriz cuadrada y `x` es un número con cual empezara a generar la matriz caracol.
 
 ## Código
 
 Método que genera la matriz caracol donde `n` es la dimensión de la matriz (matriz cuadrada) y `x` es el número por el cual empezará, por ejemplo puedes enviarle `1`.
+
+### Java
 
 ```java
 public static int[][] generarMatrizCaracol(int n, int x) {
@@ -55,4 +57,36 @@ Código completo en:
 * [Gist en GitHub](https://gist.github.com/alvareztech/babcfb962eaf8a394a20)
 
 > Tomar en cuenta que se genero matriz a partir de la posición (1, 1) sin embargo para la primera posición en Java es (0, 0), podemos cambiar ello de manera sencilla.
+
+### Swift
+
+```
+func generateSpiralMatrix(n: Int) -> [[Int]] {
+    var value = 1
+    var matrix: [[Int]] = [[Int]](repeating: [Int](repeating: 0, count: n), count: n)
+    for ring in 0..<(n / 2) {
+        for i in ring..<(n - ring - 1) {
+            matrix[ring][i] = value
+            value += 1
+        }
+        for i in ring..<(n - ring - 1) {
+            matrix[i][n - ring - 1] = value
+            value += 1
+        }
+        for i in ((ring + 1)..<(n - ring)).reversed() {
+            matrix[n - ring - 1][i] = value
+            value += 1
+        }
+        for i in ((ring + 1)..<(n - ring)).reversed() {
+            matrix[i][ring] = value
+            value += 1
+        }
+    }
+    if n % 2 == 1 {
+        matrix[n / 2][n / 2] = value
+    }
+    return matrix
+}
+```
+
 
