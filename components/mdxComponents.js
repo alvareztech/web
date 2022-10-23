@@ -8,14 +8,12 @@ const CustomLink = (props) => {
   if (isInternalLink) {
     return (
       <Link href={href}>
-        <a {...props}
-          className="font-medium underline underline-offset-4 decoration-4 decoration-blue-500 hover:no-underline hover:bg-blue-500 hover:text-white"
-        >{props.children}</a>
+        <a {...props}>{props.children}</a>
       </Link>
     );
   }
   return <a
-    className="font-medium underline underline-offset-4 decoration-4 decoration-blue-500 hover:no-underline hover:bg-blue-500 hover:text-white"
+    className="font-medium"
     target="_blank" rel="noreferrer" {...props} >{props.children}</a>
 };
 
@@ -42,15 +40,6 @@ const Paragraph = (props) => {
   )
 }
 
-const MyCode = (props) => {
-  return (
-    <pre {...props}
-      className="p-3 text-base block whitespace-pre overflow-x-scroll bg-amber-100 rounded-md">
-      {props.children}
-    </pre>
-  )
-}
-
 const ListDisc = (props) => {
   return (
     <ul className="list-disc my-2 pl-5">{props.children}</ul>
@@ -65,8 +54,7 @@ const ListDecimal = (props) => {
 
 const Blockquote = (props) => {
   return (
-    <blockquote
-      className="mt-1 bg-amber-100 border-l-8 border-amber-300">
+    <blockquote>
       <p className="px-4 py-1 italic">
         {props.children}
       </p>

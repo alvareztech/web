@@ -5,10 +5,10 @@ export default function Navigation() {
   return (
     <nav className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
 
-      <div className=" w-full py-2 flex items-center justify-between border-b border-blue-500 lg:border-none">
+      <div className=" w-full py-2 flex items-center justify-between border-b border-colorA dark:border-colorAD lg:border-none">
         <div className="flex items-center">
           <Link href={`/`}>
-            <a className="text-blue-600 text-2xl px-1 font-bold font-mono tracking-tighter hover:bg-blue-600 hover:text-white">
+            <a className="text-colorA dark:text-colorAD text-2xl px-1 font-bold font-mono tracking-tighter hover:text-white hover:bg-colorA dark:hover:bg-colorAD">
               ALVAREZ.tech
             </a>
           </Link>
@@ -41,7 +41,7 @@ export default function Navigation() {
 function NavItem({ link }) {
   return (
     <Link href={link.href}>
-      <a className={`text-base py-1 px-1 font-mono tracking-tighter font-bold lowercase text-blue-600 hover:text-white hover:bg-blue-600`}>
+      <a className={`text-base py-1 px-1 font-mono tracking-tighter font-bold lowercase text-colorA dark:text-colorAD hover:text-white hover:bg-colorA dark:hover:bg-colorAD`}>
         {link.name}
       </a>
     </Link>

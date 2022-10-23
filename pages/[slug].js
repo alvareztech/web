@@ -54,7 +54,7 @@ export default function Post({ post, isPage }) {
             </Link>
           }
           <span
-            className="mt-4 block text-4xl leading-8 font-bold font-mono tracking-tighter text-gray-900 sm:text-4xl">
+            className="mt-4 block text-4xl leading-8 font-bold font-mono tracking-tighter text-gray-900 sm:text-4xl dark:text-white">
             {post.frontmatter.title}
           </span>
         </h1>
@@ -93,7 +93,7 @@ export default function Post({ post, isPage }) {
       <div className='bg-slate-100 p-4 w-60 rounded fixed top-60 right-6 hidden xl:block break-words'>
         <ul>
           <li>
-            <a href='#' className='text-sm text-slate-500 hover:text-blue-500'>Intro</a>
+            <a href='#' className='text-sm text-slate-500 hover:text-colorA'>Intro</a>
           </li>
           {
             post.headings.map(heading => (
@@ -101,7 +101,7 @@ export default function Post({ post, isPage }) {
                 {heading.level === 2 &&
                   <>&nbsp;&nbsp;</>
                 }
-                <a href={`#${heading.id}`} className="text-sm text-slate-500 hover:text-blue-500">{heading.name}</a>
+                <a href={`#${heading.id}`} className="text-sm text-slate-500 hover:text-colorA">{heading.name}</a>
               </li>
             ))
           }

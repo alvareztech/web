@@ -9,7 +9,7 @@ export default function Daniel() {
       <Head>
         <title>Daniel Alvarez - ALVAREZ.tech</title>
       </Head>
-      <div className="bg-white overflow-hidden">
+      <div className="overflow-hidden">
         <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div
             className="hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen" />
@@ -17,10 +17,10 @@ export default function Daniel() {
             className="mx-auto text-base max-w-prose lg:grid lg:grid-cols-2 lg:gap-8 lg:max-w-none">
             <div>
               <h2
-                className="text-base text-blue-600 font-semibold tracking-wide uppercase">Software
+                className="text-base text-colorA dark:text-colorAD font-semibold tracking-wide uppercase">Software
                 Engineer</h2>
               <h3
-                className="mt-2 text-3xl leading-8 font-extrabold tracking-tight font-mono text-gray-900 sm:text-4xl">
+                className="mt-2 text-3xl leading-8 font-extrabold tracking-tight font-mono dark:text-white sm:text-4xl">
                 Daniel Alvarez
               </h3>
             </div>
@@ -48,7 +48,7 @@ export default function Daniel() {
               </div>
             </div>
             <div className="mt-8 lg:mt-0">
-              <div className="text-lg text-gray-700 max-w-prose mx-auto lg:max-w-none">
+              <div className="text-lg text-gray-700 dark:text-gray-200 max-w-prose mx-auto lg:max-w-none">
                 <p>
                   I am a software engineer with over ten years of experience. I have developed world-class iOS and Android applications for different areas such as healthcare, finance, IoT, retail, and government. Developed SDKs for Android and iOS, created native plugins for hybrid mobile frameworks, and automated development processes.
                 </p>

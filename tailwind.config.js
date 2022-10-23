@@ -5,7 +5,14 @@ module.exports = {
     "./lib/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        colorA: "#007aff", // Blue Light
+        colorAD: "#0a84ff", // Blue Dark
+        colorAccent: "#ffcc00", // Yellow Light
+        colorAccentD: "#ffd60a", // Yellow Light
+      }
+    },
   },
   plugins: [],
 }
