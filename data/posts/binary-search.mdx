@@ -1,0 +1,23 @@
+---
+title: Binary Search
+tags: [algorithm, swift]
+---
+
+## Swift
+
+```swift
+func binarySearch(numbers: [Int], target: Int) -> Int {
+    var index = 0
+    var r = numbers.count
+
+    while index < r {
+        let middle = (index + r) / 2
+        if (numbers[middle] < target) {
+            index = middle + 1
+        } else {
+            r = middle
+        }
+    }
+    return index
+}
+```
