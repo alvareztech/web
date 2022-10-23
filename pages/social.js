@@ -1,5 +1,6 @@
 import Layout from '../components/layout'
 import Head from 'next/head'
+import Hero from '../components/hero'
 
 const socials = [
   {
@@ -54,24 +55,21 @@ export default function Social() {
   return (
     <Layout>
       <Head>
-        <title>Daniel Alvarez</title>
+        <title>{`Daniel Alvarez | ALVAREZ.tech`}</title>
       </Head>
 
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto">
-          <h1>
-            <span className="block text-lg text-center text-blue-600 font-semibold">Social Networks</span>
-            <span className="mt-2 mb-8 block text-3xl text-center leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight">
-              Daniel Alvarez
-            </span>
-          </h1>
+
+          <Hero title={`Daniel Alvarez`} subtitle={`Social Networks`} />
+
           {
             socials.map((item) => (
               <a key={item.name}
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center m-2 px-2.5 py-1.5 border border-transparent text-lg font-medium rounded text-blue-500 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                className="inline-flex items-center m-2 px-2.5 py-1.5 border border-transparent text-lg font-medium rounded text-blue-500 bg-blue-100 hover:bg-blue-200">
                 <item.icon className="h-6 w-6 mr-2" aria-hidden="true" />
                 {item.name}
               </a>
