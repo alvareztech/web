@@ -7,7 +7,7 @@ export default function Daniel() {
   return (
     <Layout>
       <Head>
-        <title>Daniel Alvarez - ALVAREZ.tech</title>
+        <title>{`Daniel Alvarez | ALVAREZ.tech`}</title>
       </Head>
       <div className="overflow-hidden">
         <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">

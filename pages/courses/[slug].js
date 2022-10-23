@@ -12,7 +12,7 @@ const components = { GitHub, ...MDXComponent }
 export default function Course({ course }) {
   const Component = useMemo(() => getMDXComponent(course.code), course.code);
   const stats = [
-    { label: 'Apps desarrolladas', value: course.frontmatter.developed_apps },
+    { label: 'Developed Apps', value: course.frontmatter.developed_apps },
     { label: 'Students', value: course.frontmatter.students },
     { label: 'Duration', value: `${course.frontmatter.duration} month(s)` },
     { label: 'Versions', value: course.frontmatter.versions },
@@ -48,7 +48,7 @@ export default function Course({ course }) {
                 {stats.map((stat) => (
                   <div key={stat.label} className="border-t-2 border-gray-100 pt-6">
                     <dt className="text-base font-medium text-gray-500">{stat.label}</dt>
-                    <dd className="text-3xl font-extrabold tracking-tight text-gray-900">{stat.value}</dd>
+                    <dd className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">{stat.value}</dd>
                   </div>
                 ))}
               </dl>

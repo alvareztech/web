@@ -8,7 +8,7 @@ export default function CourseCard({ course }) {
         <div className="flex-1">
           <p className="text-sm font-medium text-colorA dark:text-colorAD">
             <Link href={`/tag/${course.tags?.[0]}`}>
-              <a className="uppercase">{course.tags?.[0]}</a>
+              <a className="uppercase font-mono">{course.tags?.[0]}</a>
             </Link>
           </p>
           <Link href={`/courses/${course.slug}`}>

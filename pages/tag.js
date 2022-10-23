@@ -3,6 +3,7 @@ import { getTags } from "../lib/posts";
 import Link from "next/link";
 import { getColor } from "../lib/util";
 import Head from 'next/head'
+import Hero from "../components/hero";
 
 export default function Tag({ tags }) {
   return (
@@ -12,8 +13,9 @@ export default function Tag({ tags }) {
       </Head>
       <div
         className="w-full">
-        <h2
-          className="text-center text-3xl font-bold sm:text-4xl py-4 font-mono">{tags.length} tags</h2>
+
+        <Hero title={`Tags`} subtitle={`${tags.length}`} />
+
         <div className="space-x-2 p-8 text-center">
 
           {tags.map(tag => (

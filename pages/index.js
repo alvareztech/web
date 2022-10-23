@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Layout from '../components/layout'
 import { getAllPosts } from '../lib/posts'
 import Link from 'next/link'
-import { titleSite } from '../lib/texts'
 import Post from '../components/post'
 import Project from '../components/project'
 
@@ -10,7 +9,7 @@ export default function Home({ posts, projects }) {
   return (
     <Layout home>
       <Head>
-        <title>{`${titleSite} | Daniel Alvarez | Software Engineer`}</title>
+        <title>{`ALVAREZ.tech | Daniel Alvarez | Software Engineer`}</title>
       </Head>
 
       <div

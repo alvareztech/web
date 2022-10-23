@@ -10,7 +10,6 @@ import Link from 'next/link';
 import Slideshare from "../components/slideshare";
 import SpeakerDeck from "../components/speakerdeck";
 import Slides from "../components/slides";
-import Comments from '../components/comments';
 import { getColor } from '../lib/util';
 
 const components = { GitHub, YouTube, Slideshare, SpeakerDeck, Slides, ...MDXComponent }
@@ -66,7 +65,7 @@ export default function Post({ post, isPage }) {
           <Content components={components} />
         </div>
 
-        <div className="flex items-start justify-center mt-14 w-full">
+        <div className="flex items-start justify-center my-12 w-full">
           <div className="space-x-2 flex-1 -mt-0.5">
             {post.frontmatter.tags?.map(tag => (
               <Link href={`/tag/${tag}`} key={tag}>
@@ -81,9 +80,6 @@ export default function Post({ post, isPage }) {
             </div>
           }
         </div>
-        {!isPage &&
-          <Comments />
-        }
 
       </article>
     </div>

@@ -1,24 +1,22 @@
 import Layout from '../../components/layout'
 import { getPostsByTag, getTags } from "../../lib/posts";
 import Head from 'next/head';
-import { getTitle } from '../../lib/texts';
 import Post from '../../components/post';
 import Project from '../../components/project';
 import CourseCard from '../../components/course_card';
 import TalkCard from '../../components/talk_card';
+import Hero from '../../components/hero';
 
 export default function Tag({ tag, posts, projects, courses, talks }) {
   return (
     <Layout>
       <Head>
-        <title>{getTitle(tag.toUpperCase())}</title>
+        <title>{`${tag.toUpperCase()} | Daniel Alvarez | ALVAREZ.tech`}</title>
       </Head>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <div className="relative max-w-lg mx-auto lg:max-w-7xl">
 
-          <h2 className={'uppercase tracking-tighter font-bold font-mono text-2xl dark:text-white'}>
-            {tag}
-          </h2>
+          <Hero title={tag.toUpperCase()} subtitle={`${posts.length} posts, ${projects.length} projects, ${courses.length} courses, ${talks.length} talks.`} />
 
           {projects.length > 0 &&
             <h2 className='mt-12 text-xl font-mono font-bold tracking-tighter dark:text-white'>Projects</h2>
