@@ -1,0 +1,30 @@
+---
+title: Binary Search
+summary: A search algorithm that finds the position of a target value within a sorted array.
+tags: [algorithm, swift]
+---
+
+_O(log n)_
+
+## Preconditions
+
+- Array should be sorted
+
+## Swift
+
+```swift
+func binarySearch(numbers: [Int], target: Int) -> Int {
+    var index = 0
+    var r = numbers.count
+
+    while index < r {
+        let middle = (index + r) / 2
+        if (numbers[middle] < target) {
+            index = middle + 1
+        } else {
+            r = middle
+        }
+    }
+    return index
+}
+```
