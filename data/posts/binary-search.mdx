@@ -1,7 +1,7 @@
 ---
 title: Binary Search
 summary: A search algorithm that finds the position of a target value within a sorted array.
-tags: [algorithm, swift]
+tags: [algorithm, swift, java]
 ---
 
 _O(log n)_
@@ -19,12 +19,28 @@ func binarySearch(numbers: [Int], target: Int) -> Int {
 
     while index < r {
         let middle = (index + r) / 2
-        if (numbers[middle] < target) {
+        if numbers[middle] < target {
             index = middle + 1
         } else {
             r = middle
         }
     }
     return index
+}
+```
+
+## Java
+
+```java
+static int binarySearch(int[] numbers, int target) {
+    int index = 0, r = numbers.length;
+    while (index < r) {
+        int middle = (index + r) / 2;
+        if (numbers[middle] < target)
+            index = middle + 1;
+        else
+            r = middle;
+    }
+    return index;
 }
 ```
