@@ -5,7 +5,7 @@
 @import "prism.css";
 
 .card-title {
-  @apply text-xl font-bold font-mono tracking-tighter text-gray-900;
+  @apply text-xl font-bold font-mono tracking-tighter text-gray-900 dark:text-white;
 }
 
 .tagx {
@@ -13,7 +13,7 @@
 }
 
 div.content {
-  @apply text-lg;
+  @apply text-lg text-gray-700 dark:text-gray-200;
 }
 
 div.content h1 {
@@ -32,8 +32,16 @@ div.content h4 {
   @apply mt-4 text-lg font-bold;
 }
 
+div.content a {
+  @apply font-medium underline underline-offset-4 decoration-4 decoration-colorA hover:no-underline hover:bg-colorA hover:text-white dark:hover:bg-colorAD dark:decoration-colorAD;
+}
+
+div.content blockquote {
+  @apply mt-1 bg-amber-100 border-l-8 rounded border-amber-300 dark:bg-amber-600 dark:border-amber-700;
+}
+
 :not(pre) > code {
-  @apply text-blue-600 font-semibold text-base;
+  @apply text-colorA dark:text-colorAD font-semibold text-base;
 }
 
 div.content table {
@@ -41,14 +49,5 @@ div.content table {
 }
 
 div.content thead {
-  @apply bg-slate-100;
+  @apply bg-slate-100 dark:bg-slate-700;
 }
-
-/* nav.toc {
-  @apply bg-yellow-50 w-60 fixed top-80 right-40 text-sm no-underline scroll-m-6; /*bg-yellow-50 rounded absolute top-4 left-4;
-}
-*/
-
-/* nav.toc ol {
-  @apply list-none;
-} */

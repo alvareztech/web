@@ -13,15 +13,15 @@ export default function Tag({ tag, posts, projects, courses, talks }) {
       <Head>
         <title>{getTitle(tag.toUpperCase())}</title>
       </Head>
-      <div className="bg-white max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <div className="relative max-w-lg mx-auto lg:max-w-7xl">
 
-          <h2 className={'uppercase tracking-tighter font-bold font-mono text-2xl'}>
+          <h2 className={'uppercase tracking-tighter font-bold font-mono text-2xl dark:text-white'}>
             {tag}
           </h2>
 
           {projects.length > 0 &&
-            <h2 className='mt-12 text-xl font-mono font-bold tracking-tighter'>Projects</h2>
+            <h2 className='mt-12 text-xl font-mono font-bold tracking-tighter dark:text-white'>Projects</h2>
           }
 
           <div
@@ -32,7 +32,7 @@ export default function Tag({ tag, posts, projects, courses, talks }) {
           </div>
 
           {posts.length > 0 &&
-            <h2 className='mt-12 text-xl font-mono font-bold tracking-tighter'>Posts</h2>
+            <h2 className='mt-12 text-xl font-mono font-bold tracking-tighter dark:text-white'>Posts</h2>
           }
 
           <div
@@ -43,7 +43,7 @@ export default function Tag({ tag, posts, projects, courses, talks }) {
           </div>
 
           {courses.length > 0 &&
-            <h2 className='mt-12 text-xl font-mono font-bold tracking-tighter'>Courses</h2>
+            <h2 className='mt-12 text-xl font-mono font-bold tracking-tighter dark:text-white'>Courses</h2>
           }
 
           <div
@@ -54,7 +54,7 @@ export default function Tag({ tag, posts, projects, courses, talks }) {
           </div>
 
           {talks.length > 0 &&
-            <h2 className='mt-12 text-xl font-mono font-bold tracking-tighter'>Talks</h2>
+            <h2 className='mt-12 text-xl font-mono font-bold tracking-tighter dark:text-white'>Talks</h2>
           }
 
           <div

@@ -12,7 +12,7 @@ export default function Post({ post }) {
         </div>
       }
 
-      <div className="flex flex-1 flex-col justify-between bg-white p-6 hover:bg-yellow-100">
+      <div className="flex flex-1 flex-col justify-between p-6 hover:bg-colorAccent dark:hover:bg-colorAccentD">
         <div className="flex-1">
           <Link href={`/tag/${post.tags?.[0]}`}>
             <a className="inline-block">

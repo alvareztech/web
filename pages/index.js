@@ -10,21 +10,20 @@ export default function Home({ posts, projects }) {
   return (
     <Layout home>
       <Head>
-        <title>{titleSite + " | Daniel Alvarez | Software Engineer"}</title>
+        <title>{`${titleSite} | Daniel Alvarez | Software Engineer`}</title>
       </Head>
 
       <div
-        className="bg-white max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+        className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <div
           className="relative max-w-lg mx-auto lg:max-w-7xl">
 
           <div className='flex mt-12 px-6'>
-            <h2 className='flex-auto text-3xl font-bold tracking-tight'>Projects</h2>
+            <h2 className='flex-auto text-3xl font-bold tracking-tight text-black dark:text-white'>Projects</h2>
             <Link href="/projects">
-              <a className='items-center px-2.5 py-1.5 rounded bg-blue-100 text-blue-700 hover:bg-blue-200 font-medium'>See more projects</a>
+              <a className='items-center px-2.5 py-1.5 rounded bg-blue-100 text-colorA hover:bg-blue-200 font-medium'>See more projects</a>
             </Link>
           </div>
-
 
           <div className="mx-auto mt-8 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
             {
@@ -34,11 +33,9 @@ export default function Home({ posts, projects }) {
             }
           </div>
 
-
-          <div className="text-left mt-12 px-6">
-            <h2 className="text-3xl font-bold tracking-tight">Posts</h2>
+          <div className="flex mt-12 px-6">
+            <h2 className="text-3xl font-bold tracking-tight text-black dark:text-white">Posts</h2>
           </div>
-
 
           <div className="mx-auto mt-8 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
             {
@@ -47,7 +44,6 @@ export default function Home({ posts, projects }) {
               ))
             }
           </div>
-
 
         </div>
       </div>

@@ -21,24 +21,24 @@ export default function Project({ project }) {
         <meta property="og:description" content={project.frontmatter.summary} />
       </Head>
 
-      <div className="overflow-hidden bg-white py-16 px-4 sm:px-6 lg:px-8 xl:py-36">
+      <div className="overflow-hidden py-16 px-4 sm:px-6 lg:px-8 xl:py-36">
         <div className="mx-auto max-w-max lg:max-w-7xl">
           <div className="relative z-10 mb-8 md:mb-2 md:px-6">
-            <p className='mb-2 text-base font-mono font-bold text-blue-600 tracking-tighter uppercase'>{project.frontmatter.category}</p>
-            <h2 className='font-mono text-4xl tracking-tighter font-black'>{project.frontmatter.title}</h2>
-            <p className='inline-flex items-center px-2 py-0.5 mt-4 text-base font-mono bg-blue-100 text-blue-800 rounded-md uppercase'>{project.frontmatter.status}</p>
+            <p className='mb-2 text-base font-mono font-bold text-colorA dark:text-colorAD tracking-tighter uppercase'>{project.frontmatter.category}</p>
+            <h2 className='font-mono text-4xl tracking-tighter font-black dark:text-white'>{project.frontmatter.title}</h2>
+            <p className='inline-flex items-center px-2 py-0.5 mt-4 text-base font-mono bg-blue-100 text-colorA dark:text-colorAD rounded-md uppercase'>{project.frontmatter.status}</p>
           </div>
           <div className="relative">
-            <div className="relative md:bg-white md:p-6">
+            <div className="relative md:p-6">
               <div className="lg:grid lg:grid-cols-2 lg:gap-6">
                 <div className='content text-lg'>
                   <Component components={components} />
                 </div>
                 <div className='mt-3'>
-                  <h2 className='text-2xl font-bold'>Repository</h2>
+                  <h2 className='text-2xl font-bold dark:text-white'>Repository</h2>
                   <GitHub repo={project.frontmatter.repo} />
                   {(project.frontmatter.goopleplay || project.frontmatter.appgallery) &&
-                    <h2 className='text-2xl font-bold'>Download</h2>
+                    <h2 className='text-2xl font-bold dark:text-white'>Download</h2>
                   }
                   {project.frontmatter.goopleplay &&
                     <GooglePlay appId={project.frontmatter.goopleplay} />
