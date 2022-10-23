@@ -34,7 +34,7 @@ export default function Layout({ children, home }) {
       <link rel="manifest" href="/site.webmanifest" />
     </Head>
 
-    <div className='dark:bg-black flex flex-col h-screen'>
+    <div className='flex flex-col h-screen'>
       <header>
         <Navigation />
 
