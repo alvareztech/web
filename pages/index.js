@@ -51,7 +51,7 @@ export default function Home({ posts, projects }) {
 }
 
 export async function getStaticProps() {
-  const posts = getAllPosts('posts')
+  const posts = getAllPosts('posts').filter((post) => post.draft !== true)
   const projects = getAllPosts('projects').slice(0, 3)
   return {
     props: {
