@@ -1,0 +1,124 @@
+---
+title: Swift Key Concepts
+tags: [swift]
+date: 2022-10-08 01:36
+---
+
+## Computed Properties
+
+With computed properties, you can create properties that can compute their value based on other instance properties or logic.
+
+```swift
+struct Temperature {
+  var celsius: Double
+
+  var fahrenheit: Double {
+    celsius * 1.8 + 32
+  }
+
+  var kelvin: Double {
+    celsius + 273.15
+  }
+}
+```
+
+## `sort()` vs `sorted()`
+
+- [sort()](<https://developer.apple.com/documentation/swift/array/sort()>)
+- [sorted()](<https://developer.apple.com/documentation/swift/array/sorted()>)
+
+## Property Observers
+
+These property observers are called every time a property's value is set, even if the new value is the same.
+
+There are two observer closures, or blocks of code, that you can define on any given property: `willSet`, and `didSet`.
+
+```swift
+struct StepCounter {
+  var totalSteps: Int = 0 {
+    willSet {
+      print(”About to set totalSteps to \(newValue)”)
+    }
+    didSet {
+      if totalSteps > oldValue {
+        print("Added \(totalSteps - oldValue) steps")
+      }
+    }
+  }
+}
+```
+
+## Copying
+
+```swift
+var someSize = Size(width: 250, height: 1000)
+var anotherSize = someSize
+
+someSize.width = 500
+
+print(someSize.width)
+print(anotherSize.width)
+```
+
+```swift
+500
+250
+```
+
+## Struct vs Class
+
+Basic rule: you should start new types as `struct` until you need one of the features that a `class` provide.
+
+Start with a class when you're working with a framework that uses classes or when you want to refer to the same instance of a type in multiple places.
+
+Use a class:
+
+- When you're working with a framework that uses classes
+- When you want to refer to the same instance of a type in multiple places
+- When you want to model inheritance
+
+## Control Transfer Statements
+
+- `break`: Ends execution of a loop
+- `continue`: Ends execution of the current iteration of a loop but doesn't stop execution of the loop statement.
+- `fallthrough`: Causes program execution to continue from one case in a switch statement to the next case.
+- `return`: Causes program execution to return to the calling function or method.
+- `throw`: Ends execution of the current scope and begin error propagation to its enclosing scope.
+
+## KeyPaths
+
+Just another way to reference a specific property. Mostly used on SwiftUI.
+
+```swift
+let nameKeyPath: KeyPath<Person, String> = \.name
+
+for person in people {
+    print(person[keyPath: nameKeyPath])
+}
+```
+
+## `some` keyword
+
+The following three methods are equivalent.
+
+```swift
+func wash<T: Vehicle>(_ vehicle: T) {
+    // ...
+}
+```
+
+```swift
+func wash<T>(_ vehicle: T) where T: Vehicle {
+    // ...
+}
+```
+
+```swift
+func wash(_ vehicle: some Vehicle)  {
+    // ...
+}
+```
+
+## map(), flatMap() and compactMap()
+
+> Work in progress...
