@@ -20,19 +20,20 @@ export default function Tag({ tags }) {
 
           {tags.map(tag => (
             <Link key={tag} href={`/tag/${tag}`}>
-              <a>
-                <span
-                  key={tag}
-                  className={`text-white uppercase ${getColor(tag)} inline-flex items-center px-1 my-1 rounded text-xl font-bold font-mono hover:opacity-60`}>
-                  {tag}
-                </span>
-              </a>
+
+              <span
+                key={tag}
+                className={`text-white uppercase ${getColor(tag)} inline-flex items-center px-1 my-1 rounded text-xl font-bold font-mono hover:opacity-60`}>
+                {tag}
+              </span>
+
             </Link>
           ))}
 
         </div>
       </div>
-    </Layout>)
+    </Layout>
+  );
 }
 
 export async function getStaticProps() {

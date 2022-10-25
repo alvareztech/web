@@ -19,8 +19,10 @@ export default function Home({ posts, projects }) {
 
           <div className='flex mt-12 px-6'>
             <h2 className='flex-auto text-3xl font-bold tracking-tight text-black dark:text-white'>Projects</h2>
-            <Link href="/projects">
-              <a className='items-center px-2.5 py-1.5 rounded bg-blue-100 text-colorA hover:bg-blue-200 font-medium'>See more projects</a>
+            <Link
+              href="/projects"
+              className='items-center px-2.5 py-1.5 rounded bg-blue-100 text-colorA hover:bg-blue-200 font-medium'>
+              See more projects
             </Link>
           </div>
 
@@ -47,7 +49,7 @@ export default function Home({ posts, projects }) {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {

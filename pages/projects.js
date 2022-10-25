@@ -15,8 +15,10 @@ export default function Projects({ projects }) {
         <div className="relative max-w-7xl mx-auto">
           <Hero title={`Projects`} subtitle={`Some small personal projects I was working on and am working on now. All open source 😉.`}>
             This site is also&nbsp;
-            <Link href={"/about"}>
-              <a className="text-colorA dark:text-colorAD font-medium hover:text-blue-300">a project.</a>
+            <Link
+              href={"/about"}
+              className="text-colorA dark:text-colorAD font-medium hover:text-blue-300">
+              a project.
             </Link>
           </Hero>
           <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
@@ -27,7 +29,7 @@ export default function Projects({ projects }) {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
