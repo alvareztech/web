@@ -1,9 +1,9 @@
-import { getAllPosts } from "../lib/posts"
-import Layout from "../components/layout"
+import { getAllPosts } from "../../lib/posts"
+import Layout from "../../components/layout"
 import Link from "next/link"
 import Head from "next/head"
-import Project from "../components/project"
-import Hero from "../components/hero"
+import Project from "../../components/project"
+import Hero from "../../components/hero"
 
 export default function Projects({ projects }) {
   return (
