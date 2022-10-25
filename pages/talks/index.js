@@ -1,8 +1,8 @@
-import { getAllPosts } from "../lib/posts"
-import Layout from "../components/layout"
+import { getAllPosts } from "../../lib/posts"
+import Layout from "../../components/layout"
 import Head from "next/head"
-import TalkCard from "../components/talk_card";
-import Hero from "../components/hero";
+import TalkCard from "../../components/talk_card";
+import Hero from "../../components/hero";
 
 export default function Talks({ talks }) {
   return (

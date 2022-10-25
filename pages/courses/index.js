@@ -1,8 +1,8 @@
-import Layout from "../components/layout";
-import { getAllPosts } from "../lib/posts";
+import Layout from "../../components/layout";
+import { getAllPosts } from "../../lib/posts";
 import Head from "next/head";
-import CourseCard from "../components/course_card";
-import Hero from "../components/hero";
+import CourseCard from "../../components/course_card";
+import Hero from "../../components/hero";
 
 export default function Courses({ courses }) {
   return (

@@ -1,9 +1,9 @@
-import Layout from "../components/layout";
-import { getTags } from "../lib/posts";
+import Layout from "../../components/layout";
+import { getTags } from "../../lib/posts";
 import Link from "next/link";
-import { getColor } from "../lib/util";
+import { getColor } from "../../lib/util";
 import Head from 'next/head'
-import Hero from "../components/hero";
+import Hero from "../../components/hero";
 
 export default function Tag({ tags }) {
   return (
