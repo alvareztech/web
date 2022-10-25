@@ -53,10 +53,11 @@ export default function Course({ course }) {
                 ))}
               </dl>
               <div className="mt-10">
-                <Link href={`/contact`}>
-                  <a className="text-base font-medium text-colorA dark:text-colorAD">
-                    More info about new courses <span aria-hidden="true">&rarr;</span>
-                  </a>
+                <Link
+                  href={`/contact`}
+                  className="text-base font-medium text-colorA dark:text-colorAD">
+                  More info about new courses<span aria-hidden="true">&rarr;</span>
+
                 </Link>
               </div>
             </div>
@@ -65,7 +66,7 @@ export default function Course({ course }) {
       </div>
 
     </Layout>
-  )
+  );
 }
 
 export async function getStaticPaths() {

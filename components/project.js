@@ -8,16 +8,16 @@ export default function Project({ project }) {
           <p className="text-sm font-semibold font-mono uppercase text-colorA dark:text-colorAD">
             {project.category}
           </p>
-          <Link href={`/projects/${project.slug}`}>
-            <a className="mt-2 block">
-              <p className="card-title">{project.title}</p>
-              <p className="mt-3 text-base text-gray-500">{project.summary}</p>
-            </a>
+          <Link href={`/projects/${project.slug}`} className="mt-2 block">
+
+            <p className="card-title">{project.title}</p>
+            <p className="mt-3 text-base text-gray-500">{project.summary}</p>
+
           </Link>
           <div className="mt-4 flex flex-wrap items-center">
             {project.tags?.map(tag => (
-              <Link href={`/tag/${tag}`} key={tag}>
-                <a className="tagx">{tag}</a>
+              <Link href={`/tag/${tag}`} key={tag} className="tagx">
+                {tag}
               </Link>
             ))}
           </div>
@@ -27,6 +27,6 @@ export default function Project({ project }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 

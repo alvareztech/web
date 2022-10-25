@@ -22,24 +22,18 @@ export default function Custom404() {
             />
             <div
               className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-              <Link href={"/"}>
-                <a
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-colorA hover:bg-blue-700"
-                >
-                  Go back home
-                </a>
+              <Link href={"/"}
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-colorA hover:bg-blue-700">
+                Go back home
               </Link>
-              <Link href={"/contact"}>
-                <a
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-colorA bg-blue-100 hover:bg-blue-200"
-                >
-                  Contact support
-                </a>
+              <Link href={"/contact"}
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-colorA bg-blue-100 hover:bg-blue-200">
+                Contact support
               </Link>
             </div>
           </div>
         </main>
       </div>
     </div>
-  )
+  );
 }
