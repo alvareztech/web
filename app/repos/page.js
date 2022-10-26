@@ -4,7 +4,7 @@ async function getRepos() {
       'Authorization': 'Bearer ' + process.env.GITHUB_API_KEY
     }
   })
-  if (res.status === 403) {
+  if (res.status !== 200) {
     return [];
   }
   return res.json();
