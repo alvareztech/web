@@ -1,4 +1,5 @@
 module.exports = {
+  experimental: { appDir: true },
   reactStrictMode: true,
   images: {
     domains: ['img.youtube.com', 'play.google.com']
