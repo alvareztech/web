@@ -1,19 +1,15 @@
-"use client";
-
-import { use } from 'react';
-
 async function getRepos() {
   let res = await fetch('https://api.github.com/users/alvareztech/repos?sort=pushed&per_page=100', {
     headers: {
       'Authorization': 'Bearer ' + process.env.GITHUB_API_KEY
     }
   })
-  return res.json();
+  return await res.json();
 }
 
-export default function Page() {
+export default async function Page() {
   console.log('This is a test');
-  const repos = use(getRepos());
+  const repos = await getRepos();
   console.log('REPOS', repos);
   return (
     <div className="py-8 px-16">
