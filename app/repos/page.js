@@ -8,7 +8,7 @@ async function getRepos() {
   if (res.status !== 200) {
     return [];
   }
-  console.log('>>> ', res);
+  console.log('>>> ', res.json());
   return res.json();
 }
 
