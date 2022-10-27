@@ -13,8 +13,8 @@ async function getRepos() {
 
 export default async function Page() {
   console.log('This is a test');
-  // const repos = await getRepos();
-  console.log('This is a test 2');
+  const repos = await getRepos();
+  console.log('REPOS', repos);
   return (
     <div className="py-8 px-16">
       <h1 className="text-4xl">Repositories</h1>
