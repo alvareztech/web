@@ -4,9 +4,11 @@ async function getRepos() {
       'Authorization': 'Bearer ' + process.env.GITHUB_API_KEY
     }
   })
+  console.log('>>', 'Bearer ' + process.env.GITHUB_API_KEY);
   if (res.status !== 200) {
     return [];
   }
+  console.log('>>> ', res);
   return res.json();
 }
 
