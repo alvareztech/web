@@ -1,5 +1,4 @@
 module.exports = {
-  staticPageGenerationTimeout: 3000,
   experimental: { appDir: true },
   reactStrictMode: true,
   images: {
