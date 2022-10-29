@@ -1,0 +1,32 @@
+---
+title: "Swift Trees"
+tags: [swift]
+draft: true
+---
+
+```swift
+func inOrderTraversal(_ node: Node<Int>?) {
+    guard let node = node else { return }
+    inOrderTraversal(node.left)
+    print(node.value, terminator: " ")
+    inOrderTraversal(node.right)
+}
+```
+
+```swift
+func preOrderTraversal(_ node: Node<Int>?) {
+    guard let node = node else { return }
+    print(node.value, terminator: " ")
+    preOrderTraversal(node.left)
+    preOrderTraversal(node.right)
+}
+```
+
+```swift
+func postOrderTraversal(_ node: Node<Int>?) {
+    guard let node = node else { return }
+    postOrderTraversal(node.left)
+    postOrderTraversal(node.right)
+    print(node.value, terminator: " ")
+}
+```
