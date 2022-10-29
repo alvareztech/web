@@ -2,7 +2,8 @@ async function getRepos() {
   let res = await fetch('https://api.github.com/users/alvareztech/repos?sort=pushed&per_page=100', {
     headers: {
       'Authorization': 'Bearer ' + process.env.GITHUB_API_KEY
-    }
+    },
+    cache: 'no-store'
   })
   return await res.json();
 }
