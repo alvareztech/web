@@ -8,7 +8,7 @@ let offers = {
           "detailUrl": "https://www.google.com/",
           "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1125&h=750&q=80",
           "brand": "Burger Joint",
-          "title": "3,5% Cashbacks Paying with Lucky",
+          "title": "3,5% Cashbacks Paying with this coupon",
           "tags": "Cashback",
           "favoriteCount": 283
         },
@@ -32,7 +32,7 @@ let offers = {
           "detailUrl": "https://www.google.com/",
           "imageUrl": "https://images.unsplash.com/photo-1510157059722-9c3c2175ed1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1125&h=750&q=80",
           "brand": "Bose",
-          "title": "5% Cashbacks Paying with Lucky",
+          "title": "5% Cashbacks Paying with this coupon",
           "tags": "Cashback",
           "favoriteCount": 782
         }
@@ -68,7 +68,7 @@ let offers = {
           "detailUrl": "https://www.google.com/",
           "imageUrl": "https://images.unsplash.com/photo-1523329110005-297cf111f8de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1125&h=750&q=80",
           "brand": "Sony",
-          "title": "10% Cashbacks Paying with Lucky today",
+          "title": "10% Cashbacks Paying with this coupon today",
           "tags": "Cashback",
           "favoriteCount": 623
         }
