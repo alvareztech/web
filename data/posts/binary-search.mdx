@@ -14,18 +14,18 @@ _O(log n)_
 
 ```swift
 func binarySearch(numbers: [Int], target: Int) -> Int {
-    var index = 0
-    var r = numbers.count
-
-    while index < r {
-        let middle = (index + r) / 2
+    var left = 0
+    var right = numbers.count
+    
+    while left < right {
+        let middle = (left + right) / 2
         if numbers[middle] < target {
-            index = middle + 1
+            left = middle + 1
         } else {
-            r = middle
+            right = middle
         }
     }
-    return index
+    return left
 }
 ```
 
@@ -33,14 +33,15 @@ func binarySearch(numbers: [Int], target: Int) -> Int {
 
 ```java
 static int binarySearch(int[] numbers, int target) {
-    int index = 0, r = numbers.length;
-    while (index < r) {
-        int middle = (index + r) / 2;
+    int left = 0;
+    int right = numbers.length;
+    while (left < right) {
+        int middle = (left + right) / 2;
         if (numbers[middle] < target)
-            index = middle + 1;
+            left = middle + 1;
         else
-            r = middle;
+            right = middle;
     }
-    return index;
+    return left;
 }
 ```
