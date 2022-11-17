@@ -29,6 +29,25 @@ func binarySearch(numbers: [Int], target: Int) -> Int {
 }
 ```
 
+## Kotlin
+
+```kotlin
+fun binarySearch(numbers: Array<Int>, target: Int): Int {
+    var left = 0
+    var right = numbers.size
+
+    while (left < right) {
+        val middle = (left + right) / 2
+        if (numbers[middle] < target) {
+            left = middle + 1
+        } else {
+            right = middle
+        }
+    }
+    return left
+}
+```
+
 ## Java
 
 ```java
