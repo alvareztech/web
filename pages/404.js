@@ -18,7 +18,6 @@ export default function Custom404() {
               alt="Cheems 404"
               width={200}
               height={250}
-              objectFit='contain'
             />
             <div
               className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
