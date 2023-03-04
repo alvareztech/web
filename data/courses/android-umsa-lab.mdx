@@ -1,0 +1,408 @@
+---
+title: Curso Android, UMSA 2016
+summary: This course was created for the Computer Laboratory at the Universidad Mayor de San Andrés. Two versions were carried out in 2016.
+tags: [android]
+date: 2016-01-01 08:00
+developed_apps: 5
+students: 51
+duration: 1
+versions: 2
+---
+
+> Some resources are not available. The migration is taking place.
+
+{/* [Informe](https://dl.dropbox.com/s/xlty36atrmgkrfu/Informe%20Curso%20Networking%20Android.pdf) */}
+
+## Módulo I
+
+### Sesión 1: Introducción
+
+- [Slides](https://dl.dropboxusercontent.com/u/23754437/Cursos/Android/LASIN20161/01%20Slides.pdf)
+- [Descarga Android Studio](https://developer.android.com/studio/index.html?hl=es)
+
+#### Instalar Android Studio en Windows
+
+- [Instalar Android Studio en Windows](https://alvarez.tech/labs/instalar-android-studio-windows)
+
+#### Ejecutar aplicaciones en dispositivo físico vía USB
+
+- [Habilitar ejecución en dispositivo Android vía USB](/habilitar-ejecucion-dispositivo-android-via-usb)
+
+#### Lecturas
+
+- [WhatsApp dejará de funcionar en versiones antiguas de Android](http://tecnologia.elpais.com/tecnologia/2016/06/06/actualidad/1465224037_191065.html)
+
+---
+
+### Sesión 2: Dominando herramientas de desarrollo
+
+- [Slides](https://dl.dropboxusercontent.com/u/23754437/Cursos/Android/LASIN20161/02%20Slides.pdf)
+- IntelliJ IDEA Keymap (Atajos de teclado para Android Studio)
+- [Windows, Linux](https://dl.dropboxusercontent.com/u/23754437/Cursos/Android/LASIN20161/IntelliJIDEA_ReferenceCard.pdf)
+- [Mac](https://dl.dropboxusercontent.com/u/23754437/Cursos/Android/LASIN20161/IntelliJIDEA_ReferenceCard_mac.pdf)
+
+---
+
+### Sesión 3: Creación y depuración de una aplicación
+
+- [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZYzJacmM1NWs2dzA/view?usp=sharing)
+- [Documentación Intent](https://developer.android.com/reference/android/content/Intent.html)
+
+#### Proyecto “Aplicacion 1”
+
+- [Gist](https://gist.github.com/alvareztech/0ff774d5024ec2e71fa76745afe3478a)
+
+---
+
+### Sesión 4: Administración de recursos
+
+- [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZX0RzWVBUaHF3Nk0/view?usp=sharing)
+- [Paleta de colores Material Design](https://material.google.com/style/color.html)
+- [Conversión de códigos de colores Hexadecimal a RGB y viceversa](http://hex.colorrrs.com/)
+- [Iconos Material Design](https://design.google.com/icons/)
+
+---
+
+- [Sesión 5: Interfaz de Usuario](http://alvarez.tech/android-umsa1-sesion-5/)
+
+---
+
+### Sesión 6: Material Design y componentes UI
+
+- [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZRHZQVDd1dndObDg/view?usp=sharing)
+- [Material Design website](https://material.google.com/)
+- [Material Up](http://www.materialup.com/) (diseños, apps, iconos, herramientas y otros)
+- [Historial de versiones de la librería de soporte](https://developer.android.com/topic/libraries/support-library/revisions.html)
+- [Aplicación de rápido acceso a colores Material Design para Mac](https://github.com/romannurik/MaterialColorsApp)
+
+#### Actualizar Google Repository y Android Support Repository
+
+Para poder usar nuevas versiones la librería de soporte
+
+![SDKAndroid3](http://i1.wp.com/alvarez.tech/wp-content/uploads/2016/06/SDKAndroid3.gif?resize=400%2C250)
+
+#### Aplicación “Formulario”
+
+Primera parte de la aplicación realizada en clase.
+
+- [Gist](https://gist.github.com/alvareztech/a31916865cb32aa79cc940383bf5ae05)
+
+---
+
+### Sesión 7: RecyclerView, CardView y menús
+
+- [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZbTl3MXpVTWZVcjA/view?usp=sharing)
+- [Práctica](http://alvarez.tech/cursos/android/sesion-7/practica/) (fix)
+
+#### Dependencias para Material Design
+
+```java
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:cardview-v7:23.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+}
+```
+
+#### Ejemplo de RecyclerView de personas, CardView y menús
+
+Código realizado en clase.
+
+[RecyclerView con listener](https://gist.github.com/alvareztech/f21eb3fbe8a3cc9cd3e0b986c27be877)
+
+---
+
+- [Workshop](http://alvarez.tech/android-umsa1-workshop-1/) (fix)
+
+---
+
+## Módulo II
+
+### Sesión 8: Web, Pickers y Dialogs
+
+- [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZZnpUOG9VUmt1b3M/view?usp=sharing)
+- [Código aplicación ejemplo uso de WebView y Chrome Custom Tabs](https://gist.github.com/alvareztech/adc373bf3e2ccf968c89fe03a50aca41)
+- [Código aplicación ejemplo uso de Picker y Dialogs](https://gist.github.com/alvareztech/ca1f4fc2893e60d3f2e156df237c54cf)
+
+---
+
+### Sesión 9: Almacenamiento de datos
+
+- [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZenJGVjY5cG94STg/view?usp=sharing)
+- [Código aplicación ejemplo uso de preferencias](https://gist.github.com/alvareztech/0945267d57f9516a19f3c555db07742f)
+
+#### Workshop: Mis Libros
+
+- [Crear la aplicación "Mis Libros", uso de dase de datos Realm](https://alvarez.tech/labs/android-app-mislibros)
+
+#### Ejemplo uso de preferencias
+
+Guardar
+
+```java
+SharedPreferences preferences = getPreferences(Context.MODE_PRIVATE);
+SharedPreferences.Editor editor = preferences.edit();
+editor.putInt("puntaje", 77);
+editor.putString("nombre", "Sin nombre");
+editor.apply();
+```
+
+Leer
+
+```java
+SharedPreferences preferences = getPreferences(Context.MODE_PRIVATE);
+int puntaje = preferences.getInt("puntaje", 0);
+String nombre = preferences.getString("nombre", "");
+```
+
+---
+
+### Sesión 10: Tratamiento XML, JSON y carga de imágenes
+
+- [Slides](https://drive.google.com/open?id=0B5wCprFP-EBZQmpWRWlfUEZYTFk)
+- [Código ejemplo uso ParserXML de eventos](https://gist.github.com/alvareztech/5f8383227493b9225014c5c9bf134f0e)
+- [Práctica](http://alvarez.tech/cursos/android/sesion-10/practica/) (fix)
+
+#### Tip: Acceso directo a un archivo en Google Drive
+
+Colocar el ID del archivo.
+
+```
+https://docs.google.com/uc?export=download&id=ID_AQUI
+```
+
+#### Clase ParserXML
+
+- [Gist](https://gist.github.com/alvareztech/f0c323b92201fadc1f4a1782cf6d618f)
+
+#### Ejercicio
+
+URL del archivo JSON de ejemplo
+
+https://docs.google.com/uc?export=download&id=0B5wCprFP-EBZTTB4TXVUenUwUXc
+
+Método para obtener JSON desde URL (requiere permiso a Internet y estar en un AsyncTask)
+
+```java
+public String getJsonFromUrl(String urlString) {
+    StringBuilder result = new StringBuilder();
+    HttpURLConnection urlConnection = null;
+    try {
+        URL url = new URL(urlString);
+        urlConnection = (HttpURLConnection) url.openConnection();
+        InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            result.append(line);
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        assert urlConnection != null;
+        urlConnection.disconnect();
+    }
+    return result.toString();
+}
+```
+
+Ejemplo uso GSON
+
+```java
+// build.gradle
+compile 'com.google.code.gson:gson:2.4'
+
+Gson gson = new Gson();
+
+// JSON a Objeto
+Estudiante e = gson.fromJson(json, Estudiante.class);
+
+// Objeto a JSON
+Estudiante e = new Estudiante();
+e.setNombre("Lidia Alvarez");
+e.setPuntaje("42");
+String json = gson.toJson(e);
+```
+
+---
+
+### Workshop: Noticias
+
+- [Crear la aplicación "Noticias", consumir XML, usar AsyncTask](https://alvarez.tech/labs/android-app-noticias)
+
+---
+
+### Sesión 11: Web Services, APIs, Retrofit
+
+- [Slides](https://drive.google.com/open?id=0B5wCprFP-EBZVlg3a09kOU9VRU0)
+- [Práctica](http://wp-danyalvarez.rhcloud.com/cursos/android/sesion-11/practica/) (fix)
+
+#### OpenWeatherMap API
+
+- [Guía de uso](http://alvarez.tech/openweathermap-api/) (fix)
+
+#### Aplicación Clima
+
+- [Código](https://gist.github.com/alvareztech/f53a0af0fbd2f22c0a09ba738bfc1773)
+
+---
+
+### Workshop: Películas
+
+- [Crear la aplicación "Películas", consumo de una API con Retrofit](https://alvarez.tech/labs/android-app-peliculas)
+
+---
+
+### Sesión 12: SDKs, BAAS y Firebase
+
+#### SDK de Facebook
+
+[Ver en YouTube](https://www.youtube.com/playlist?list=PLXvO8Pi6OUCZ-u5VG3JqyturXEcd3DI2s)
+
+#### Firebase
+
+[Ver en YouTube](https://www.youtube.com/playlist?list=PLXvO8Pi6OUCaES0RporihtHb9A_I71zTR)
+
+#### Recursos Extra
+
+- [Algunas librerías](http://alvarez.tech/librerias-android/)
+- [Algunas APIs](http://alvarez.tech/lista-apis)
+
+---
+
+## Módulo III
+
+### Sesión 13: Google Play Services y Localización
+
+- [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZQk9lVWdfRU1BbEU/view?usp=sharing)
+- [Releases Google Play Services](https://developers.google.com/android/guides/releases)
+- [Google Maps](https://www.google.com/maps)
+- [Ejemplo de puntos de ubicación](http://bisa.com/buscarPuntoAtencion.php) (BISA)
+
+#### Proyectos
+
+- [Proyecto de ejemplo realizado en clases](https://github.com/alvareztech/EjemploLocalizacionAndroid)
+
+#### Documentación
+
+- [LocationRequest](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest)
+
+---
+
+### Sesión 14: Google Maps & Google Places
+
+- [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZUTh5aDhGNzMxYWc/view?usp=sharing) (Google Maps)
+- [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZZmc2OUp0d1pDa2M/view?usp=sharing) (Google Places)
+- [Google Maps](https://www.google.com/maps)
+
+#### Proyectos
+
+- [Proyecto de ejemplo realizado en clases](https://github.com/alvareztech/EjemploGoogleMaps) (Google Maps)
+- [Proyecto de ejemplo realizado en clases](https://github.com/alvareztech/EjemploGooglePlaces) (Google Places)
+
+#### Documentación
+
+- [GoogleMap](https://developers.google.com/android/reference/com/google/android/gms/maps/GoogleMap)
+- [MarkerOptions](https://developers.google.com/android/reference/com/google/android/gms/maps/model/MarkerOptions)
+
+---
+
+### Práctica 1
+
+Desarrollar una aplicación con un mapa de Google que tenga como marcadores al menos 5 puntos de agencias, sucursales o puntos de atención de una de las siguientes empresas:
+
+- Telecomunicaciones (Entel, Tigo o Viva)
+- Entidades financieras (BNB, BCP, BISA, etc)
+
+La aplicación debe ser de una sola activity que contenga el mapa y cumplir las siguientes caracteristicas.
+
+- Tener un botón para ir al punto principal con animación
+- Todas las acciones y gestos deben estar habilitadas
+- Marcar con un círculo con 200 metros a la redonda a la agencia principal, con relleno de color semi transparente.
+- Los marcadores deben tener icono personalizado
+
+Cualquier característica extra se toma en cuenta.
+
+---
+
+### Sesión 15: Cámara, Galería, Google Photos
+
+- [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZRlp1dGF1cUx5Y1E/view?usp=sharing)
+
+#### Proyectos
+
+- [Proyecto de ejemplo realizado en clase](https://github.com/alvareztech/EjemploCamara) (Cámara, Galeria, Firebase Storage)
+
+#### Documentación
+
+- [uses-feature](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#hw-features)
+- [android.hardware.camera2](https://developer.android.com/reference/android/hardware/camera2/package-summary.html)
+
+---
+
+### Workshop: Planear Día
+
+- [Crear la aplicación "Planear Día", uso de Google Maps, Google Places y Realm](https://alvarez.tech/labs/android-app-planeardia)
+
+---
+
+### Sesión 16: Conectividad, Bluetooth
+
+- [Sesión en VIVO](http://slides.com/alvareztech/android-umsa-20161-16/live?token=u2nbyZmG)
+- [Slides](https://drive.google.com/open?id=0B5wCprFP-EBZSGlXSU9reU45VkU)
+
+#### Proyecto
+
+- [Ejemplo Bluetooth](https://github.com/alvareztech/EjemploBluetooth)
+
+---
+
+### Sesión 17: Fragments, Navegación
+
+- [Slides](http://slides.com/alvareztech/android-umsa-20161-17?token=YfEr0dk7)
+
+#### Lecturas
+
+- [Ahora las aplicaciones Android se parecerán más a las de iOS](http://alvarez.tech/apps-android-se-pareceran-mas-a-ios/)
+- [Guías de diseño de los componentes](https://material.google.com/components/bottom-navigation.html)
+
+---
+
+# Version 2
+
+## Módulo I
+
+- [Sesión 1: Introducción](http://wp-danyalvarez.rhcloud.com/android-umsa/sesion-1/)
+- [Sesión 2: Views & ViewGroups](http://wp-danyalvarez.rhcloud.com/android-umsa/sesion-2/)
+- [Sesión 3: Gestión de recursos](http://wp-danyalvarez.rhcloud.com/android-umsa/sesion-3/)
+- [Sesión 4: Activities & Intents](http://wp-danyalvarez.rhcloud.com/android-umsa/sesion-4/)
+- [Sesión 5: Material Design y componente UI](http://wp-danyalvarez.rhcloud.com/android-umsa/sesion-5/)
+  - [Slides](https://drive.google.com/open?id=0B5wCprFP-EBZZHhzUXRQb2gyZzg)
+- Sesión 6: RecyclerView, CardView
+  - [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZbUhaLUtZUW91WW8/view)
+  - [Código de ejemplo de RecyclerView de personas con acción y CardView](https://gist.github.com/alvareztech/85ecf2a28424f6376c583466c5446ff7)
+- [Workshop 1](http://alvarez.tech/android-umsa-workshop-1/) (extra)
+
+### Prácticas
+
+- [Práctica 1](http://wp-danyalvarez.rhcloud.com/android-umsa/practica-1/)
+- [Práctica 2](http://wp-danyalvarez.rhcloud.com/android-umsa/practica-2/)
+- [Práctica 3](http://wp-danyalvarez.rhcloud.com/android-umsa/practica-3/)
+
+---
+
+## Módulo II
+
+- Sesión 7: Web, Pickers y Dialogs
+  - [Slides](https://drive.google.com/file/d/0B5wCprFP-EBZV1Bfd0tYVnE2Wk0/view)
+  - [Código ejemplo de WebView y Chrome Custom Tabs](https://gist.github.com/alvareztech/110addc00b537a16ee6216f38c7755a4)
+  - [Código ejemplo de Pickers y Dialogs](https://gist.github.com/alvareztech/723d93d8a0bc01264609ce52035033ca)
+- [Sesión 8: Almacenamiento de datos](http://alvarez.tech/android-umsa-sesion-8/)
+- [Sesión 9: Tratamiento XML, JSON, carga de imágenes](http://alvarez.tech/android-umsa-sesion-9/)
+- [Sesión 10: Web Services, APIs, Retrofit](http://alvarez.tech/android-umsa-sesion-10/)
+- [Sesión 11: SDKs, BASS y Firebase](http://alvarez.tech/android-umsa1/sesion-12/) (extra)
