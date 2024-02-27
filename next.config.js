@@ -1,13 +1,14 @@
 module.exports = {
-  experimental: { appDir: true },
   reactStrictMode: true,
   images: {
-    domains: ['img.youtube.com', 'play.google.com']
+    domains: ["img.youtube.com", "play.google.com"],
   },
   async rewrites() {
-    return [{
-      source: '/sitemap.xml',
-      destination: '/api/sitemap'
-    }]
-  }
-}
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/api/sitemap",
+      },
+    ];
+  },
+};
